@@ -4,6 +4,9 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
+ <!-- Mybatis mapper는 자바 객체와 SQL문 사이의 자동 Mapping 기능을 지원하는 ORM(Object Relational Mapping)Framework이다.
+ Mybatis는 개발자가 익숙한 SQL을 그래도 사용하면서 JDBC코드 작성(드라이버를 불러오는 등)의 불편함을 제거할 수 있다. -->
+ 
  <mapper namespace="Bbs">
  <!-- mybatis 쿼리문을 다루는 태그를 매퍼라고한다. -->
  
