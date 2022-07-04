@@ -1,0 +1,10 @@
+1. Ecliips에서 실행시 발생[Maven 실행시] [org.springframework.web.context.ContextLoaderListener]의 
+       애플리케이션 리스너를 설정하는 중 오류 발생
+       
+ --> 실행 잘 되던 프로젝트에 Maven - update project를 클릭 후 정상적으로 실행이 안되고 404에러 발생
+     maven 라이브러리 경로가 삭제되는 현상이 발생되었다한다.
+     
+          이를, 해결하기 위해 라이브러리 경로를 재설정 해주면 된다. 프로젝트 우클릭 -> properties -> Deployment Assembly -> add버튼 ->
+     java Build Path Entries -> Maven Dependencies 선택 -> Apply 버튼 클릭 
+     
+ 
