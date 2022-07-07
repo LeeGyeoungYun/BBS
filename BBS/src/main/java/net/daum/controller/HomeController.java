@@ -39,7 +39,7 @@ public class HomeController {
 	
 	@GetMapping(value ="/hi")
 	public String hi() {
-		return "test";
+		return "login_page";
 	}
 	
 	

@@ -7,4 +7,16 @@
           이를, 해결하기 위해 라이브러리 경로를 재설정 해주면 된다. 프로젝트 우클릭 -> properties -> Deployment Assembly -> add버튼 ->
      java Build Path Entries -> Maven Dependencies 선택 -> Apply 버튼 클릭 
      
- 
+ 2. net::ERR_ABORTED 404문제
+    jsp에서 css파일의 경로를 어디인지 넣어줄때 정확한 경로에 있는지 확인. ex)resources/css/login_page_style.css  (o)
+    													/resources/css/login_page_style.css  (x)
+    													
+
+3. 웹사이트에 폰트어썸(Font Awesome5) 적용하는 방법 :
+	폰트를 사용하기 위해서는 폰트어썸에 회원가입하고 CDN 주소를 받아가야함.
+	하지만 번거로움의 문제가 있어 CDN 전문 제공사이트에서 제공하는 css파일을 stylesheet에 연결함 
+	ex) <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+	이러면 CDN주소 즉 킷트를 받지 않고도 자유롭게 아이콘 사용이 가능함
+	
+
+4.     													
