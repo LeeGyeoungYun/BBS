@@ -9,11 +9,29 @@
 </head>
 <body>
 	<div class= "loginContainer">
-		<p>test중</p>
+		
 		<div class ="photoBox">
-			<i class="fa-solid fa-circle-user"></i>
-			
+			<i class="fa-solid fa-circle-user"></i>			
 		</div>
+		<form class="login_information">
+			<div class="int_area">
+				<i class="fa-solid fa-user"></i>
+				<input type="text" name="id" id="id" autocomplete="off" required>
+			</div>
+			<div class="int_area">
+				<i class="fa-solid fa-lock"></i>
+				<input type="password" name="pw" id="pw" autocomplete="off" required>
+			</div>
+			
+			<div class="answer">
+				<a class="forget" href="#">forget password?</a>
+				<a class="register" href="#">회원가입</a>
+			</div>
+			
+			<div class="btn_area">
+				<button type="submit">LOGIN</button>
+			</div>
+		</form>
 	</div>
 </body>
 </html>

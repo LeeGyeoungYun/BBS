@@ -9,9 +9,98 @@
 
 .loginContainer{
 	
-	background-color: yellow;
-	display:block;
-	width: 100px;
-	height : 100px;
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	
+	justify-content: center;
+	align-content: center;
+}
+
+
+
+.photoBox{
+	
+	width:350px;
+	justify-content: center;
+	text-align: center; /* div 박스안에 있는 글자를 가운데로 정렬 시키는 것*/
+
+}
+
+.fa-circle-user{
+	font-size: 180px;
+	color:#66cc00;
+}
+
+.login_information{
+	padding-top:7vh;
+	width:350px;
+}
+
+.int_area{
+	display:flex;
+	width:100%;
+	padding:10px 5px;
+	margin-top:20px;
+	border: 1px solid black;
 	
 }
+
+.int_area i{
+	font-size:25px;
+	padding-left:10px;
+	margin-top:2.5px;
+}
+
+.int_area input{
+	border:none;	/* 아이디,비밀번호 박스 경계선 삭제 */
+	outline:none;	/*아이디 , 비밀번호 박스 클릭시 선택되는 외각 줄 삭제*/
+	font-size:17px;
+	height: 2rem;
+	width:100%;
+	padding-left:30px;
+	
+
+}
+
+.btn_area {
+	padding-top:30px;
+
+
+}
+
+.answer{
+	padding-top:.5rem;
+	float:right;
+	display:inline;
+}
+
+.answer a{
+	display:block;
+}
+
+.answer .register{
+	float:right;
+}
+
+
+
+.btn_area{
+	padding-top: 4.7rem;
+}
+
+.btn_area button{
+	border-radius: 18px;
+	width:70%;
+	margin:auto;
+	display:block;
+	height: 5vh;
+}
+
+.btn_area button:hover{
+	cursor: pointer;
+	background-color: #c0c0c0;
+}
+
+
