@@ -29,7 +29,7 @@
 }
 
 .fa-circle-user{
-	font-size: 180px;
+	font-size: 140px;
 	color:#66cc00;
 }
 
@@ -63,29 +63,6 @@
 	
 
 }
-
-.btn_area {
-	padding-top:30px;
-
-
-}
-
-.answer{
-	padding-top:.5rem;
-	float:right;
-	display:inline;
-}
-
-.answer a{
-	display:block;
-	
-}
-
-.answer .register{
-	float:right;
-}
-
-
 
 .btn_area{
 	padding-top: 4.7rem;

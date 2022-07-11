@@ -42,5 +42,10 @@ public class HomeController {
 		return "login_page";
 	}
 	
+	@GetMapping(value="register")
+	public String register() {
+		return "register";
+	}
+	
 	
 }
