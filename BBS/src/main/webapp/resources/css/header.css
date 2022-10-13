@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+*{
+	margin : 0px;
+	padding : 0px;
+	list-style: none;
+	text-decoration: none;
+}
+
+.Bar{
+	height: 70px;
+	position: relative;
+	width: 100%;
+	min-width: 1007px;
+	display:flex;
+	text-align: center;
+	border-bottom: 1px solid #dde1e5;
+	background-color: #c0c0c0;
+}
+
+.leftBar{
+	padding:24px 24px 21px;
+	left: 1px;
+	position: absolute;
+	cursor: pointer;
+}
+
+.leftBar:hover{
+	color : blue;
+}
+
+.rightBar{
+	position: absolute;
+	top: 0px;
+	right : 0px;
+	display:flex;
+	height: 70px;
+	padding-right: 30px;	
+}
+
+.leftBar_menu{
+	position: fixed;
+	top:0px;
+	bottom:0px;
+	width: 420px;
+	height: 100%;
+	left:0px;
+	background: #80ffff;
+	display:none;
+	z-index: 1;
+}
+
+.home{
+	font-size: 24px;
+	width:100%;
+}
+
+.logo a i{
+	color: #804040;
+}
+
+
+.loginBtn{
+	padding:24px 3px 0px;
+	display: block;
+}
+
+.registerBtn{
+	padding:24px 3px 0px;
+	display: block;
+}
+
+.space{
+	margin:0px 5px;
+	height: 70px;
+	padding-top: 21px;
+}
