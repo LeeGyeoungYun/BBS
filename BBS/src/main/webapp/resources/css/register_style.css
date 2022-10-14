@@ -60,8 +60,16 @@
 	height: 2rem;
 	width:100%;
 	padding-left:30px;
-	
+}
 
+.warning_idCheck{
+	text-align: right;
+	color: red;
+	display: none;
+}
+
+.warning_idCheck p{
+	margin-top:5px;
 }
 
 .btn_area{

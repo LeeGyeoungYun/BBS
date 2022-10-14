@@ -6,6 +6,8 @@
 <title>회원가입 페이지</title>
 <link rel="stylesheet" href="resources/css/register_style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<script src="resources/js/jquery.js"></script>
+<script type="text/javascript" src="resources/js/register.js"></script>
 </head>
 <body>
 	<div class= "loginContainer">
@@ -13,11 +15,12 @@
 		<div class ="photoBox">
 			<i class="fa-solid fa-circle-user"></i>			
 		</div>
-		<form class="login_information">
+		<form class="login_information" method="post" action="register_ok" onsubmit="return register_check();">
 			<div class="int_area">
 				<i class="fa-solid fa-user"></i>
-				<input type="text" name="id" id="id" autocomplete="off" placeholder="ID" required>
+				<input type="text" name="id" id="id" autocomplete="off" placeholder="ID" >
 			</div>
+			<span class="warning_idCheck"><p>아이디를 확인해주세요.</p></span>
 			
 			<div class="int_area">
 				<i class="fa-solid fa-envelope"></i>
