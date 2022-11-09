@@ -44,6 +44,7 @@
 			</div>
 		
 		</div>
+		<div class="imsi"></div>>
 	</div>
 	<script type="text/javascript" src="resources/js/menu.js"></script>
 </html>

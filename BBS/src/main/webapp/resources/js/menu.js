@@ -1,11 +1,11 @@
 
 function menu_click(){
 	
-	$('.leftBar_menu').css({'display':'block'});
+	$('.leftBar_menu').css({'visibility':'visible'});
 	$('.bodyContainer').css({'opacity':'0.7'});
 }
 
 function menu_close(){
-	$('.leftBar_menu').css({'display':'none'});
+	$('.leftBar_menu').css({'visibility':'hidden'});
 	$('.bodyContainer').css({'opacity':'1'});
 }
