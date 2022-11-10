@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="resources/css/main_style.css">
 </head>
 <body class="bodyContainer">
+	<div id="overlay"></div>
 	<div class="test">
 	 이구역은 메인페이지입니다.
 	</div>

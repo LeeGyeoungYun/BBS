@@ -47,16 +47,10 @@
 	left:0px;
 	background: #80ffff;
 	visibility:hidden;
-	z-index: 1;
+	z-index: 4;
+	transform:translate3d(-100%,0,0);
 	transition : all .5s;
-	transform : translateZ(0);
-	transform: translate3d(-100%,0,0);
 }
-
-.imsi{
-	
-}
-
 
 .cancleBox:hover{
 	cursor: pointer;
