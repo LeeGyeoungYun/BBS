@@ -35,7 +35,16 @@
 	right : 0px;
 	display:flex;
 	height: 70px;
-	padding-right: 30px;	
+	padding-right: 30px;
+	color: #17191D !important;	
+}
+
+.loginBtn, .registerBtn{
+	color : inherit;
+}
+
+.loginBtn:hover, .registerBtn:hover{
+	color : #0ea2f1;
 }
 
 .leftBar_menu{
@@ -45,14 +54,26 @@
 	width: 420px;
 	height: 100%;
 	left:0px;
-	background: #80ffff;
 	visibility:hidden;
+	background-color:white;
 	z-index: 4;
 	transform:translate3d(-100%,0,0);
 	transition : all .5s;
 }
 
-.cancleBox:hover{
+.cancleBox{
+	height: 70px;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+.cancle{
+	padding:18px 27px 18px;
+	left: 1px;
+	position:absolute;
+	font-size: 25px;
+}
+
+.cancle:hover{
 	cursor: pointer;
 }
 

@@ -39,7 +39,10 @@
 		
 		<div class="leftBar_menu">
 			
-			<div class="cancleBox" onclick="menu_close()"><i class="fa-sharp fa-solid fa-xmark"></i></div>
+			<div class="cancleBox">
+				<span class="cancle" onclick="menu_close()"><i class="fa-sharp fa-solid fa-xmark"></i></span>
+			</div>
+			
 			<div class="">
 			</div>
 		
