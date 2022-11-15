@@ -36,7 +36,7 @@
 	display:flex;
 	height: 70px;
 	padding-right: 30px;
-	color: #17191D !important;	
+	color: #17191D;	
 }
 
 .loginBtn, .registerBtn{
@@ -51,7 +51,7 @@
 	position: fixed;
 	top:0px;
 	bottom:0px;
-	width: 420px;
+	width: 370px;
 	height: 100%;
 	left:0px;
 	visibility:hidden;
@@ -63,7 +63,7 @@
 
 .cancleBox{
 	height: 70px;
-	border-bottom: 1px solid #c0c0c0;
+	border-bottom: 3px solid;
 }
 
 .cancle{
@@ -76,6 +76,42 @@
 .cancle:hover{
 	cursor: pointer;
 }
+.menuContainer, .mypage{
+	margin:0px auto;
+	position: relative;
+	width: 250px;
+	
+}
+
+
+.menuContainer ul, .mypage ul{
+	padding: 45px 0px;
+}
+
+.menuContainer ul li, .mypage ul li{
+	font-weight: bold;
+	font-size:20px;
+	height: 40px;
+	border-bottom: 1px solid #EDEDED;
+	line-height: 40px;
+	letter-spacing: 0.12em;
+
+}
+
+.menuContainer ul li a, .mypage ul li a{
+	color: #17191D;
+}
+
+.menuContainer ul li a:hover, .mypage ul li a:hover{
+	color: #ff6c6c;
+}
+
+.spaceDiv{
+	
+	border-bottom: 3px solid;
+	width: 100%;
+}
+
 
 .home{
 	font-size: 24px;

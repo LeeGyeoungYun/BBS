@@ -43,7 +43,19 @@
 				<span class="cancle" onclick="menu_close()"><i class="fa-sharp fa-solid fa-xmark"></i></span>
 			</div>
 			
-			<div class="">
+			<div class="menuContainer">
+				<ul>
+					<li><a href="#">정보공유</a></li>
+					<li><a href="#">공지사항</a></li>
+					<li><a href="#">QNA</a></li>
+				</ul>
+			</div>
+			<div class="spaceDiv"></div>
+			<div class="mypage">
+				<ul>
+					<li><a href="#">나의 메모장</a></li>
+					<li><a href="#">내정보</a></li>
+				</ul>
 			</div>
 		
 		</div>
