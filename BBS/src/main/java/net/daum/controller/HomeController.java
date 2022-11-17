@@ -35,5 +35,16 @@ public class HomeController {
 		return "register";
 	}
 	
+	@GetMapping(value="myPlace")
+	public String myPlace() {
+		return "myPlace";
+	}
+	
+	@GetMapping(value="test")
+	public String test() {
+		return "test";
+	}
+	
+	
 	
 }

@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+*{
+	margin:0px;
+	padding:0px;
+	list-style: none;
+	text-decoration: none;
+}
+
+#overlay{
+	visibility: hidden;
+	background: #000;
+	opacity: 0.65;
+	height: 100%;
+	width:100%;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top:0;
+	z-index: 1;
+	transition: all .5s;
+	
+}
+
+
+.backgroud{
+	display: flex;
+	background-color: #FEE2CB;
+}
+
+.noteContainer{
+	margin: 0 auto;
+}
+
+/* .imagebox{
+	margin:50px 0;
+	border: 10px solid;
+	width: 1024px;
+	height: 576px;
+	position: relative;
+	background-image: url("resources/images/scatch.jpg");
+	background-size: cover;
+} */
+
+.post_it{
+	
+	margin: 70px 50px 50px 70px;
+	width: 25%;
+	height: 100px;
+	background-color: green;
+	
+}
+
+
+

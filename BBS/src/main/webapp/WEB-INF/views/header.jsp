@@ -12,7 +12,7 @@
 	
 		<div class="home">
 			<h1 class="logo">
-				<a href="#"><i class="fa-solid fa-house-chimney"></i></a>
+				<a href="/BBS/"><i class="fa-solid fa-house-chimney"></i></a>
 			</h1>
 		</div>
 		
@@ -45,7 +45,7 @@
 			
 			<div class="menuContainer">
 				<ul>
-					<li><a href="#">정보공유</a></li>
+					<li><a href="test">정보공유</a></li>
 					<li><a href="#">공지사항</a></li>
 					<li><a href="#">QNA</a></li>
 				</ul>
@@ -53,7 +53,7 @@
 			<div class="spaceDiv"></div>
 			<div class="mypage">
 				<ul>
-					<li><a href="#">나의 메모장</a></li>
+					<li><a href="myPlace">나의 메모장</a></li>
 					<li><a href="#">내정보</a></li>
 				</ul>
 			</div>
