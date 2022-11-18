@@ -18,7 +18,7 @@
 		
 		
 		<div class="leftBar" onclick="menu_click()"><!-- 왼쪽 메뉴 -->
-				<span class="icon"><i class="fa-regular fa-bars"></i></span>
+				<span class="icon"><i class="fa-solid fa-bars"></i></span>
 				<span>메뉴</span>
 		</div>
 			
