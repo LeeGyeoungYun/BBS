@@ -35,12 +35,29 @@
 
 .login_information{
 	padding-top:7vh;
-	width:350px;
+	width:430px;
+}
+.int_box{
+	display:inline-flex;
+}
+
+.overlapBox{
+	margin-left:13px;
+	width: 65px;
+	height: 57px;
+	margin-top:20px;
+}
+
+.overlapBtn{
+	width: 100%;
+	height: 100%;
+	font-size: 12px;
+	padding: 0px 3px;
 }
 
 .int_area{
 	display:flex;
-	width:100%;
+	width:380px;
 	padding:10px 5px;
 	margin-top:20px;
 	border: 1px solid black;
@@ -62,13 +79,13 @@
 	padding-left:30px;
 }
 
-.warning_idCheck{
-	text-align: right;
+.warning_Check{
+	
 	color: red;
 	display: none;
 }
 
-.warning_idCheck p{
+.warning_Check p{
 	margin-top:5px;
 }
 

@@ -16,11 +16,17 @@
 			<i class="fa-solid fa-circle-user"></i>			
 		</div>
 		<form class="login_information" method="post" action="register_ok" onsubmit="return register_check();">
+			<div class="int_box">
 			<div class="int_area">
 				<i class="fa-solid fa-user"></i>
 				<input type="text" name="id" id="id" autocomplete="off" placeholder="ID" >
 			</div>
-			<span class="warning_idCheck"><p>아이디를 확인해주세요.</p></span>
+				<div class="overlapBox">
+				<button class="overlapBtn" onclick="id_check()">중복 확인</button>
+				</div>
+			</div>
+			
+			<span class="warning_Check"><p>아이디를 확인해주세요.</p></span>
 			
 			<div class="int_area">
 				<i class="fa-solid fa-envelope"></i>
