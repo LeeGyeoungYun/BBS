@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 매퍼 DTD설정 -->
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ 
+<mapper namespace="User_Info">
+
+<!-- 아이디 중복체크 -->
+<select id="ui_idCheck" parameterType="ui" resultType="int"> <!-- parameterType은 자바 컨트롤러에서 파라미터를 어떤거로 받을지 묻는것, ui는 mybatis-config.xml에서 User_infoVO의 별칭이름임. -->
+	select count(*) from USER_INFO where user_id = #{user_id}
+</select>
+
+</mapper>
+ 

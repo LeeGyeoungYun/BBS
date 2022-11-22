@@ -37,4 +37,33 @@
       작동이 정상적으로 안되는 문제점이 생겼다.
       
 
-6.                													
+6. 심각: Exception sending context initialized event to listener instance of class org.springframework.web.context.ContextLoaderListener
+   org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in ServletContext resource 
+   [/WEB-INF/spring/root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: 
+   Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: 
+   Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ui'. 
+   Cause: java.lang.ClassNotFoundException: Cannot find class: net.daum.vo.User_infoVO 에러 대처법 :
+                 													
+      처음에 이 에러가 났을때 [/WEB-INF/spring/root-context.xml]에서 Mapper 경로를 잘못 지정해놨는지 알았다 하지만 아무 이상없었음.
+      그래서 그 다음  mybatis-config.xml에서 type을 잘못 지정해줬나 해서 봤는데 정확히 User_infoVO로 잘 지정해놨었다.
+      잘못된건 아무것도 없었는데 에러가 나 찾아본 결과 이클립스 도구창에 Project > Clean 을 이용하면 정상적으로 잘 작동이 되어졌다.
+   
+      이 Project > Clean 기능은 이클립스가 가지고 있는 Class나 정보를 전부 삭제하고 다시 만드는것을 의미한다. 이것을 사용함으로써 이클립스가 빌드중 꼬인걸
+      다시 새로 정리해 풀 수 있다.
+      
+      
+7. 예외 [Request processing failed; nested exception is org.mybatis.spring.MyBatisSystemException: 
+   nested exception is org.apache.ibatis.type.TypeException: Could not set parameters for mapping: 
+   ParameterMapping{property='user_id', mode=IN, javaType=class java.lang.String, jdbcType=null, numericScale=null, resultMapId='null', jdbcTypeName='null', expression='null'}. 
+   Cause: org.apache.ibatis.type.TypeException: Error setting null for parameter #1 with JdbcType OTHER . 
+   Try setting a different JdbcType for this parameter or a different jdbcTypeForNull configuration property.
+   Cause: java.sql.SQLException: 부적합한 열 유형: 1111]을(를) 발생시켰습니다. 에러 대쳐법 :
+   
+     이 오류는 parameter로 들어와야 할 값이 안들어와서 오류가 발생한 것이다. 해당 오류는 아이디 중복체크를 할때 DB에서 값이 있는지 확인하고 값을 되돌려줄때
+     난 오류였다. view에서 아이디를 적고 그 아이디가 중복체크 버튼을 통해 값이 ajax로 가고 ajax데이터를 다시 컨트롤러로 보내 User_infoVO클래스에
+     임시로 아이디를 저장그리고 값이 저장된  User_infoVO클래스를 쿼리문을 통해 값을 도출하는 과정인데, 중간 과정인 view에서 받은 아이디를 저장하는 ui.setUser_id(id); 메소드를
+     호출하지 않아 발생되었던 오류였다. view에서 받은 아이디 정보는 없는데 쿼리문을 실행한다? 즉, user_id값이 null로 들어와 생기는 오류였다.
+   
+     
+8.  
+   

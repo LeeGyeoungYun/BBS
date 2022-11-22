@@ -8,3 +8,7 @@ CREATE TABLE USER_INFO(
 );
 
 select * from USER_INFO ;
+
+insert into user_info (user_id,user_pwd,user_email,user_joinDate) values ('abc','123','abc@gmail.com',sysdate);
+
+select count(*) from user_info where user_id ='abc';
