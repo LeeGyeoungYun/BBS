@@ -22,7 +22,7 @@
 				<input type="text" name="id" id="id" autocomplete="off" placeholder="ID" >
 			</div>
 				<div class="overlapBox">
-				<button class="overlapBtn" onclick="id_check()">중복 확인</button>
+				<input type="button" class="overlapBtn" value="중복 확인" onclick="id_check()">
 				</div>
 			</div>
 			

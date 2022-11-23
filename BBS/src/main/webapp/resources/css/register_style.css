@@ -22,7 +22,7 @@
 
 .photoBox{
 	
-	width:350px;
+	width:400px;
 	justify-content: center;
 	text-align: center; /* div 박스안에 있는 글자를 가운데로 정렬 시키는 것*/
 
@@ -46,6 +46,7 @@
 	width: 65px;
 	height: 57px;
 	margin-top:20px;
+	 
 }
 
 .overlapBtn{
@@ -98,7 +99,9 @@
 	width:70%;
 	margin:auto;
 	display:block;
-	height: 5vh;
+	height: 6vh;
+	font-weight: bold;
+	font-size: 15px;
 }
 
 .btn_area button:hover{
