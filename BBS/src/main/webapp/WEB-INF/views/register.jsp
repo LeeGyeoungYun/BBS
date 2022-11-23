@@ -19,7 +19,7 @@
 			<div class="int_box">
 			<div class="int_area">
 				<i class="fa-solid fa-user"></i>
-				<input type="text" name="id" id="id" autocomplete="off" placeholder="ID" >
+				<input type="text" name="user_id" id="user_id" autocomplete="off" placeholder="ID" >
 			</div>
 				<div class="overlapBox">
 				<input type="button" class="overlapBtn" value="중복 확인" onclick="id_check()">
@@ -30,18 +30,18 @@
 			
 			<div class="int_area">
 				<i class="fa-solid fa-envelope"></i>
-				<input type="text" name="email" id="email" autocomplete="off" placeholder="Email" required>
+				<input type="text" name="user_email" id="user_email" autocomplete="off" placeholder="Email" required>
 			</div>
 			
 			
 			<div class="int_area">
 				<i class="fa-solid fa-lock"></i>
-				<input type="password" name="pw" id="pw" autocomplete="off" placeholder="Password" required>
+				<input type="password" name="user_pwd" id="user_pwd" autocomplete="off" placeholder="Password" required>
 			</div>
 			
 			<div class="int_area">
 				<i class="fa-solid fa-lock"></i>
-				<input type="password" name="pwConfirm" id="pwConfirm" autocomplete="off" placeholder="Pwd_Confirm" required>
+				<input type="password" name="user_pwConfirm" id="user_pwConfirm" autocomplete="off" placeholder="Pwd_Confirm" required>
 			</div>
 			
 			

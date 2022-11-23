@@ -2,7 +2,7 @@
 
 function id_check(){
 	
- 	let id = $("#id").val();
+ 	let id = $("#user_id").val();
  
  	$.ajax({
  		type: "POST",
@@ -16,17 +16,17 @@ function id_check(){
  			if(check.includes('가능')){
  				let message = confirm("선택하신 아이디를 사용하시겠습니까?");
  				if(message){
- 					$("#id").prop("readonly",true);
+ 					$("#user_id").prop("readonly",true);
  					$(".overlapBtn").prop("disabled",true);
  				}else{		
  					
- 					$("#id").val(''); /* 아이디 input 값 초기화 */
- 					$("#id").focus();
+ 					$("#user_id").val(''); /* 아이디 input 값 초기화 */
+ 					$("#user_id").focus();
  				}
  				
  			}else{
- 				$("#id").val('');
- 				$("#id").focus();
+ 				$("#user_id").val('');
+ 				$("#user_id").focus();
  			}
  					
  		},error : function(){
@@ -39,17 +39,17 @@ function id_check(){
 function register_check(){
 
 	let idCheck = /^[a-z0-9]{4,12}$/; /*[a-z0-9]{4,12}는 4글자~12글자사이에는 영소문자나 숫자만이 들어올수있다.   정규식  문장의^는 시작을, $는 문장의 끝을의미*/
-	let id = $("#id").val(); /*인풋창에 내가 적은 아이디 값을 jquery로 반환해 id 변수에 저장*/
+	let id = $("#user_id").val(); /*인풋창에 내가 적은 아이디 값을 jquery로 반환해 id 변수에 저장*/
 	let pwdCheck = RegExp(/^[a-zA-Z0-9]{6,20}$/); /*비밀번호 길이 6 ~ 20자로 제한*/
 	let emailCheck = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-	let email = $("#email").val();	
-	let pwd = $("#pw").val();
-	let pwdRepeat = $("#pwConfirm").val();
+	let email = $("#user_email").val();	
+	let pwd = $("#user_pwd").val();
+	let pwdRepeat = $("#user_pwConfirm").val();
 	
 	if($.trim(id)== ''){
 		
 		$('.warning_Check').css({'display':'block'});
-		$('#id').focus();
+		$('#user_id').focus();
 		return false;
 	}
 	
@@ -59,7 +59,7 @@ function register_check(){
 	
 	if(!idCheck.test(id)){
 		alert("아이디 형식에 맞지 않습니다. 다시 입력해주세요.");
-		$('#id').focus();
+		$('#user_id').focus();
 		return false;
 	}
 	
@@ -70,13 +70,13 @@ function register_check(){
 	
 	if(!emailCheck.test(email)){
 		alert("이메일형식이 맞지않습니다. 다시 입력해주세요");
-		$("#email").focus();
+		$("#user_email").focus();
 		return false;
 	}
 	
 	if(!pwdCheck.test(pwd)){
 		alert("비밀번호 형식에 맞지 않습니다. 다시 입력해주세요.");
-		$('#pw').focus();
+		$('#user_pwd').focus();
 		return false;
 	}
 	

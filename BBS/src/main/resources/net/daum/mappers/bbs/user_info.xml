@@ -8,6 +8,11 @@
  
 <mapper namespace="User_Info">
 
+<!-- 회원가입 -->
+<insert id="ui_info" parameterType="ui">
+	insert into USER_INFO (user_id,user_pwd,user_email,user_joinDate,user_modifyDate) values (#{user_id},#{user_pwd},#{user_email},sysdate,sysdate)
+</insert>
+
 <!-- 아이디 중복체크 -->
 <select id="ui_idCheck" parameterType="ui" resultType="int"> <!-- parameterType은 자바 컨트롤러에서 파라미터를 어떤거로 받을지 묻는것, ui는 mybatis-config.xml에서 User_infoVO의 별칭이름임. -->
 	select count(*) from USER_INFO where user_id = #{user_id}

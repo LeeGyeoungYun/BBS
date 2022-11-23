@@ -14,9 +14,16 @@ public class User_infoServiceImpl implements User_infoService {
 	private User_infoDAO user_infoDao;
 	
 	@Override
+	public void ui_info(User_infoVO ui) {		
+		this.user_infoDao.ui_info(ui);
+	}
+	
+	@Override
 	public int checkID(User_infoVO ui) {
 		
 		return this.user_infoDao.checkID(ui);
 	}
+
+	
 
 }

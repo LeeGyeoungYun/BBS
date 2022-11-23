@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import net.daum.service.User_infoService;
 import net.daum.vo.User_infoVO;
@@ -38,9 +39,19 @@ public class HomeController {
 	}
 	
 	@GetMapping(value ="/login")
-	public String hi() {
+	public String login() {
 		return "login_page";
 	}
+	
+	@RequestMapping(value="/register_ok",method=RequestMethod.POST)
+	public String register_ok(User_infoVO ui, RedirectAttributes rttr) {
+		
+		this.user_infoService.ui_info(ui);//회원가입 정보 저장
+		System.out.println(ui.getUser_id()+"  "+ui.getUser_email()+"  "+ui.getUser_pwd());
+		
+		return "redirect:/";
+	}
+	
 	
 	@GetMapping(value="register")
 	public String register() {
