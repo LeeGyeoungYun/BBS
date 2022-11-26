@@ -3,6 +3,9 @@ package net.daum.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,12 +56,13 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/login_ok" ,method=RequestMethod.POST)
-	public String login_ok(User_infoVO ui,RedirectAttributes rttr) {
+	public String login_ok(User_infoVO ui,RedirectAttributes rttr,HttpSession session,HttpServletRequest request) {
 		
 		int i = this.user_infoService.loginCheck(ui);//입력한 값이 유저정보와 같은지 확인하고 같으면 1을 틀리면 0을 반환
 		
 		if(i==1) {//계정이 있다면 
 			System.out.println("로그인에 성공 하였습니다.");
+			request.getSession().setAttribute("id",ui.getUser_id());
 			return "redirect:/";
 		}else {
 			System.out.println("로그인에 실패 하였습니다.");
@@ -68,6 +72,16 @@ public class HomeController {
 		
 		
 	}//login_ok() end
+	
+	@RequestMapping(value="logout")
+	public String logout(User_infoVO ui,HttpServletRequest request, HttpSession session) {
+
+		session.removeAttribute("id");
+		request.getSession().invalidate(); 
+
+		return "redirect:/";
+	}
+	
 	
 	
 	

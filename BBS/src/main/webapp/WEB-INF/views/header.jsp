@@ -1,7 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+<%-- <c:set var="path" value="${pageContext.request.contextPath}"/> --%>
  <script src="resources/js/jquery.js"></script>
+ <script src="resources/js/header.js"></script>
+ <% 
+ 	Object obj_id= session.getAttribute("id");
+ 	String id = (String)obj_id;
+ %>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/css/header.css">
@@ -24,6 +31,7 @@
 			
 
 		<div class="rightBar"><!-- 오른쪽 로그인겸 회원가입 -->
+		<% if(id == null){%>
 			<div class="loginBox">
 				<a href="login" class="loginBtn">
 					로그인 
@@ -35,6 +43,37 @@
 					회원가입
 				</a>
 			</div>
+			<%}else{ %>
+			
+			<div  style="padding : 9.5px 0; margin-right: 10px;">
+			<div class="welcome" style="border-radius: 23px; border: 2px solid #17191d; width: 120px; height: 47px; line-height: 45px; padding: 0 10px; 
+			" onclick="openBox()"> 
+				<span style="font:18px bold;font-weight: 600;"><%=id%> &nbsp;</span>
+				<i class="fa-solid fa-caret-down"></i>
+			</div>
+			</div>
+			<%} %>
+		</div>
+		
+		<div class="myPlaceBox">
+			<div class="closeBox" onclick="closeBox()">
+				<i class="fa-solid fa-caret-up"></i>
+			</div>
+				<div class="profileBox">
+					<div class="profile"><div class="myImage"></div></div>
+					<div class="goto">
+						<div class="myinfoBox">
+						<a href="#"><button class="myinfo"  onclick="closeBox()">내정보</button></a>
+						</div>
+						<div class="logoutBox">
+						<a href="logout"><button class="logout" onclick="closeBox()">로그아웃</button></a>
+						</div>
+					</div>
+			
+				
+			</div>
+			
+			
 		</div>
 		
 		<div class="leftBar_menu">
