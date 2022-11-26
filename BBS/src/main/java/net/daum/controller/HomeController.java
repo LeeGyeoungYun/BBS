@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,10 +48,27 @@ public class HomeController {
 	public String register_ok(User_infoVO ui, RedirectAttributes rttr) {
 		
 		this.user_infoService.ui_info(ui);//회원가입 정보 저장
-		System.out.println(ui.getUser_id()+"  "+ui.getUser_email()+"  "+ui.getUser_pwd());
 		
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value="/login_ok" ,method=RequestMethod.POST)
+	public String login_ok(User_infoVO ui,RedirectAttributes rttr) {
+		
+		int i = this.user_infoService.loginCheck(ui);//입력한 값이 유저정보와 같은지 확인하고 같으면 1을 틀리면 0을 반환
+		
+		if(i==1) {//계정이 있다면 
+			System.out.println("로그인에 성공 하였습니다.");
+			return "redirect:/";
+		}else {
+			System.out.println("로그인에 실패 하였습니다.");
+			rttr.addAttribute("errorCode",1);
+			return "redirect:/login";//RedirectAttributes을 매겨변수로 들여왔으면 값을 리다이렉트할때 redirect:를 써야함
+		}
+		
+		
+	}//login_ok() end
+	
 	
 	
 	@GetMapping(value="register")

@@ -10,7 +10,7 @@
        테이블이나 컬럼명을 파라미터로 전달하고 싶을때 사용한다. ${}이것은 따옴표가 따로 붙지않는다.
        
        
-2. DAO의 @Repository, Service의 @Service 차이점 
+2. DAO의 @Repository, Service의 @Service 차이점:
    repository 패키지는 데이터베이스(이하 DB)에 접근하는 모든 코드가 모여있는곳이다.
    service 패키지는 DB에 접근하는 코드들은 repository에 위임하고, 비지니스 로직과 관련된 모든 코드가 모여있는곳이다.
       즉, 이렇게 구분해두면 비즈니스 로직과 관련된 부분에 문제가 발생했을 때는 service 패키지를 확인하고, 
@@ -23,4 +23,7 @@
 4. 회원가입폼 작성시 DB 컬럼과 view단에서 작성한 값하고 연결할때, DB컬럼네임 = VO = JSP에서 <input name="">의 이름은 다 같게 설정해준다.
 
 
-5. 
+5. addAttribute VS addFlashAttribute 차이점:
+   addAttribute는 성공여부를 뷰에 넘겨주어 redirect할 때, 파라미터가 URL뒤에 붙어 유지가되는것과 달리
+   addFlashAttribute는 URL에 존재하지 않습니다. 일회성으로 URL에 붙지 않고 세션 후 재지정 요청이 들어오면 값은 
+      사라지게 되므로 성공 여부를 가리기 위해 임시적으로 값을 전달할 때 이용합니다. 

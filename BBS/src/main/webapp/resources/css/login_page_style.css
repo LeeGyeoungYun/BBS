@@ -22,7 +22,7 @@
 
 .photoBox{
 	
-	width:350px;
+	width:390px;
 	justify-content: center;
 	text-align: center; /* div 박스안에 있는 글자를 가운데로 정렬 시키는 것*/
 
@@ -35,8 +35,15 @@
 
 .login_information{
 	padding-top:7vh;
-	width:350px;
+	width:390px;
 }
+
+.WarningBox{
+	font-size: 13px;
+	color: #f50a10;
+	font-weight: bold;
+}
+
 
 .int_area{
 	display:flex;

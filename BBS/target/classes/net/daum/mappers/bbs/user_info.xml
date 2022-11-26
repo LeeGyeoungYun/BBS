@@ -18,5 +18,10 @@
 	select count(*) from USER_INFO where user_id = #{user_id}
 </select>
 
+<!-- 유저로그인 확인 -->
+<select id="ui_login" parameterType="ui" resultType="int">
+	select count(*) from USER_INFO where user_id = #{user_id} and user_pwd = #{user_pwd}
+</select>
+
 </mapper>
  

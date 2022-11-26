@@ -23,6 +23,11 @@ public class User_infoServiceImpl implements User_infoService {
 		
 		return this.user_infoDao.checkID(ui);
 	}
+	
+	@Override
+	public int loginCheck(User_infoVO ui) {		
+		return this.user_infoDao.loginCheck(ui);
+	}
 
 	
 

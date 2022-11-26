@@ -20,8 +20,12 @@ public class User_infoDAOImpl implements User_infoDAO {
 
 	@Override
 	public int checkID(User_infoVO ui) {//중복아이디 검사메소드
-		
 		return this.sqlSession.selectOne("ui_idCheck",ui);
+	}
+	
+	@Override
+	public int loginCheck(User_infoVO ui) {//로그인 체크
+		return this.sqlSession.selectOne("ui_login",ui);
 	}
 
 	
