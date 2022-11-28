@@ -82,6 +82,10 @@ public class HomeController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value="myinfo" , method=RequestMethod.GET)
+	public String myinfo() {
+		return "myinfo";
+	}
 	
 	
 	

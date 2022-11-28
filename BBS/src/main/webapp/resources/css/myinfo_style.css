@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+*{
+	margin:0px;
+	padding: 0px;
+	text-decoration: none;
+	list-style: none;
+}
+
+.bodyContainer{
+	margin: 130px 0 200px 0;
+}
+
+.myinfoContainer{
+	
+	
+	margin : 0px auto;
+	width:700px;
+	height: 700px;
+		
+}
+
+.tmp{
+	display: inline-flex;
+}
+
+.menuBar{
+		
+	width: 120px; 
+	height: 700px; 	
+	display: block;	
+}
+
+.infoBar{
+	box-shadow: 0px 15px 40px #b5b5b5;
+	width: 580px;
+}
+
+.menuBox{
+	width: 100%; /* 책깔피 너비 */
+	height: 100px; /* 책깔피 높이 */
+	font-size: 60px;
+	line-height: 100px;
+	color: #969696;
+	text-align: center;
+	text-shadow: 0px 1px black;
+}
+
+.menuBox:hover{
+	cursor: pointer;
+	border-width: 3px 0px 3px 3px ;
+ 	border-style: solid;
+ 	border-color: white;
+ 	color: #777777;
+}
+
+.b1{
+	background-color: rgb(214,230,245);
+}
+
+.b1 i, .b2 i{
+	text-shadow: 0px 1px black;
+}
+
+.b2{
+	background-color: rgb(181,214,146);
+}
+
+.b3{
+	background-color: #ffdb9b;
+}
+
+.b4{
+	background-color: #ffc8c8;
+}
+
+
+.infoBox{
+	width:100%;
+	height: 100%;
+	background-color: #feebcb;
+}
+
+.profileContainer{
+	margin: 20px auto;
+	width: 300px;
+	height: 300px;
+}

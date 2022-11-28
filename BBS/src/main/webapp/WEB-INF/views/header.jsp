@@ -63,7 +63,7 @@
 					<div class="profile"><div class="myImage"></div></div>
 					<div class="goto">
 						<div class="myinfoBox">
-						<a href="#"><button class="myinfo"  onclick="closeBox()">내정보</button></a>
+						<a href="myinfo"><button class="myinfo"  onclick="closeBox()">내정보</button></a>
 						</div>
 						<div class="logoutBox">
 						<a href="logout"><button class="logout" onclick="closeBox()">로그아웃</button></a>
@@ -93,7 +93,7 @@
 			<div class="mypage">
 				<ul>
 					<li><a href="myPlace">나의 메모장</a></li>
-					<li><a href="#">내정보</a></li>
+					<li><a href="myinfo">내정보</a></li>
 				</ul>
 			</div>
 		
