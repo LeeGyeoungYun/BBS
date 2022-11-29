@@ -40,10 +40,12 @@ function register_check(){
 
 	let idCheck = /^[a-z0-9]{4,12}$/; /*[a-z0-9]{4,12}는 4글자~12글자사이에는 영소문자나 숫자만이 들어올수있다.   정규식  문장의^는 시작을, $는 문장의 끝을의미*/
 	let id = $("#user_id").val(); /*인풋창에 내가 적은 아이디 값을 jquery로 반환해 id 변수에 저장*/
+	let nameCheck = /^[a-z|A-Z|0-9|가-힣|]{2,10}$/;
+	let name= $("#user_nickname").val();
 	let pwdCheck = RegExp(/^[a-zA-Z0-9]{6,20}$/); /*비밀번호 길이 6 ~ 20자로 제한*/
+	let pwd = $("#user_pwd").val();
 	let emailCheck = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 	let email = $("#user_email").val();	
-	let pwd = $("#user_pwd").val();
 	let pwdRepeat = $("#user_pwConfirm").val();
 	
 	if($.trim(id)== ''){
@@ -65,6 +67,12 @@ function register_check(){
 	
 	if(!($(".overlapBtn").prop("disabled"))){ /*만약 아이디 중복체크를 안한 상태라면? 해야지만 회원가입이 가능함*/
 		alert("아이디 중복확인 하세요");
+		return false;
+	}
+	
+	if(!nameCheck.test(name)){ /*별명 유효성 검사*/
+		alert("별명 형식에 맞지 않습니다. 한글이나 영어로 10자 이내로 작성해주세요.");
+		$("#user_nickname").focus();
 		return false;
 	}
 	

@@ -29,6 +29,11 @@
 			<span class="warning_Check"><p>아이디를 확인해주세요.</p></span>
 			
 			<div class="int_area">
+				<i class="fa-solid fa-user"></i>
+				<input type="text" name="user_nickname" id="user_nickname" autocomplete="off" placeholder="Nickname" required>
+			</div>
+			
+			<div class="int_area">
 				<i class="fa-solid fa-envelope"></i>
 				<input type="text" name="user_email" id="user_email" autocomplete="off" placeholder="Email" required>
 			</div>

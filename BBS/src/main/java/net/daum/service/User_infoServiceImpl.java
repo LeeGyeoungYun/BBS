@@ -28,6 +28,11 @@ public class User_infoServiceImpl implements User_infoService {
 	public int loginCheck(User_infoVO ui) {		
 		return this.user_infoDao.loginCheck(ui);
 	}
+	
+	@Override
+	public String getNickname(String id) {
+		return this.user_infoDao.getNickname(id);
+	}
 
 	
 

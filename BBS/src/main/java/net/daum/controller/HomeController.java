@@ -67,7 +67,7 @@ public class HomeController {
 		}else {
 			System.out.println("로그인에 실패 하였습니다.");
 			rttr.addAttribute("errorCode",1);
-			return "redirect:/login";//RedirectAttributes을 매겨변수로 들여왔으면 값을 리다이렉트할때 redirect:를 써야함
+			return "redirect:/login";
 		}
 		
 		
@@ -81,12 +81,6 @@ public class HomeController {
 
 		return "redirect:/";
 	}
-	
-	@RequestMapping(value="myinfo" , method=RequestMethod.GET)
-	public String myinfo() {
-		return "myinfo";
-	}
-	
 	
 	
 	@GetMapping(value="register")
@@ -125,6 +119,9 @@ public class HomeController {
 		
 		return result;
 	}
+	
+	
+	
 	
 	
 	

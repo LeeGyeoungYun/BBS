@@ -27,6 +27,11 @@ public class User_infoDAOImpl implements User_infoDAO {
 	public int loginCheck(User_infoVO ui) {//로그인 체크
 		return this.sqlSession.selectOne("ui_login",ui);
 	}
+	
+	@Override
+	public String getNickname(String id) {//별명 가져오기
+		return this.sqlSession.selectOne("ui_nickname",id);
+	}
 
 	
 	
