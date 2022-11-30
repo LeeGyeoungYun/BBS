@@ -28,13 +28,13 @@
 				
 				
 				<div class="infoBar">
-					<div class="infoBox i1"> <!-- 내 프로필 공간 -->
+					<form class="infoBox i1" action="updateProfile_ok" method="post"> <!-- 내 프로필 공간 -->
 						<div class="profileContainer">
 						
 							<div class="profileImage"></div>
 							<div class="btnBox">
 							<input type="button" class="infoBtn ib1" value="사진변경">
-							<input type="button" class="infoBtn ib2" value="적용">
+							<input type="button" class="infoBtn ib2" value="편집">
 							<input type="button" class="infoBtn ib3" value="삭제">
 							</div>
 						</div>
@@ -47,7 +47,16 @@
 								<input type="text" name="user_nickname" value="${user_nickname}" class="nick">
 							</div>
 						</div>
-					</div>								
+						
+						<div class="checkBox">
+							<input class="sub" type="submit" value="적용">
+							<input class="can" type="button" value="취소">
+						</div>
+					
+					</form> <!-- 프로필 사진 공간 끝 -->	
+					
+					
+										
 				</div>
 					
 				</div>
