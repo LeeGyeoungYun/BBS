@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>내 정보</title>
+<script src="resources/js/myinfo.js"></script>
 <link rel="stylesheet" href="resources/css/myinfo_style.css">
 
 </head>
@@ -33,9 +34,9 @@
 						
 							<div class="profileImage"></div>
 							<div class="btnBox">
-							<input type="button" class="infoBtn ib1" value="사진변경">
-							<input type="button" class="infoBtn ib2" value="편집">
-							<input type="button" class="infoBtn ib3" value="삭제">
+							<input type="button" class="infoBtn ib1"  disabled="disabled" value="사진변경">
+							<input type="button" class="infoBtn ib2" value="편집" onclick="toggle()">
+							<input type="button" class="infoBtn ib3"  disabled="disabled" value="삭제">
 							</div>
 						</div>
 						
@@ -44,12 +45,12 @@
 								<span>별 명</span>
 							</div>
 							<div class="nickname">
-								<input type="text" name="user_nickname" value="${user_nickname}" class="nick">
+								<input type="text" name="user_nickname" value="${user_nickname}" class="nick" readonly>
 							</div>
 						</div>
 						
 						<div class="checkBox">
-							<input class="sub" type="submit" value="적용">
+							<input class="sub" type="submit" value="적용"  disabled>
 							<input class="can" type="button" value="취소">
 						</div>
 					
