@@ -28,6 +28,11 @@
 	select user_nickname from USER_INFO where user_id = #{user_id}
 </select>
 
+<!-- 유저 닉네임 수정하기 -->
+<update id="ui_updateNick" parameterType="ui"> 
+	update USER_INFO set user_nickname = #{user_nickname} where user_id = #{user_id}
+</update>
+
 
 </mapper>
  

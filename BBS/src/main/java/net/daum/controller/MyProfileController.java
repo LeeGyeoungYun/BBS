@@ -1,6 +1,8 @@
 package net.daum.controller;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,8 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.daum.service.User_infoService;
+import net.daum.vo.User_infoVO;
 
 @Controller
 public class MyProfileController {
@@ -40,10 +44,13 @@ public class MyProfileController {
 	
 	
 	@PostMapping(value="updateProfile_ok")
-	public String updateProfile_ok() {
+	public String updateProfile_ok(User_infoVO ui,HttpServletRequest request) {
 		
-		System.out.println("값보내짐");
-		return "main";
+		String id = (String)request.getSession().getAttribute("id");
+		ui.setUser_id(id);
+		this.user_infoService.ui_updateNick(ui);
+		
+		return "redirect:/myinfo";
 	}
 	
 }

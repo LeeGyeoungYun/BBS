@@ -1,6 +1,7 @@
 
 
-function toggle(){
+function unlock(){
+	
 	
 	if($(".ib1").disabled = true){
 		$(".ib1").prop("disabled",false);
@@ -17,17 +18,18 @@ function toggle(){
 		},function(){
 	 		$(this).css("background-color"," rgb(181,214,146)");
 		})
+		
 	}
 	
-	else{
-		console.log("1");
-		$(".ib1").prop("disabled",true);
-		$(".ib3").prop("disabled",true);
-		$(".sub").prop("disabled",true);
-		$(".nick").prop("readonly",true);
-		
-		
-		
+	
+}
+
+function apply(){
+	
+	const question = confirm("프로필 변경 사항을 저장하시겠습니까?");
+	
+	if(!question){
+		return false;
 	}
 	
 }

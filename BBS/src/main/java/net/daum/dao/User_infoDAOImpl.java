@@ -33,6 +33,14 @@ public class User_infoDAOImpl implements User_infoDAO {
 		return this.sqlSession.selectOne("ui_nickname",id);
 	}
 
+	@Override
+	public void ui_updateNick(User_infoVO ui) {
+		
+		this.sqlSession.update("ui_updateNick",ui);
+	}
+	
+	
+
 	
 	
 	

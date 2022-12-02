@@ -6,7 +6,9 @@
 <meta charset="UTF-8">
 <title>내 정보</title>
 <script src="resources/js/myinfo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <link rel="stylesheet" href="resources/css/myinfo_style.css">
+
 
 </head>
 <body>
@@ -29,13 +31,13 @@
 				
 				
 				<div class="infoBar">
-					<form class="infoBox i1" action="updateProfile_ok" method="post"> <!-- 내 프로필 공간 -->
+					<form class="infoBox i1" action="updateProfile_ok" method="post" onsubmit="return apply();"> <!-- 내 프로필 공간 -->
 						<div class="profileContainer">
 						
 							<div class="profileImage"></div>
 							<div class="btnBox">
 							<input type="button" class="infoBtn ib1"  disabled="disabled" value="사진변경">
-							<input type="button" class="infoBtn ib2" value="편집" onclick="toggle()">
+							<input type="button" class="infoBtn ib2" value="편집" onclick="unlock()">
 							<input type="button" class="infoBtn ib3"  disabled="disabled" value="삭제">
 							</div>
 						</div>

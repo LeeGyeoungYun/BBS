@@ -8,5 +8,6 @@ public interface User_infoDAO {
 	int checkID(User_infoVO ui);//아이디 중복검사
 	int loginCheck(User_infoVO ui);//로그인 
 	String getNickname(String id);
+	void ui_updateNick(User_infoVO ui); //닉네임 수정
 
 }
