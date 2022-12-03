@@ -5,8 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>내 정보</title>
-<script src="resources/js/myinfo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <link rel="stylesheet" href="resources/css/myinfo_style.css">
 
 
@@ -65,6 +64,9 @@
 				</div>
 			</div>
 		</div>
+		
+		
+		<script src="resources/js/myinfo.js"></script>
 	
 </body>
 </html>

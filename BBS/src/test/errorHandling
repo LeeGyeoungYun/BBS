@@ -65,5 +65,13 @@
      호출하지 않아 발생되었던 오류였다. view에서 받은 아이디 정보는 없는데 쿼리문을 실행한다? 즉, user_id값이 null로 들어와 생기는 오류였다.
    
      
-8.  
+8. addEventListener --> Uncaught TypeError: Cannot read property 'addEventListener' of null 오류 해결방법 :
+  
+      에러 원인 : script를 body 상단에 작성하거나 헤드에 작성할때, 간혹 html이 로드 되기전에 script를 먼저 불러와버리는 경우가 생긴다. 
+                        그렇게되면 addEventListener을 부여할 DOM을 찾지 못하게되어 위와 같은 에러가 발생되는 것이다.
+     
+      해결 방법 : script를 body태그 가장 아래에 작성하면 된다. 그러면 html을 우선으로 먼저 불러들인다음 js를 불러들이기때문에 오류가 나지 않는다.
+      
+      
+9.  
    

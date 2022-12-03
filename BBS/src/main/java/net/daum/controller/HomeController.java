@@ -60,9 +60,13 @@ public class HomeController {
 		
 		int i = this.user_infoService.loginCheck(ui);//입력한 값이 유저정보와 같은지 확인하고 같으면 1을 틀리면 0을 반환
 		
-		if(i==1) {//계정이 있다면 
+		if(i==1) {//계정이 있다면 			
 			System.out.println("로그인에 성공 하였습니다.");
-			request.getSession().setAttribute("id",ui.getUser_id());
+			request.getSession().setAttribute("id", ui.getUser_id());//jsp에서 받은 id값을 세션에 저장
+			
+			String nick = this.user_infoService.getNickname(ui.getUser_id());
+			request.getSession().setAttribute("nick",nick); // 아이디를 대체할 닉네임도 세션에 저장해 jsp로 보냄
+						
 			return "redirect:/";
 		}else {
 			System.out.println("로그인에 실패 하였습니다.");

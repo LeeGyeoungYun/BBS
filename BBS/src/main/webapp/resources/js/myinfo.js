@@ -1,9 +1,9 @@
 
 
 function unlock(){
+	var status = $(".ib1").prop("disabled");
 	
-	
-	if($(".ib1").disabled = true){
+	if(status=true){
 		$(".ib1").prop("disabled",false);
 		$(".ib3").prop("disabled",false);
 		$(".sub").prop("disabled",false);
@@ -31,6 +31,19 @@ function apply(){
 	if(!question){
 		return false;
 	}
-	
 }
+
+
+	let cancle = document.querySelector(".can");
+	cancle.addEventListener("click",function(){
+		
+		let answer = confirm("취소하시겠습니까?");
+		if(answer){
+			location.reload();
+		}else{
+			return false;
+		}
+		
+		
+	});
 

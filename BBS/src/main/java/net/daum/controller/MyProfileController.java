@@ -49,6 +49,10 @@ public class MyProfileController {
 		String id = (String)request.getSession().getAttribute("id");
 		ui.setUser_id(id);
 		this.user_infoService.ui_updateNick(ui);
+		String nick = this.user_infoService.getNickname(id);//현재 아이디에 대한 닉네임 정보를 담아놓은 변수이다.
+				
+		request.getSession().removeAttribute("nick");//닉네임을 변경하기전 유지되어있는 세션을 없애야지 바뀐 닉네임이 헤더에 표시됌.
+		request.getSession().setAttribute("nick", nick);//바뀐 닉네임을 다시 세션에 추가
 		
 		return "redirect:/myinfo";
 	}

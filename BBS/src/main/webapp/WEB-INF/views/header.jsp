@@ -8,6 +8,8 @@
  <% 
  	Object obj_id= session.getAttribute("id");
  	String id = (String)obj_id;
+ 	Object obj_nick= session.getAttribute("nick");
+ 	String nick = (String)obj_nick;
  %>
 <head>
 <meta charset="UTF-8">
@@ -31,7 +33,7 @@
 			
 
 		<div class="rightBar"><!-- 오른쪽 로그인겸 회원가입 -->
-		<% if(id == null){%>
+		<% if(nick == null){%>
 			<div class="loginBox">
 				<a href="login" class="loginBtn">
 					로그인 
@@ -48,7 +50,7 @@
 			<div  style="padding : 9.5px 0; margin-right: 10px;">
 			<div class="welcome" style="border-radius: 23px; border: 2px solid #17191d; width: 120px; height: 47px; line-height: 45px; padding: 0 10px; 
 			" onclick="openBox()"> 
-				<span style="font:18px bold;font-weight: 600;"><%=id%> &nbsp;</span>
+				<span style="font:18px bold;font-weight: 600;"><%=nick%> &nbsp;</span>
 				<i class="fa-solid fa-caret-down"></i>
 			</div>
 			</div>
