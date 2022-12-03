@@ -81,6 +81,11 @@
 	
 }
 
+.i2{
+	background-color: black;
+	display:none;
+}
+
 .profileContainer{
 	margin: 25px auto;
 	width: 400px;

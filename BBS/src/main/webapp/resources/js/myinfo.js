@@ -34,6 +34,10 @@ function apply(){
 }
 
 
+	
+	
+	window.onload = function(){
+	
 	let cancle = document.querySelector(".can");
 	cancle.addEventListener("click",function(){
 		
@@ -42,8 +46,25 @@ function apply(){
 			location.reload();
 		}else{
 			return false;
-		}
-		
-		
+		}	
 	});
+	
+	let b1 = document.querySelector(".b1");
+	b1.addEventListener("click",function(){
+		
+		$(".i1").css("display","block")
+		$(".i2").css("display","none");
+	});
+	
+	let b2 = document.querySelector(".b2");
+	b2.addEventListener("click",function(){
+		
+		$(".i1").css("display","none")
+		$(".i2").css("display","block");
+	});
+		
+	
+	}//window.onload 끝
+
+
 

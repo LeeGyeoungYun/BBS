@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <title>내 정보</title>
 
-<link rel="stylesheet" href="resources/css/myinfo_style.css">
-
+<link rel="stylesheet" href="resources/css/myinfo_style.css?ver=1">
+<script src="resources/js/myinfo.js?ver=1"></script>
 
 </head>
 <body>
@@ -57,7 +57,9 @@
 					
 					</form> <!-- 프로필 사진 공간 끝 -->	
 					
+					<form class="infoBox i2">
 					
+					</form>
 										
 				</div>
 					
@@ -65,8 +67,6 @@
 			</div>
 		</div>
 		
-		
-		<script src="resources/js/myinfo.js"></script>
 	
 </body>
 </html>
