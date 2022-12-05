@@ -1,8 +1,7 @@
 package net.daum.controller;
 
+import java.io.File;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.oreilly.servlet.MultipartRequest;
 
 import net.daum.service.User_infoService;
 import net.daum.vo.User_infoVO;
@@ -44,7 +44,7 @@ public class MyProfileController {
 	
 	
 	@PostMapping(value="updateProfile_ok")
-	public String updateProfile_ok(User_infoVO ui,HttpServletRequest request) {
+	public String updateProfile_ok(User_infoVO ui,HttpServletRequest request) throws Exception {
 		
 		String id = (String)request.getSession().getAttribute("id");
 		ui.setUser_id(id);
@@ -53,6 +53,9 @@ public class MyProfileController {
 				
 		request.getSession().removeAttribute("nick");//닉네임을 변경하기전 유지되어있는 세션을 없애야지 바뀐 닉네임이 헤더에 표시됌.
 		request.getSession().setAttribute("nick", nick);//바뀐 닉네임을 다시 세션에 추가
+		
+		
+		
 		
 		return "redirect:/myinfo";
 	}

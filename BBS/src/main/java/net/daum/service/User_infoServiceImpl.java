@@ -39,6 +39,11 @@ public class User_infoServiceImpl implements User_infoService {
 		
 		this.user_infoDao.ui_updateNick(ui);
 	}
+	
+	@Override
+	public void ui_updateProfile(User_infoVO ui) {
+		this.user_infoDao.ui_updateProfile(ui);
+	}
 
 	
 

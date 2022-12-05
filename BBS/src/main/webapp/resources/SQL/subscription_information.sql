@@ -13,3 +13,10 @@ select * from USER_INFO ;
 drop table USER_INFO;
 
 update USER_INFO set user_nickname = 'EEE' where user_id ='qwer123';
+
+
+create sequence user_seq
+start with 1
+increment by 1
+nocache;
+

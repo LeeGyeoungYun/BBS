@@ -30,12 +30,13 @@
 				
 				
 				<div class="infoBar">
-					<form class="infoBox i1" action="updateProfile_ok" method="post" onsubmit="return apply();"> <!-- 내 프로필 공간 -->
+					<form class="infoBox i1" action="updateProfile_ok" method="post" onsubmit="return apply();" enctype="multipart/form-data"> <!-- 내 프로필 공간 -->
 						<div class="profileContainer">
 						
-							<div class="profileImage"></div>
+							<div class="profileImage"><img src="" class="proImg"></div>
 							<div class="btnBox">
 							<input type="button" class="infoBtn ib1"  disabled="disabled" value="사진변경">
+							<input type="file" name="user_profile" class="chooseFile" accept=".jpg, .jpeg, .png, .JPG" style="display:none;">
 							<input type="button" class="infoBtn ib2" value="편집" onclick="unlock()">
 							<input type="button" class="infoBtn ib3"  disabled="disabled" value="삭제">
 							</div>

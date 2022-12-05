@@ -9,5 +9,5 @@ public interface User_infoDAO {
 	int loginCheck(User_infoVO ui);//로그인 
 	String getNickname(String id);
 	void ui_updateNick(User_infoVO ui); //닉네임 수정
-
+	void ui_updateProfile(User_infoVO ui); //프로필사진 변경
 }

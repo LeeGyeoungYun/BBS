@@ -33,6 +33,10 @@
 	update USER_INFO set user_nickname = #{user_nickname} where user_id = #{user_id}
 </update>
 
+<!-- 유저프로필 업데이트 -->
+<update id="ui_updateProfile" parameterType="ui">
+	update USER_INFO set user_profile = #{user_profile} where user_id = #{user_id}
+</update>
 
 </mapper>
  

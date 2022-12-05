@@ -18,11 +18,27 @@
 }
 
 </style>
+<script>
+	function aaa(){
+		
+		var preview = document.querySelector("img");
+		var file = document.querySelector(".abd").files[0];
+		var reader = new FileReader();
+		
+		reader.addEventListener('load', function(){
+			preview.src = reader.result;
+		},false);
+		
+		if(file){
+			reader.readAsDataURL(file);
+		}
+	}
+</script>
 </head>
 <body>
  <p> 안냥? </p>
  <div class="abc">
- 	<div class="aa"></div>
+ 	<input type="file" class="abd" id="ab" onchange="aaa()"><img src="" height="200" alt="미리보기">
  </div>
 </body>
 </html>

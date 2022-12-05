@@ -9,5 +9,6 @@ public interface User_infoService {
 	int loginCheck(User_infoVO ui);
 	String getNickname(String id);
 	void ui_updateNick(User_infoVO ui);
+	void ui_updateProfile(User_infoVO ui);
 
 }

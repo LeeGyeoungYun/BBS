@@ -62,7 +62,32 @@ function apply(){
 		$(".i1").css("display","none")
 		$(".i2").css("display","block");
 	});
+	
+	
+	
+	let ib1 = document.querySelector(".ib1");
+	ib1.addEventListener("click", function(){
 		
+		document.querySelector(".chooseFile").click();
+		$(".chooseFile").change(function(){ //값이 변경되었으면 함수발생
+   			
+   			let file = document.querySelector(".chooseFile").files[0]; //input=file에서 선택한 사진을 변수로잡음
+   			let image = document.querySelector(".proImg");// <img>태그를 변수로잡음
+   			let reader = new FileReader();//파일리더기 변수 설정
+   			
+   			reader.addEventListener("load",function(){//리더기가 로드 된다면? 즉 실행한다면 다음 실행
+   				image.src= reader.result;
+   			},false);
+   			
+   			if(file){
+   				reader.readAsDataURL(file);
+   			}
+		
+		
+	});	//사진변경 버튼을 누르면 input file이 실행되어 보여지게 함
+	
+	}); // ib1.addEventListener end
+	
 	
 	}//window.onload 끝
 
