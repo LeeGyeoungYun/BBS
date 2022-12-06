@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html>
 <%@ include file="header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <head>
 <meta charset="UTF-8">
 <title>내 정보</title>
@@ -32,8 +34,17 @@
 				<div class="infoBar">
 					<form class="infoBox i1" action="updateProfile_ok" method="post" onsubmit="return apply();" enctype="multipart/form-data"> <!-- 내 프로필 공간 -->
 						<div class="profileContainer">
-						
+						<c:if test="${!empty ulist}">
+						<c:forEach var="u" items="${ulist}">
+						<c:choose>
+							<c:when test="${u.user_profile ==null} ">
 							<div class="profileImage"><img src="" class="proImg"></div>
+							</c:when>
+							<c:otherwise>
+							<div class="profileImage"><img src="./resources/uploadUserProfile${u.user_profile}" class="proImg"></div>
+							</c:otherwise>
+						</c:choose>
+																	
 							<div class="btnBox">
 							<input type="button" class="infoBtn ib1"  disabled="disabled" value="사진변경">
 							<input type="file" name="user_profile" class="chooseFile" accept=".jpg, .jpeg, .png, .JPG" style="display:none;">
@@ -47,9 +58,11 @@
 								<span>별 명</span>
 							</div>
 							<div class="nickname">
-								<input type="text" name="user_nickname" value="${user_nickname}" class="nick" readonly>
+								<input type="text" name="user_nickname" value="${u.user_nickname}" class="nick" readonly>
 							</div>
 						</div>
+						</c:forEach>
+					</c:if>
 						
 						<div class="checkBox">
 							<input class="sub" type="submit" value="적용"  disabled>

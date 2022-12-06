@@ -1,5 +1,7 @@
 package net.daum.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -42,6 +44,17 @@ public class User_infoDAOImpl implements User_infoDAO {
 	@Override
 	public void ui_updateProfile(User_infoVO ui) {
 		this.sqlSession.update("ui_updateProfile",ui);
+	}
+
+	@Override
+	public List<User_infoVO> ui_getUserInfo(User_infoVO ui) {
+		
+		return this.sqlSession.selectList("ui_getUserInfo",ui);
+	}
+
+	@Override
+	public String ui_getProfile(String id) {		
+		return this.sqlSession.selectOne("ui_getProfile",id);
 	}
 	
 	

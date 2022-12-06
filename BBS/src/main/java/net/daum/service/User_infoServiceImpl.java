@@ -1,5 +1,7 @@
 package net.daum.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -43,6 +45,17 @@ public class User_infoServiceImpl implements User_infoService {
 	@Override
 	public void ui_updateProfile(User_infoVO ui) {
 		this.user_infoDao.ui_updateProfile(ui);
+	}
+
+	@Override
+	public List<User_infoVO> ui_getUserInfo(User_infoVO ui) {
+		
+		return this.user_infoDao.ui_getUserInfo(ui);
+	}
+
+	@Override
+	public String ui_getProfile(String id) {		
+		return this.user_infoDao.ui_getProfile(id);
 	}
 
 	

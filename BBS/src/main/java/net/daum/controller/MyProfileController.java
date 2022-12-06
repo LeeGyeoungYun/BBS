@@ -2,6 +2,9 @@ package net.daum.controller;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,10 +12,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.oreilly.servlet.MultipartRequest;
 
@@ -28,34 +32,84 @@ public class MyProfileController {
 	
 	
 	@RequestMapping(value="myinfo" , method=RequestMethod.GET)
-	public String myinfo(HttpServletRequest request,HttpSession session,Model model,HttpServletResponse response)throws Exception {
+	public ModelAndView myinfo(HttpServletRequest request,HttpSession session,HttpServletResponse response,@ModelAttribute User_infoVO ui)throws Exception {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
+		ModelAndView listM;		
 		String id = (String) request.getSession().getAttribute("id");//세션의 아이디 값을 받는다.
-		if(id!= null) {
-			String nick =this.user_infoService.getNickname(id); // 받은 세션아이디값을 매개변수로 넣어 닉네임 호출
-			model.addAttribute("user_nickname",nick);
-			return "myinfo";
+		
+		if(id!= null) {// 접속해있는 아이디가 있다면? 세션아이디가 정상 작동중이라면?
+
+			ui.setUser_id(id); //접속해있는 아이디 값을 받아와 ui에 저장
+			List<User_infoVO> ulist=this.user_infoService.ui_getUserInfo(ui); //저장한 아이디값으로 유저 개인정보를 호출해 List에 저장
+			
+			listM = new ModelAndView("myinfo");//뷰페이지 설정		
+			listM.addObject("ulist",ulist);// 뷰페이지에 보낼 정보 값 넣기
+			
+			return listM;
 		}else {
-			return "main";
+			listM = new ModelAndView("main");
+			return listM;
 		}		
 	}
 	
 	
 	@PostMapping(value="updateProfile_ok")
-	public String updateProfile_ok(User_infoVO ui,HttpServletRequest request) throws Exception {
+	public String updateProfile_ok(@ModelAttribute User_infoVO ui,HttpServletRequest request) throws Exception {
 		
 		String id = (String)request.getSession().getAttribute("id");
 		ui.setUser_id(id);
+		
+		
+		String saveFolder = request.getRealPath("resources/uploadUserProfile"); //이진 파일 업로드 서버 경로 -> 톰캣 WAS 서버에 의해서 변경된 실제 톰켓 프로젝트 경로
+		int fileSize= 5*1024*1024;//이진 파일 업로드 최대크기 => 5M로 설정
+		MultipartRequest multi =null;//이진파일 업로드 참조변수 ->cos.jar에서 읽어들임.
+		
+		multi = new MultipartRequest(request,saveFolder,fileSize,"UTF-8");
+		
+		File upFile = multi.getFile("user_profile");//첨부한 이진파일을 가져온다.
+		if(upFile != null) {// 첨부한 프로필 사진이 있다면?
+			String fileName = upFile.getName();
+			
+			File path01 = new File(saveFolder);
+			if(!path01.exists()) {
+				try {
+					System.out.println("해당 디렉토리가 존재하지않음");
+					path01.mkdir();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}else {
+				System.out.println("해당 경로에 디렉토리가 있습니다.");
+			}
+			
+			Calendar c = Calendar.getInstance();
+			int year = c.get(Calendar.YEAR);
+			int month = c.get(Calendar.MONTH);
+			int date = c.get(Calendar.DATE);
+			
+			Random r = new Random();
+			int random = r.nextInt(100000000);
+			
+			int index = fileName.indexOf('.');
+			String fileExtendsion = fileName.substring(index+1);
+			String refileName = "UserProfile-"+year+"_"+month+"_"+date+"_"+random+"."+fileExtendsion;//새로운 이진파일명 저장
+			String fileDBName = "/"+refileName;//데이터베이스 저장될 값
+			
+			upFile.renameTo(new File(saveFolder+"/"+refileName));//변경된 이진파일로 새롭게 생성된 폴더에 실제 업로드
+			ui.setUser_profile(fileDBName);
+			
+		}//첨부한 프로필 사진이 있다면? end
+		
+		String nick = multi.getParameter("user_nickname");			
+		ui.setUser_nickname(nick);		
 		this.user_infoService.ui_updateNick(ui);
-		String nick = this.user_infoService.getNickname(id);//현재 아이디에 대한 닉네임 정보를 담아놓은 변수이다.
-				
+		this.user_infoService.ui_updateProfile(ui); //프로필 변경
+		
+		
 		request.getSession().removeAttribute("nick");//닉네임을 변경하기전 유지되어있는 세션을 없애야지 바뀐 닉네임이 헤더에 표시됌.
 		request.getSession().setAttribute("nick", nick);//바뀐 닉네임을 다시 세션에 추가
-		
-		
-		
 		
 		return "redirect:/myinfo";
 	}

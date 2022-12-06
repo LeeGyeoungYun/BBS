@@ -38,5 +38,15 @@
 	update USER_INFO set user_profile = #{user_profile} where user_id = #{user_id}
 </update>
 
+<!-- 유저 정보 가져오기 -->
+<select id="ui_getUserInfo" parameterType="ui" resultType="ui">
+	select * from User_INFO where user_id = #{user_id}
+</select>
+
+<!-- 유저 프로필 사진만 가져오기 -->
+<select id="ui_getProfile" resultType="String">
+	select user_profile from USER_INFO where user_id = #{user_id}
+</select>
+
 </mapper>
  

@@ -62,7 +62,18 @@
 				<i class="fa-solid fa-caret-up"></i>
 			</div>
 				<div class="profileBox">
-					<div class="profile"><div class="myImage"></div></div>
+				<c:if test="${!empty ulist}">
+				<c:forEach var="u" items="${ulist}">
+				<c:choose>
+					<c:when test="${u.user_profile == null}">
+						<div class="profile"><div class="myImage"><img src="" ></div></div>
+					</c:when>
+					<c:otherwise>
+						<div class="profile"><div class="myImage"><img src="./resources/uploadUserProfile${u.user_profile}" ></div></div>
+					</c:otherwise>					
+				</c:choose>
+				</c:forEach>
+				</c:if>
 					<div class="goto">
 						<div class="myinfoBox">
 						<a href="myinfo"><button class="myinfo"  onclick="closeBox()">내정보</button></a>

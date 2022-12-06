@@ -1,6 +1,7 @@
 package net.daum.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,11 +11,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import net.daum.service.User_infoService;
@@ -36,10 +37,22 @@ public class HomeController {
 	private User_infoService user_infoService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
-		
-		return "main";
-		
+	public ModelAndView home(HttpServletRequest request, User_infoVO ui) {
+		ModelAndView model;
+		String id =(String) request.getSession().getAttribute("id");
+		if(id != null) {			
+			
+			model = new ModelAndView("main");
+			ui.setUser_id(id);
+			List<User_infoVO> ulist = this.user_infoService.ui_getUserInfo(ui);
+			model.addObject("ulist",ulist);
+			
+			return model;
+		}else {
+			model = new ModelAndView("main");
+			return model;
+		}
+				
 	}
 	
 	@GetMapping(value ="/login")

@@ -14,6 +14,7 @@ drop table USER_INFO;
 
 update USER_INFO set user_nickname = 'EEE' where user_id ='qwer123';
 
+select * from USER_INFO where user_id = 'qwer123';
 
 create sequence user_seq
 start with 1

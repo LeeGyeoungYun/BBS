@@ -1,5 +1,7 @@
 package net.daum.dao;
 
+import java.util.List;
+
 import net.daum.vo.User_infoVO;
 
 public interface User_infoDAO {
@@ -10,4 +12,6 @@ public interface User_infoDAO {
 	String getNickname(String id);
 	void ui_updateNick(User_infoVO ui); //닉네임 수정
 	void ui_updateProfile(User_infoVO ui); //프로필사진 변경
+	List<User_infoVO> ui_getUserInfo(User_infoVO ui); //유저 정보 반환
+	String ui_getProfile(String id);
 }
