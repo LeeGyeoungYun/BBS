@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>내 정보</title>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <link rel="stylesheet" href="resources/css/myinfo_style.css?ver=1">
 <script src="resources/js/myinfo.js?ver=1"></script>
 
@@ -69,12 +69,32 @@
 							<input class="can" type="button" value="취소">
 						</div>
 					
-					</form> <!-- 프로필 사진 공간 끝 -->	
-					
-					<form class="infoBox i2">
-					
+					</form> <!-- 프로필 사진 공간 끝 -->
+
+					<form class="infoBox i2" action="updateInfo_ok" method="post">
+						<div class="int_box">
+						
+						<div class="int_area">
+							<p>회원정보</p>
+						</div>
+						
+						<div class="int_area">
+							<i class="fa-solid fa-envelope"></i> 
+							<input type="text" name="user_email" id="user_email" autocomplete="off" placeholder="Email" required>
+						</div>
+
+						<div class="int_area">
+							<i class="fa-solid fa-lock"></i> 
+							<input type="password" name="user_pwd" id="user_pwd" autocomplete="off" placeholder="Password" required>
+						</div>
+
+						<div class="int_area">
+							<i class="fa-solid fa-lock"></i> 
+							<input type="password" name="user_pwConfirm" id="user_pwConfirm" autocomplete="off" placeholder="Pwd_Confirm" required>
+						</div>
+						</div>
 					</form>
-										
+
 				</div>
 					
 				</div>

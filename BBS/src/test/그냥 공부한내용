@@ -77,5 +77,51 @@
    ModelAndView mv = new ModelAndView();로 선언합니다. return type을 ModelAndView로 지정할 수 있습니다.
    
    
-9. 	
+9. 	JSTL(Java Standard Tag Library)의 조건문 종류 :
+	(1) <c:if></c:if> : 조건문중 가장 기본이 되는 조건문으로 특이사항으로는 다른언어와 다르게 else가 없다는 점이다. 
+	        사용법 ex) <c:if test="${apple ==1}"> html구문~ </c:if>
+	         
+	(2) <c:choose></c:choose> : 이 조건문은 java의 switch ~ case 구문과 흡사합니다. 여러 조건중 하나를 선택할 때 사용됩니다.
+		<c:choose> 는 switch에 해당되고, <c:when> 은 case에 해당 즉 여러개로 구성될 수 있고 <c:otherwise>는 default에 해당됩니다.
+		사용법 ex) <c:choose> <c:when test="조건문1"> html ~ </when> <c:when test="조건문 2"> html ~  </c:when> 
+							<c:otherwise> html ~  </c:otherwise>  </c:choose> 이렇게 구성되는 편이다.
+							
+							
+10. JSP에서 FORM 데이터를 enctype="multipart/form-data" 형식으로 컨트롤에 보낼때 값을 받는 방법 :
+	보통 JSP에서 컨트롤러에 값을 보낼 때, 요청 파라미터를 컨트롤러애서 처리하게되는데, 예를들어 <input type="text" name="name">에 값을 컨트롤러에서
+	받아 들인다 가정한다면 String name = request.getParameter("name"); 이렇게해서 값을 가져올 수 있다. 하지만,  FORM 데이터를 enctype="multipart/form-data" 형식으로 
+	요청한다면? MultipartRequest 객체를 선언해 그것으로 값을 불러들여야합니다. 서버로 이미지등 바이너리 파일(이진파일)을 전송할떄 주로 사용함.
+	ex) MultipartRequest multi =null; multi = new MultipartRequest(request,saveFolder,fileSize,"UTF-8"); 
+	    String nick = multi.getParameter("name"); 이런식으로 request 대신 MultipartRequest 객체를 사용해야합니다.
+
+
+11. Spring에서 Cilent로 받은 요청을 객체로 바인딩하기 위해 사용되는 방법들 :
+	(1) @RequestParam : @RequestParam은 1개의 HTTP 요청을 파라미터로 받기위해서 사용한다. @RequestParam은 필수 여부가 true이기 때문에,
+	                                             반드시 해당 파라미터가 전송되어야하며, 파라미터가 전송되지 않으면 400에러가 발생한다. 반드시 필요한 값이 아니라면 required를
+	                                             값을 false로 설정해주면 되고, defaultValue 옵션을 사용하면 기본값 역시 지정할 수 있다.
+	
+	(2) @RequestBody : @RequestBody란 클라이언트가 전송하는 JSON(application/json) 형태의 HTTP body를 java 객체로 변환시켜주는 역할을 한다.
+					      그렇기 때문에 Body가 존재하지 않는 HTTP GET메소드에 @RequestBody를 활용하려고한다면 에러가 발생한다. @RequestBody로 받는 데이터는
+					   Spring에서 관리하는 MessageConverter들 중 하나인 Mappingjackson2HttpMessageConverter를 통해 java 객체로 변환되는데,
+					       이는 ObjectMapper 라는 클래스를 사용한다. 물론 데이터 형식이 json이 아닐수도 있다.
+	
+	(3) @ModelAttribute : @ModelAttribute는 클라이언트가 전송하는 폼(form)형태의 HTTP Body와 요청 파라미터들을 생성자나 Setter로 바인딩 하기위해 사용된다.
+						  @ModelAttribute에는 매핑시키는 파라미터의 타입이 객체 타입의 타입과 일치하는지 등을 포함한 다양한 검증(Vaildiation) 작업이 추가적으로
+						    진행되는데, 예를 들어 int형 index 변수에 "1번" 이라는 String형을 넣으려고 한다면 BindException이 발생하게된다.
+						  @ModelAttribute를 사용해서 특정 파라미터 값만을 가져올 수 있다. 만약 우리가 다음과 같은 형태로 전송된 데이터에서 
+						  @ModelArritbute("writer") String writer를 사용하면 writer 변수에 "뚱이" 값이 얻어진다.				       
+
+
+12. 상대경로와 절대경로 차이 :
+	상대경로란? 하나의 파일이 있는 위치에서 다른 파일이 위치한 주소를 경로로 지정하는것이다. 즉 반드시 비교대상이 있어야한다.
+	절대경로란? 절대적인 주소, 변하지않는 주소를 경로로 지정하는것이다. 즉, 정적인 문자열을 통해 특정 컴퓨터의 파일 위치를 정확히 알려준다.
+	ex) 상대경로 --> ../static/background.jpg     ,    <img src="./images/true.jpg"> 등
+	         절대경로 --> /home/usr/ubuntu/workspace/mypage/env/static/background.jpg   ,   <a href="https://www.naver.com">
+	    
+	절대경로는 최상위 폴더로부터 경로를 찾기때문에 컴파일 속도가 느린반면에 상대경로는 기준으로 설정되어있는 폴더를 탐색하면되므로 컴파일 속도가 빠르다.
+	/   => 루트 C/users 와 같은 기본 루트를 의미(최상위 루트)
+	./  => 현재위치를 의미 즉,현재위치의 폴더를 의미(현재 디렉토리)
+	../ => 현재 위치의 상단 폴더를 의미(상위 디렉토리)
+	
+	
        	

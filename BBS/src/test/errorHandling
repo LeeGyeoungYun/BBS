@@ -89,5 +89,10 @@
 	혹은 새로고침을 누를때 Ctrl + F5를 누른다. --> 이방법은 캐쉬까지 새로고침하는 방법이다.
 	
 
-10. 
+10. [Mybatis] 에러 - A query was run and no Result Maps were found for the Mapped Statement 대처 방법 :
+	해당 에러 발생 원인은 mapper.xml에서 쿼리문을 작성시 resultType을 지정해 주지 않아 발생되는 에러입니다. 즉, resultType을 작성해주면 
+	됩니다.
+	
+
+11. 
    

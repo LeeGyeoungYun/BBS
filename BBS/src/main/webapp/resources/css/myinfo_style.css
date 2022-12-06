@@ -74,16 +74,12 @@
 	background-color: #ffc8c8;
 }
 
+/* 여기서부턴 infoBox i1의 구역입니다. 유저프로필 및 별명을 담고있습니다.*/
 
 .infoBox{
 	width:100%;
 	height: 100%;
 	
-}
-
-.i2{
-	background-color: black;
-	display:none;
 }
 
 .profileContainer{
@@ -183,6 +179,36 @@
 
 .can:hover{
 	background: #d9d9d9;
+}
+
+/* 여기서부턴 infoBox i2의 구역입니다. 유저정보구역입니다.*/
+
+.int_box{
+	margin:15px auto;
+}
+
+.int_area{
+	display:flex;
+	width:380px;
+	padding:10px 5px;
+	margin-top:20px;
+	border: 1px solid black;
+	
+}
+
+.int_area i{
+	font-size:25px;
+	padding-left:10px;
+	margin-top:2.5px;
+}
+
+.int_area input{
+	border:none;	/* 아이디,비밀번호 박스 경계선 삭제 */
+	outline:none;	/*아이디 , 비밀번호 박스 클릭시 선택되는 외각 줄 삭제*/
+	font-size:17px;
+	height: 2rem;
+	width:100%;
+	padding-left:30px;
 }
 
 
