@@ -65,33 +65,52 @@
 					</c:if>
 						
 						<div class="checkBox">
-							<input class="sub" type="submit" value="적용"  disabled>
-							<input class="can" type="button" value="취소">
+							<input class="sub s1" type="submit" value="적용"  disabled>
+							<input class="can c1" type="button" value="취소">
 						</div>
 					
 					</form> <!-- 프로필 사진 공간 끝 -->
 
-					<form class="infoBox i2" action="updateInfo_ok" method="post">
+					<form class="infoBox i2" action="updateInfo_ok" method="post" onsubmit="return apply2();">
 						<div class="int_box">
 						
-						<div class="int_area">
+						<div class="titleBox">
 							<p>회원정보</p>
 						</div>
 						
+						<div class="doguBox">
+							<span class="edit" onclick="edit()"><i class="fa-solid fa-pen-to-square"></i></span>		
+						</div>
+						
+						<c:if test="${!empty ulist}">
+						<c:forEach var="u" items="${ulist}">
+											
 						<div class="int_area">
 							<i class="fa-solid fa-envelope"></i> 
-							<input type="text" name="user_email" id="user_email" autocomplete="off" placeholder="Email" required>
+							<input type="text" name="user_email" id="user_email" value="${u.user_email}" autocomplete="off" placeholder="Email" readonly>
+						</div>
+						
+						<div class="int_area">
+							<i class="fa-solid fa-mobile-screen"></i>
+							<input type="text" name="user_phoneNum" id="user_phoneNum"  value="${u.user_phoneNum}" autocomplete="off" placeholder="Phone" readonly>
+						</div>
+						</c:forEach>
+						</c:if>
+
+						<div class="int_area">
+							<i class="fa-solid fa-lock"></i> 
+							<input type="password" name="user_pwd" id="user_pwd" autocomplete="off" placeholder="Password" readonly>
 						</div>
 
 						<div class="int_area">
 							<i class="fa-solid fa-lock"></i> 
-							<input type="password" name="user_pwd" id="user_pwd" autocomplete="off" placeholder="Password" required>
+							<input type="password" name="user_pwConfirm" id="user_pwConfirm" autocomplete="off" placeholder="Pwd_Confirm" readonly>
 						</div>
-
-						<div class="int_area">
-							<i class="fa-solid fa-lock"></i> 
-							<input type="password" name="user_pwConfirm" id="user_pwConfirm" autocomplete="off" placeholder="Pwd_Confirm" required>
 						</div>
+						
+						<div class="checkBox">
+							<input class="sub s2" type="submit" value="적용"  disabled>
+							<input class="can c2" type="button" value="취소">
 						</div>
 					</form>
 

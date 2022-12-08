@@ -44,6 +44,9 @@ function register_check(){
 	let name= $("#user_nickname").val();
 	let pwdCheck = RegExp(/^[a-zA-Z0-9]{6,20}$/); /*비밀번호 길이 6 ~ 20자로 제한*/
 	let pwd = $("#user_pwd").val();
+	let phoneCheck = /^[0-9]{10,11}$/;
+	let phone = $("#user_phoneNum").val();
+	
 	let emailCheck = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 	let email = $("#user_email").val();	
 	let pwdRepeat = $("#user_pwConfirm").val();
@@ -79,6 +82,12 @@ function register_check(){
 	if(!emailCheck.test(email)){
 		alert("이메일형식이 맞지않습니다. 다시 입력해주세요");
 		$("#user_email").focus();
+		return false;
+	}
+	
+	if(!phoneCheck.test(phone)){
+		alert("전화번호형식이 맞지않습니다. 다시 입력해주세요");
+		$("#user_phoneNum").focus();
 		return false;
 	}
 	

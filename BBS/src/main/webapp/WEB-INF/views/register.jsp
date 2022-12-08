@@ -38,6 +38,11 @@
 				<input type="text" name="user_email" id="user_email" autocomplete="off" placeholder="Email" required>
 			</div>
 			
+			<div class="int_area">
+				<i class="fa-solid fa-mobile-screen"></i>
+				<input type="text" name="user_phoneNum" id="user_phoneNum" autocomplete="off" placeholder="Phone" required>
+			</div>
+			
 			
 			<div class="int_area">
 				<i class="fa-solid fa-lock"></i>

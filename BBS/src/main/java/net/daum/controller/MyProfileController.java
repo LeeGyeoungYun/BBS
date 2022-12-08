@@ -114,4 +114,20 @@ public class MyProfileController {
 		return "redirect:/myinfo";
 	}
 	
+	
+	@PostMapping(value="updateInfo_ok")
+	public String updateInfo_ok(HttpServletRequest request,User_infoVO ui) {
+		
+		ui.setUser_id((String)request.getSession().getAttribute("id"));
+		
+		if(ui.getUser_pwd()== "") {//비밀번호는 변경하지 않는다면?
+			this.user_infoService.ui_updateInfoXpw(ui);
+		}else {// 비밀번호까지 변경할꺼라면?
+			this.user_infoService.ui_updateInfo(ui);
+		}
+		
+		
+		return "redirect:/myinfo";
+	}
+	
 }

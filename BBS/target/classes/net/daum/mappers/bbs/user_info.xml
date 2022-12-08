@@ -10,7 +10,7 @@
 
 <!-- 회원가입 -->
 <insert id="ui_info" parameterType="ui">
-	insert into USER_INFO (user_id,user_nickname,user_pwd,user_email,user_joinDate,user_modifyDate) values (#{user_id},#{user_nickname},#{user_pwd},#{user_email},sysdate,sysdate)
+	insert into USER_INFO (user_id,user_nickname,user_pwd,user_phoneNum,user_email,user_joinDate,user_modifyDate) values (#{user_id},#{user_nickname},#{user_pwd},#{user_phoneNum},#{user_email},sysdate,sysdate)
 </insert>
 
 <!-- 아이디 중복체크 -->
@@ -33,6 +33,16 @@
 	update USER_INFO set user_nickname = #{user_nickname} where user_id = #{user_id}
 </update>
 
+<!-- 유저 정보 업데이트 -->
+<update id="ui_updateInfo" parameterType="ui">
+	update USER_INFO set user_email = #{user_email}, user_phoneNum = #{user_phoneNum}, user_pwd = #{user_pwd}, user_modifyDate = sysdate where user_id =  #{user_id}
+</update>
+
+<!-- 패스워드빼고 유저정보 업데이트 -->
+<update id="ui_updateInfoXpw">
+	update USER_INFO set user_email = #{user_email}, user_phoneNum = #{user_phoneNum}, user_modifyDate = sysdate where user_id =  #{user_id}
+</update>
+
 <!-- 유저프로필 업데이트 -->
 <update id="ui_updateProfile" parameterType="ui">
 	update USER_INFO set user_profile = #{user_profile} where user_id = #{user_id}
@@ -41,6 +51,11 @@
 <!-- 유저 정보 가져오기 -->
 <select id="ui_getUserInfo" parameterType="ui" resultType="ui">
 	select * from User_INFO where user_id = #{user_id}
+</select>
+
+<!-- 유저 패스워드 가져오기 -->
+<select id="ui_getPasswd" resultType="String">
+	select user_pwd from USER_INFO where user_id = #{user_id}
 </select>
 
 <!-- 유저 프로필 사진만 가져오기 -->

@@ -42,6 +42,16 @@ public class User_infoDAOImpl implements User_infoDAO {
 	}
 	
 	@Override
+	public void ui_updateInfo(User_infoVO ui) { // 유저정보 업데이트	
+		this.sqlSession.update("ui_updateInfo",ui);
+	}
+	
+	@Override
+	public void ui_updateInfoXpw(User_infoVO ui) { // 유저정보 업데이트	
+		this.sqlSession.update("ui_updateInfoXpw",ui);
+	}
+	
+	@Override
 	public void ui_updateProfile(User_infoVO ui) {
 		this.sqlSession.update("ui_updateProfile",ui);
 	}
@@ -56,6 +66,12 @@ public class User_infoDAOImpl implements User_infoDAO {
 	public String ui_getProfile(String id) {		
 		return this.sqlSession.selectOne("ui_getProfile",id);
 	}
+
+	@Override
+	public String ui_getPasswd(String id) {	
+		return this.sqlSession.selectOne("ui_getPasswd",id);
+	}
+
 	
 	
 

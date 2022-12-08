@@ -43,6 +43,16 @@ public class User_infoServiceImpl implements User_infoService {
 	}
 	
 	@Override
+	public void ui_updateInfo(User_infoVO ui) {
+		this.user_infoDao.ui_updateInfo(ui);
+	}
+	
+	@Override
+	public void ui_updateInfoXpw(User_infoVO ui) {
+		this.user_infoDao.ui_updateInfoXpw(ui);
+	}
+	
+	@Override
 	public void ui_updateProfile(User_infoVO ui) {
 		this.user_infoDao.ui_updateProfile(ui);
 	}
@@ -57,6 +67,12 @@ public class User_infoServiceImpl implements User_infoService {
 	public String ui_getProfile(String id) {		
 		return this.user_infoDao.ui_getProfile(id);
 	}
+
+	@Override
+	public String ui_getPasswd(String id) {
+		return this.user_infoDao.ui_getPasswd(id);
+	}
+
 
 	
 

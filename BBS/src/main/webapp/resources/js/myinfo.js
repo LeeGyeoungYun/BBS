@@ -6,14 +6,14 @@ function unlock(){
 	if(status=true){
 		$(".ib1").prop("disabled",false);
 		$(".ib3").prop("disabled",false);
-		$(".sub").prop("disabled",false);
+		$(".s1").prop("disabled",false);
 		$(".nick").prop("readonly",false);
 		
 		
-		$(".sub").css("color","#fff");
-		$(".sub").css("background-color"," rgb(181,214,146)");
+		$(".s1").css("color","#fff");
+		$(".s1").css("background-color"," rgb(181,214,146)");
 	
-		$(".sub").hover(function(){
+		$(".s1").hover(function(){
 			$(this).css("background-color"," rgb(113,160,61)");
 		},function(){
 	 		$(this).css("background-color"," rgb(181,214,146)");
@@ -33,6 +33,86 @@ function apply(){
 	}
 }
 
+function edit(){ //여기는 유저정보 편집하는 함수버튼입니다.
+	
+	let email = document.querySelector("#user_email");
+	let phone = document.querySelector("#user_phoneNum");
+	let pwd = document.querySelector("#user_pwd");
+	let pwdConfirm = document.querySelector("#user_pwConfirm");
+	let s2 = document.querySelector(".s2");
+	
+	email.readOnly =false;
+	phone.readOnly =false;
+	pwd.readOnly =false;
+	pwdConfirm.readOnly =false;
+	s2.disabled = false;
+	
+	$(".s2").css("color","#fff");
+		$(".s2").css("background-color"," rgb(181,214,146)");
+	
+		$(".s2").hover(function(){
+			$(this).css("background-color"," rgb(113,160,61)");
+		},function(){
+	 		$(this).css("background-color"," rgb(181,214,146)");
+		});
+	
+	
+}
+
+
+function apply2(){
+	
+	let emailCheck = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	let email = $("#user_email").val();	
+	let phoneCheck = /^[0-9]{10,11}$/;
+	let phone = $("#user_phoneNum").val();
+	let pwdCheck = RegExp(/^[a-zA-Z0-9]{6,20}$/); /*비밀번호 길이 6 ~ 20자로 제한*/
+	let pwd = $("#user_pwd").val();
+	let pwdRepeat = $("#user_pwConfirm").val();
+	
+	if(!emailCheck.test(email)){
+		alert("이메일형식이 맞지않습니다. 다시 입력해주세요");
+		$("#user_email").focus();
+		return false;
+	}
+	
+	if(!phoneCheck.test(phone)){
+		alert("전화번호형식이 맞지않습니다. 다시 입력해주세요");
+		$("#user_phoneNum").focus();
+		return false;
+	}
+	
+	if(pwd!='' || pwdRepeat!=''){   //비밀번호하고 비밀번호 확인란에 값을 적었을 경우
+		
+		if(pwdRepeat != pwd){           // 값을 적었지만 비밀번호와 비밀번호 확인란의 값이 일치하지 않을 경우
+		alert("비밀번호가 일치하지 않습니다.");
+		$("#user_pwd").focus();
+		return false;
+		}else{						    // 값이 일치하지만 비밀번호 형식에 어긋난 경우
+			
+			if(!pwdCheck.test(pwd)){
+				alert("비밀번호 형식에 맞지 않습니다. 다시입력해주세요.");
+				$("#user_pwd").focus();
+				return false;
+			}
+		
+		}//else end
+		
+		
+	}//if end
+	
+	
+	
+	
+	let question = confirm("프로필 변경 사항을 저장하시겠습니까?");
+	
+	if(!question){
+		return false;
+	}
+	
+	
+	
+}//apply2() end
 
 	
 	
@@ -40,6 +120,17 @@ function apply(){
 	
 	let cancle = document.querySelector(".can");
 	cancle.addEventListener("click",function(){
+		
+		let answer = confirm("취소하시겠습니까?");
+		if(answer){
+			location.reload();
+		}else{
+			return false;
+		}	
+	});
+	
+	let cancle2 = document.querySelector(".c2");
+	cancle2.addEventListener("click",function(){
 		
 		let answer = confirm("취소하시겠습니까?");
 		if(answer){

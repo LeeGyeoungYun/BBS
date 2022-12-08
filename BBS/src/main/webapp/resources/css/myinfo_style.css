@@ -185,7 +185,37 @@
 
 .int_box{
 	margin:15px auto;
+	width: 400px;
+	
 }
+
+.titleBox{
+	width: 380px;
+	text-align: center;
+	font-size: 30px;
+	padding-bottom: 27px;
+}
+
+.doguBox{
+	width: 100%;
+	font-size: 35px;
+	position: relative;
+	height: 3.5rem;
+	padding-bottom: 20px;
+}
+
+.doguBox span{
+	position:absolute;
+	right: 20px;
+}
+
+.doguBox span:hover{
+	cursor: pointer;
+	color:#7979ff;
+}
+
+
+
 
 .int_area{
 	display:flex;
