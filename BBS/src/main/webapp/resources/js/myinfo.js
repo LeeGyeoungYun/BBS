@@ -180,6 +180,32 @@ function apply2(){
 	}); // ib1.addEventListener end
 	
 	
+	let ib3 = document.querySelector(".ib3");
+	ib3.addEventListener("click",function(){
+		let message = confirm("삭제하시겠습니까?");
+		if(message){
+			let image = document.querySelector(".proImg").src;
+			
+			$.ajax({
+				type:"post",
+				url:"deleteProfile",
+				data: {"image":image},
+				dataType:"json",
+				success : function(data){
+					alert(data);
+				
+				},error : function(){
+ 					alert("오류");
+ 				}
+						
+			});//아직스 통신끝
+			
+		}else{
+			alert("삭제 ㄴㄴ.");
+		}
+	});
+	
+	
 	}//window.onload 끝
 
 

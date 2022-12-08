@@ -2,6 +2,7 @@ package net.daum.controller;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.oreilly.servlet.MultipartRequest;
@@ -129,5 +131,28 @@ public class MyProfileController {
 		
 		return "redirect:/myinfo";
 	}
+	
+	@PostMapping(value="deleteProfile")
+	@ResponseBody
+	public String deleteProfile(String image,HttpServletRequest request) {
+				
+		String[] sp = image.split("/");
+		String imageName = sp[sp.length-1];
+		String path = request.getRealPath("resources/uploadUserProfile/"+imageName);
+		
+		File file =new File(path);
+		if(file.exists()) {//해당파일이 존재한다면? --> 파일삭제 
+			file.delete();
+			//db삭제도 추가시켜야함
+			
+			
+		}else {//해당파일이 존재하지않는다면?
+			System.out.println("파일이 존재하지않습니다.");
+		}
+		
+		return "3";
+	}
+		
+	
 	
 }

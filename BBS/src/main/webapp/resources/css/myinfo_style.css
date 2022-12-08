@@ -183,6 +183,10 @@
 
 /* 여기서부턴 infoBox i2의 구역입니다. 유저정보구역입니다.*/
 
+.i2{
+	display:none;
+}
+
 .int_box{
 	margin:15px auto;
 	width: 400px;
