@@ -13,7 +13,8 @@
 
 </head>
 <body>
-
+	<div id="overlay"></div>
+	<div id="overlay2"></div>
 	<div class="bodyContainer">
 	
 		<div class="myinfoContainer">
@@ -25,7 +26,9 @@
 					<div class="menuBox b2">
 						<i class="fa-solid fa-lock"></i>
 					</div>
-					<div class="menuBox b3"></div>
+					<div class="menuBox b3">
+						<i class="fa-solid fa-user-gear"></i>
+					</div>		
 					<div class="menuBox b4"></div>
 				</div>
 				
@@ -113,11 +116,58 @@
 							<input class="can c2" type="button" value="취소">
 						</div>
 					</form>
-
+					
+					<div class="infoBox i3">
+						<div class="int_box">
+						
+						<div class="titleBox tb3">
+							<p>내정보관리</p>
+						</div>
+						
+						<div class="nicknameBox n3">
+							<div class="question q3">
+								<span>내가 쓴 글</span>
+							</div>
+							<div class="nickname nn3">
+								<a href="myPlace" class="goMypage">나의 메모장 이동</a>
+							</div>
+						</div>
+						
+						<div class="nicknameBox n3">
+							<div class="question q3">
+								<span>회원탈퇴</span>
+							</div>
+							<div class="nickname nn3">
+								<input type="button" class="withdrawal" value="회원 탈퇴하기" onclick="modal_open()">
+							</div>
+						</div>
+						
+						</div>
+					</div>
 				</div>
 					
 				</div>
 			</div>
+			
+			<div class="modal">
+				<div class="contents">
+					<h2>회원 탈퇴</h2>
+					<span class="cancleModal" onclick="modal_close()"><i class="fa-sharp fa-solid fa-xmark"></i></span>
+				</div>
+				<div class="warnningBox">
+					<p>회원탈퇴시 개인정보가 모두 말소됩니다. 탈퇴하시겠습니까?</p>
+				</div>
+				<div class="modalInputBox">
+				<div class="inputContainer">
+					<span>비밀번호 확인</span>
+					<input type="password" name="user_pwd" id="modal_pwd">
+					<button class="modalBtn">확인</button>
+				</div>
+				</div>
+			
+			</div>
+			
+			
 		</div>
 		
 	

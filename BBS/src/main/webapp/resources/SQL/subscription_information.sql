@@ -26,3 +26,7 @@ nocache;
 
 drop sequence user_seq;
 
+update USER_INFO set user_profile ='' where user_id = 'qwer123';
+
+
+

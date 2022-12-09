@@ -5,6 +5,11 @@ function menu_click(){
 	$('.leftBar_menu').css({'transform':'translateZ(0)'});
 	$('.bodyContainer').css({'opacity':'0.7'});
 	$('#overlay').css({'visibility':'visible'});
+	
+	let close = document.querySelector("#overlay");
+	close.addEventListener("click",function(){
+		menu_close();
+	});
 }
 
 function menu_close(){

@@ -63,5 +63,15 @@
 	select user_profile from USER_INFO where user_id = #{user_id}
 </select>
 
+<!-- 유저 프로필 사진 삭제 -->
+<update id="ui_deleteProfile" parameterType="ui">
+	update USER_INFO set user_profile = '' where user_id = #{user_id}
+</update>
+
+<!-- 회원 탈퇴 -->
+<delete id="ui_withdrawal" parameterType="ui">
+	delete from USER_INFO where user_id = #{user_id} 
+</delete>
+
 </mapper>
  

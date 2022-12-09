@@ -7,8 +7,39 @@
 	list-style: none;
 }
 
+#overlay{
+	visibility: hidden;
+	background: #000;
+	opacity: 0.65;
+	height: 100%;
+	width:100%;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top:0;
+	z-index: 1;
+	transition: all .5s;
+	
+}
+
+#overlay2{
+	visibility: hidden;
+	background: #000;
+	opacity: 0.65;
+	height: 100%;
+	width:100%;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top:0;
+	z-index: 1;
+}
+
 .bodyContainer{
 	margin: 130px 0 200px 0;
+	position: relative;
 }
 
 .myinfoContainer{
@@ -58,7 +89,7 @@
 	background-color: rgb(214,230,245);
 }
 
-.b1 i, .b2 i{
+.b1 i, .b2 i, .b3 i{
 	text-shadow: 0px 1px black;
 }
 
@@ -243,6 +274,136 @@
 	height: 2rem;
 	width:100%;
 	padding-left:30px;
+}
+
+/* 여기서부턴 infoBox i3의 구역입니다.*/
+
+.i3{
+	display:none;
+}
+
+.tb3{
+	padding-bottom: 80px;
+}
+
+.n3{
+	width: 400px;
+	height: 100px;
+	border: 1px solid;
+	margin: 0px auto;
+	display:flex;
+}
+
+.q3{
+	width:150px;
+	height: 100%;
+	background-color: #f9f9f9;
+	/* border: 1px solid #e5e5e5; */
+	position: relative;
+}
+
+.q3 span{
+	position: absolute;
+	left:27%;
+	margin-top:39.5px;
+}
+
+.nn3{
+	padding: 39.5px 0px 35px 60px;
+}
+
+.withdrawal{
+	padding:3px 5px;
+	margin-left: 20px;
+}
+
+.goMypage, .withdrawal, .modalBtn{
+	background-color: rgb(181,214,146);
+	border: 1px solid rgb(181,214,146);
+	color:#fff;
+}
+
+.goMypage:hover, .withdrawal:hover ,.modalBtn:hover{
+	background-color: rgb(113,160,61);
+	
+}
+
+
+/* 이부분은 회원탈퇴 버튼 클릭시 나타나는 모달창입니다.*/
+.modal{
+	visibility: hidden;
+	position: absolute;
+	z-index:2;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	width: 500px;
+	height: 380px;
+	background-color: #fff;
+}
+
+.contents{
+	padding: 20px 0 32px 15px;
+	display: flex;
+	position: relative;
+}
+
+.cancleModal{
+	padding: 18px 27px;
+    right: 0px;
+    top:0px;
+    position: absolute;
+    font-size: 25px;
+}
+
+.cancleModal:hover{
+	cursor: pointer;
+}
+
+.warnningBox{
+	border-top: 1px solid #bfbfbf;
+    width: 450px;
+    height: 48px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.warnningBox p{
+	color:#ff5555;
+	font-size: 14px;
+}
+
+.modalInputBox{
+	display: flex;
+	width: 450px;
+	margin: auto;
+	height: 180px;
+	border: 1px solid #e5e5e5;
+	padding:30px 0 0 0;
+}
+
+.inputContainer{
+	margin:45px auto;
+	align-content: center;
+}
+
+.inputContainer span{
+	font-size: 14.5px;
+}
+
+#modal_pwd{
+	padding: 8px 9px;
+	width: 255px;
+	height: 20px;
+	border:1px solid;
+	border-radius: 5px;
+}
+
+.modalBtn{
+	width: 47px;
+	height: 40px;
+	margin-left: 1px;
 }
 
 

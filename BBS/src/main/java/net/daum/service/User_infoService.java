@@ -17,5 +17,7 @@ public interface User_infoService {
 	List<User_infoVO> ui_getUserInfo(User_infoVO ui); 
 	String ui_getProfile(String id);
 	String ui_getPasswd(String id);
+	void ui_deleteProfile(String id);
+	void ui_withdrawal(String id);
 
 }

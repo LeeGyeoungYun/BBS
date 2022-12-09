@@ -115,6 +115,26 @@ function apply2(){
 }//apply2() end
 
 	
+function modal_close(){   //모달창 취소버튼 클릭시
+
+	$(".modal").css("visibility","hidden");
+	$('#overlay2').css({'visibility':'hidden'});
+
+}//modal_close() end
+	
+function modal_open(){	  //모달창 여는버튼 클릭시
+
+	$(".modal").css("visibility","visible");
+	$('#overlay2').css({'visibility':'visible'});
+	
+	let close = document.querySelector("#overlay2");
+	close.addEventListener("click",function(){
+		modal_close();
+	});
+}	
+	
+	
+	
 	
 	window.onload = function(){
 	
@@ -145,6 +165,7 @@ function apply2(){
 		
 		$(".i1").css("display","block")
 		$(".i2").css("display","none");
+		$(".i3").css("display","none");
 	});
 	
 	let b2 = document.querySelector(".b2");
@@ -152,6 +173,15 @@ function apply2(){
 		
 		$(".i1").css("display","none")
 		$(".i2").css("display","block");
+		$(".i3").css("display","none");
+	});
+	
+	let b3 = document.querySelector(".b3");
+	b3.addEventListener("click",function(){
+		
+		$(".i1").css("display","none")
+		$(".i2").css("display","none");
+		$(".i3").css("display","block");
 	});
 	
 	
@@ -191,8 +221,14 @@ function apply2(){
 				url:"deleteProfile",
 				data: {"image":image},
 				dataType:"json",
-				success : function(data){
-					alert(data);
+				success : function(data){					
+					let msg = data.code;
+					alert(msg);
+					
+					if(msg.includes('삭제')){
+						document.querySelector(".proImg").src ='./resources/uploadUserProfile'; //비동기식으로 새로고침없이 UI상에 프로필사진내림
+					}
+					
 				
 				},error : function(){
  					alert("오류");
@@ -203,7 +239,45 @@ function apply2(){
 		}else{
 			alert("삭제 ㄴㄴ.");
 		}
-	});
+	}); // ib3.addEventListener end
+	
+	
+	// 회원탈퇴버튼 눌렀을때
+	let modalBtn = document.querySelector(".modalBtn");
+	modalBtn.addEventListener("click",function(){
+		let modalpwd = $("#modal_pwd").val();
+		
+		$.ajax({
+			type:"post",
+			url:"deleteUser_ok",
+			data :{"pwd":modalpwd},
+			dataType:"json",
+			success:function(data){
+				let msg = data.code;
+				if(msg.includes("일치")){
+					
+					let choice = confirm("회원탈퇴시 개인정보가 모두 말소됩니다. 정말 탈퇴하시겠습니까?");
+					if(choice){//예를 누른다면?
+					
+					}else{//취소를 누른다면?
+						$("#modal_pwd").val(''); //만약 값을 비우지않고 창만 닫는다면 다시 창을 띄웠을때 쳤던 비밀번호가 남아있다. 때문에 빈칸으로 초기화.
+						modal_close();
+					}
+					
+					
+				}else{
+					alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+					$("#modal_pwd").val('');
+					$("#modal_pwd").focus();
+				}
+				
+			},error:function(){
+				alert("전송이 실패하였습니다.");
+			}
+		
+		});
+		
+	});// modalBtn.addEventListener end
 	
 	
 	}//window.onload 끝

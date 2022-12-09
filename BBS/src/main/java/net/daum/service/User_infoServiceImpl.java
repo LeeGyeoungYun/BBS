@@ -73,6 +73,16 @@ public class User_infoServiceImpl implements User_infoService {
 		return this.user_infoDao.ui_getPasswd(id);
 	}
 
+	@Override
+	public void ui_deleteProfile(String id) {
+			this.user_infoDao.ui_deleteProfile(id);
+	}
+
+	@Override
+	public void ui_withdrawal(String id) {
+		this.user_infoDao.ui_withdrawal(id);
+	}
+
 
 	
 

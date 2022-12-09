@@ -2,9 +2,10 @@ package net.daum.controller;
 
 import java.io.File;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
@@ -134,25 +135,47 @@ public class MyProfileController {
 	
 	@PostMapping(value="deleteProfile")
 	@ResponseBody
-	public String deleteProfile(String image,HttpServletRequest request) {
+	public Map<String,String> deleteProfile(String image,HttpServletRequest request) {
 				
 		String[] sp = image.split("/");
 		String imageName = sp[sp.length-1];
 		String path = request.getRealPath("resources/uploadUserProfile/"+imageName);
+		Map<String,String> map = new HashMap<>();
 		
 		File file =new File(path);
 		if(file.exists()) {//해당파일이 존재한다면? --> 파일삭제 
-			file.delete();
-			//db삭제도 추가시켜야함
-			
-			
+			file.delete();//저장소에 있는 파일 삭제
+			String id = (String)request.getSession().getAttribute("id");
+			this.user_infoService.ui_deleteProfile(id); //해당 프로필 사진 DB 삭제
+			map.put("code","프로필 사진이 삭제되었습니다.");
+			System.out.println("프로필 사진이 삭제되었습니다.");		
 		}else {//해당파일이 존재하지않는다면?
 			System.out.println("파일이 존재하지않습니다.");
+			map.put("code","프로필 사진이 존재하지 않습니다.");
 		}
 		
-		return "3";
-	}
+		return map;
+	}//deleteProfile() end
+	
+	
+	@ResponseBody
+	@PostMapping(value="deleteUser_ok")
+	public Map<String,String> deleteUser_ok(String pwd,HttpServletRequest request) {
 		
+		Map<String,String> map = new HashMap<>();
+		String id =(String)request.getSession().getAttribute("id");
+		String password = this.user_infoService.ui_getPasswd(id);
+		
+		
+		if(password.equals(pwd)) {
+			map.put("code", "일치");
+		}else {
+			map.put("code","비번이 다름");
+		}
+		
+		
+		return map;
+	}
 	
 	
 }
