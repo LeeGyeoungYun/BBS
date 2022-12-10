@@ -116,7 +116,7 @@ function apply2(){
 
 	
 function modal_close(){   //모달창 취소버튼 클릭시
-
+	$("#modal_pwd").val('');
 	$(".modal").css("visibility","hidden");
 	$('#overlay2').css({'visibility':'hidden'});
 
@@ -249,23 +249,37 @@ function modal_open(){	  //모달창 여는버튼 클릭시
 		
 		$.ajax({
 			type:"post",
-			url:"deleteUser_ok",
+			url:"deleteUser_request",
 			data :{"pwd":modalpwd},
 			dataType:"json",
 			success:function(data){
 				let msg = data.code;
-				if(msg.includes("일치")){
+				if(msg.includes("일치")){ //비밀번호가 일치하다면?
 					
 					let choice = confirm("회원탈퇴시 개인정보가 모두 말소됩니다. 정말 탈퇴하시겠습니까?");
 					if(choice){//예를 누른다면?
 					
+						$.ajax({
+							type: "get",
+							url:"deleteUser_ok",
+							data: {"choiceRequest":choice},
+							dataType: "json",
+							success : function(data){
+								console.log("탈퇴");
+								location='/BBS/withdrawal';
+							},error : function(){
+								alert("오류");
+							}
+						
+						});
+					
 					}else{//취소를 누른다면?
-						$("#modal_pwd").val(''); //만약 값을 비우지않고 창만 닫는다면 다시 창을 띄웠을때 쳤던 비밀번호가 남아있다. 때문에 빈칸으로 초기화.
+						
 						modal_close();
 					}
 					
 					
-				}else{
+				}else{ //비밀번호가 일치하지 않다면?
 					alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
 					$("#modal_pwd").val('');
 					$("#modal_pwd").focus();

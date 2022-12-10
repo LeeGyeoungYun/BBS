@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -159,8 +160,8 @@ public class MyProfileController {
 	
 	
 	@ResponseBody
-	@PostMapping(value="deleteUser_ok")
-	public Map<String,String> deleteUser_ok(String pwd,HttpServletRequest request) {
+	@PostMapping(value="deleteUser_request")
+	public Map<String,String> deleteUser_request(String pwd,HttpServletRequest request) {
 		
 		Map<String,String> map = new HashMap<>();
 		String id =(String)request.getSession().getAttribute("id");
@@ -175,6 +176,30 @@ public class MyProfileController {
 		
 		
 		return map;
+	}
+	
+	
+	@ResponseBody
+	@GetMapping(value="deleteUser_ok")
+	public Map deleteUser_ok(String choiceRequest,HttpServletRequest request) {
+		Map<String,String> map = new HashMap<>();
+		
+		if(choiceRequest.equals(true)) {
+			String id = (String)request.getSession().getAttribute("id");
+			this.user_infoService.ui_withdrawal(id); //계정삭제
+			request.getSession().removeAttribute("id");
+			request.getSession().invalidate();
+			map.put("code", "성공");
+			
+		}
+		
+		return map;
+	}
+	
+	@RequestMapping(value="withdrawal")
+	public String withdrawal() {
+		
+		return "withdrawal";
 	}
 	
 	

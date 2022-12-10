@@ -29,4 +29,4 @@ drop sequence user_seq;
 update USER_INFO set user_profile ='' where user_id = 'qwer123';
 
 
-
+delete from USER_INFO where user_id = 'qwer122';
