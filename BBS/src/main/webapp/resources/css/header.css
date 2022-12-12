@@ -156,6 +156,7 @@
 	box-shadow: 2px 5px 20px #8b8b8b;
 	visibility: hidden;
 	transition : all .4s ease;
+	z-index : 1;
 }
 .closeBox{
 	margin-top:5px;

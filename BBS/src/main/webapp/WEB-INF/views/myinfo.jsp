@@ -44,7 +44,7 @@
 							<div class="profileImage"><img src="" class="proImg"></div>
 							</c:when>
 							<c:otherwise>
-							<div class="profileImage"><img src="./resources/uploadUserProfile${u.user_profile}" class="proImg"></div>
+							<div class="profileImage"><img src="./resources/uploadUserProfile${u.user_profile}" class="proImg" name="andante"></div>
 							</c:otherwise>
 						</c:choose>
 																	

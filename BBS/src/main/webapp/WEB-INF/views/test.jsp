@@ -3,6 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript" src="resources/js/jquery.js"></script>
 <title> 헤헷 </title>
 <style> 
 
@@ -39,6 +40,8 @@
  <p> 안냥? </p>
  <div class="abc">
  	<input type="file" class="abd" id="ab" onchange="aaa()"><img src="" height="200" alt="미리보기">
+ 	<br><br><br><br>
+ 	<span>테스트 : <input type="text" class="memo" id="memo" alt="memo" name="memo" value="ㅎㅎ"></span>
  </div>
 </body>
 </html>

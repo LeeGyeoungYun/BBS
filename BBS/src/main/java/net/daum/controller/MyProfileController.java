@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.oreilly.servlet.MultipartRequest;
+import com.sun.mail.iap.Response;
 
 import net.daum.service.User_infoService;
 import net.daum.vo.User_infoVO;
@@ -60,12 +62,22 @@ public class MyProfileController {
 	
 	
 	@PostMapping(value="updateProfile_ok")
-	public String updateProfile_ok(@ModelAttribute User_infoVO ui,HttpServletRequest request) throws Exception {
+	public String updateProfile_ok(@ModelAttribute User_infoVO ui,HttpServletRequest request,HttpServletResponse response) throws Exception {
 		
 		String id = (String)request.getSession().getAttribute("id");
-		ui.setUser_id(id);
 		
+		if(id==null){//세션이 만료된 상태라면?
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script>");
+			out.println("alert('세션이 만료되었습니다.')");
+			out.println("location='/BBS/'");
+			out.println("</script>");		
+		}
 		
+			
+		ui.setUser_id(id);	
 		String saveFolder = request.getRealPath("resources/uploadUserProfile"); //이진 파일 업로드 서버 경로 -> 톰캣 WAS 서버에 의해서 변경된 실제 톰켓 프로젝트 경로
 		int fileSize= 5*1024*1024;//이진 파일 업로드 최대크기 => 5M로 설정
 		MultipartRequest multi =null;//이진파일 업로드 참조변수 ->cos.jar에서 읽어들임.
@@ -73,7 +85,10 @@ public class MyProfileController {
 		multi = new MultipartRequest(request,saveFolder,fileSize,"UTF-8");
 		
 		File upFile = multi.getFile("user_profile");//첨부한 이진파일을 가져온다.
+		
 		if(upFile != null) {// 첨부한 프로필 사진이 있다면?
+			
+			//if()//첨부한 사진은 있지만 원래 사진이라면? 즉, 사진을 바꾸지 않았다면?
 			String fileName = upFile.getName();
 			
 			File path01 = new File(saveFolder);
@@ -104,18 +119,30 @@ public class MyProfileController {
 			upFile.renameTo(new File(saveFolder+"/"+refileName));//변경된 이진파일로 새롭게 생성된 폴더에 실제 업로드
 			ui.setUser_profile(fileDBName);
 			
+			String nick = multi.getParameter("user_nickname");			
+			ui.setUser_nickname(nick);		
+			this.user_infoService.ui_updateNick(ui);
+			this.user_infoService.ui_updateProfile(ui); //프로필 변경
+			
+			
+			request.getSession().removeAttribute("nick");//닉네임을 변경하기전 유지되어있는 세션을 없애야지 바뀐 닉네임이 헤더에 표시됌.
+			request.getSession().setAttribute("nick", nick);//바뀐 닉네임을 다시 세션에 추가
+			
+			return "redirect:/myinfo";
 		}//첨부한 프로필 사진이 있다면? end
+		else {//첨부한 프로필 사진 변경이 없다면? 닉네임만 변경
+			String nick = multi.getParameter("user_nickname");			
+			ui.setUser_nickname(nick);		
+			this.user_infoService.ui_updateNick(ui);			
+			
+			request.getSession().removeAttribute("nick");//닉네임을 변경하기전 유지되어있는 세션을 없애야지 바뀐 닉네임이 헤더에 표시됌.
+			request.getSession().setAttribute("nick", nick);//바뀐 닉네임을 다시 세션에 추가
+			
+			return "redirect:/myinfo";
+		}
 		
-		String nick = multi.getParameter("user_nickname");			
-		ui.setUser_nickname(nick);		
-		this.user_infoService.ui_updateNick(ui);
-		this.user_infoService.ui_updateProfile(ui); //프로필 변경
 		
 		
-		request.getSession().removeAttribute("nick");//닉네임을 변경하기전 유지되어있는 세션을 없애야지 바뀐 닉네임이 헤더에 표시됌.
-		request.getSession().setAttribute("nick", nick);//바뀐 닉네임을 다시 세션에 추가
-		
-		return "redirect:/myinfo";
 	}
 	
 	
@@ -184,11 +211,11 @@ public class MyProfileController {
 	public Map deleteUser_ok(String choiceRequest,HttpServletRequest request) {
 		Map<String,String> map = new HashMap<>();
 		
-		if(choiceRequest.equals(true)) {
-			String id = (String)request.getSession().getAttribute("id");
-			this.user_infoService.ui_withdrawal(id); //계정삭제
-			request.getSession().removeAttribute("id");
-			request.getSession().invalidate();
+		if(choiceRequest.equals("true")) {
+			String id = (String)request.getSession().getAttribute("id");			
+			this.user_infoService.ui_withdrawal(id); //계정삭제			
+			request.getSession().removeAttribute("id"); //세션 삭제
+			request.getSession().invalidate(); // 세션말소
 			map.put("code", "성공");
 			
 		}

@@ -94,5 +94,10 @@
 	됩니다.
 	
 
-11. 
+11. Uncaught TypeError: $(...).val is not a function 에러 대처법 :
+	이것은 js 라이브러리중 하나인 jquery를 html에 적용시키지 않았는데 문법을 사용해 생겨난 에러입니다. 즉, html에 jquery.js를 임폴트 시켜주면 
+	다음과 같은 에러도 해결됩니다.
+	
+
+12. 
    

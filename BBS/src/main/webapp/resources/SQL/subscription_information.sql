@@ -28,5 +28,6 @@ drop sequence user_seq;
 
 update USER_INFO set user_profile ='' where user_id = 'qwer123';
 
-
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('a','a','a','1','a',sysdate,sysdate)
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('b','b','b','2','b',sysdate,sysdate)
 delete from USER_INFO where user_id = 'qwer122';
