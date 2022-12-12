@@ -77,67 +77,69 @@ public class MyProfileController {
 		}
 		
 			
-		ui.setUser_id(id);	
-		String saveFolder = request.getRealPath("resources/uploadUserProfile"); //이진 파일 업로드 서버 경로 -> 톰캣 WAS 서버에 의해서 변경된 실제 톰켓 프로젝트 경로
-		int fileSize= 5*1024*1024;//이진 파일 업로드 최대크기 => 5M로 설정
-		MultipartRequest multi =null;//이진파일 업로드 참조변수 ->cos.jar에서 읽어들임.
-		
-		multi = new MultipartRequest(request,saveFolder,fileSize,"UTF-8");
-		
-		File upFile = multi.getFile("user_profile");//첨부한 이진파일을 가져온다.
-		
-		if(upFile != null) {// 첨부한 프로필 사진이 있다면?
-			
-			//if()//첨부한 사진은 있지만 원래 사진이라면? 즉, 사진을 바꾸지 않았다면?
+		ui.setUser_id(id);
+		String saveFolder = request.getRealPath("resources/uploadUserProfile"); // 이진 파일 업로드 서버 경로 -> 톰캣 WAS 서버에 의해서 변경된
+																				// 실제 톰켓 프로젝트 경로
+		int fileSize = 5 * 1024 * 1024;// 이진 파일 업로드 최대크기 => 5M로 설정
+		MultipartRequest multi = null;// 이진파일 업로드 참조변수 ->cos.jar에서 읽어들임.
+
+		multi = new MultipartRequest(request, saveFolder, fileSize, "UTF-8");
+
+		File upFile = multi.getFile("user_profile");// 첨부한 이진파일을 가져온다.
+
+		if (upFile != null) {// 첨부한 프로필 사진이 있다면?
+
+			// if()//첨부한 사진은 있지만 원래 사진이라면? 즉, 사진을 바꾸지 않았다면?
 			String fileName = upFile.getName();
-			
+
 			File path01 = new File(saveFolder);
-			if(!path01.exists()) {
+			if (!path01.exists()) {
 				try {
 					System.out.println("해당 디렉토리가 존재하지않음");
 					path01.mkdir();
-				}catch(Exception e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else {
+			} else {
 				System.out.println("해당 경로에 디렉토리가 있습니다.");
 			}
-			
+
 			Calendar c = Calendar.getInstance();
 			int year = c.get(Calendar.YEAR);
 			int month = c.get(Calendar.MONTH);
 			int date = c.get(Calendar.DATE);
-			
+
 			Random r = new Random();
 			int random = r.nextInt(100000000);
-			
+
 			int index = fileName.indexOf('.');
-			String fileExtendsion = fileName.substring(index+1);
-			String refileName = "UserProfile-"+year+"_"+month+"_"+date+"_"+random+"."+fileExtendsion;//새로운 이진파일명 저장
-			String fileDBName = "/"+refileName;//데이터베이스 저장될 값
-			
-			upFile.renameTo(new File(saveFolder+"/"+refileName));//변경된 이진파일로 새롭게 생성된 폴더에 실제 업로드
+			String fileExtendsion = fileName.substring(index + 1);
+			String refileName = "UserProfile-" + year + "_" + month + "_" + date + "_" + random + "." + fileExtendsion;// 새로운
+																														// 이진파일명
+																														// 저장
+			String fileDBName = "/" + refileName;// 데이터베이스 저장될 값
+
+			upFile.renameTo(new File(saveFolder + "/" + refileName));// 변경된 이진파일로 새롭게 생성된 폴더에 실제 업로드
 			ui.setUser_profile(fileDBName);
-			
-			String nick = multi.getParameter("user_nickname");			
-			ui.setUser_nickname(nick);		
+
+			String nick = multi.getParameter("user_nickname");
+			ui.setUser_nickname(nick);
 			this.user_infoService.ui_updateNick(ui);
-			this.user_infoService.ui_updateProfile(ui); //프로필 변경
-			
-			
-			request.getSession().removeAttribute("nick");//닉네임을 변경하기전 유지되어있는 세션을 없애야지 바뀐 닉네임이 헤더에 표시됌.
-			request.getSession().setAttribute("nick", nick);//바뀐 닉네임을 다시 세션에 추가
-			
+			this.user_infoService.ui_updateProfile(ui); // 프로필 변경
+
+			request.getSession().removeAttribute("nick");// 닉네임을 변경하기전 유지되어있는 세션을 없애야지 바뀐 닉네임이 헤더에 표시됌.
+			request.getSession().setAttribute("nick", nick);// 바뀐 닉네임을 다시 세션에 추가
+
 			return "redirect:/myinfo";
-		}//첨부한 프로필 사진이 있다면? end
-		else {//첨부한 프로필 사진 변경이 없다면? 닉네임만 변경
-			String nick = multi.getParameter("user_nickname");			
-			ui.setUser_nickname(nick);		
-			this.user_infoService.ui_updateNick(ui);			
-			
-			request.getSession().removeAttribute("nick");//닉네임을 변경하기전 유지되어있는 세션을 없애야지 바뀐 닉네임이 헤더에 표시됌.
-			request.getSession().setAttribute("nick", nick);//바뀐 닉네임을 다시 세션에 추가
-			
+		} // 첨부한 프로필 사진이 있다면? end
+		else {// 첨부한 프로필 사진 변경이 없다면? 닉네임만 변경
+			String nick = multi.getParameter("user_nickname");
+			ui.setUser_nickname(nick);
+			this.user_infoService.ui_updateNick(ui);
+
+			request.getSession().removeAttribute("nick");// 닉네임을 변경하기전 유지되어있는 세션을 없애야지 바뀐 닉네임이 헤더에 표시됌.
+			request.getSession().setAttribute("nick", nick);// 바뀐 닉네임을 다시 세션에 추가
+
 			return "redirect:/myinfo";
 		}
 		

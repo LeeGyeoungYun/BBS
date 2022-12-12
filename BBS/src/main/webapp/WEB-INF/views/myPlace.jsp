@@ -17,6 +17,7 @@
 	overflow-y: scroll;
 	display: flex;
 	flex-wrap: wrap;
+	margin-bottom: 70px;
 }
 </style>
 </head>
@@ -26,7 +27,6 @@
 		<div class="noteContainer">
 		
 			<div class="noteBtn">
-				<span><i class="fa-solid fa-pen-to-square"></i></span>
 				<span><i class="fa-solid fa-magnifying-glass"></i></span>
 				<span><i class="fa-solid fa-trash"></i></span>
 			</div>
@@ -43,6 +43,11 @@
 			</div>
 
 		</div>
+		
+		<a href="#">
+			<div class="createNote"><i class="fa-solid fa-pen-to-square"></i></div>
+		</a>
+		
 	</div>
 
 </body>

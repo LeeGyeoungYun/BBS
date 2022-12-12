@@ -103,13 +103,14 @@
 				</ul>
 			</div>
 			<div class="spaceDiv"></div>
+			<% if(id!=null){%>
 			<div class="mypage">
 				<ul>
 					<li><a href="myPlace">나의 메모장</a></li>
 					<li><a href="myinfo">내정보</a></li>
 				</ul>
 			</div>
-		
+			<%} %>
 		</div>
 		
 	</div>
