@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/css/myPlace.css">
+<script src="resources/js/jquery.js"></script>
 <title>나의 메모장</title>
 <style>
 .imagebox {
@@ -25,10 +26,21 @@
 	<div id="overlay"></div>
 	<div class="backgroud">
 		<div class="noteContainer">
-		
+			
 			<div class="noteBtn">
-				<span><i class="fa-solid fa-magnifying-glass"></i></span>
-				<span><i class="fa-solid fa-trash"></i></span>
+			<form class="searchForm" action="" method="get">
+			<div class="ss">
+				<span class="searchBox">
+					<input type="text" class="findBox" name="findBox">
+					<i class="fa-solid fa-magnifying-glass search"></i>
+				</span>
+				<div class="closeSearch" onclick="closeSearch()">
+					<i class="fa-sharp fa-solid fa-xmark"></i>
+				</div>
+			</div>
+			</form>
+				
+				<span class="trashBox"><i class="fa-solid fa-trash"></i></span>
 			</div>
 			<div class="imagebox">
 				<!-- <img class="board"src="resources/images/note3.jpg"> -->
@@ -49,6 +61,6 @@
 		</a>
 		
 	</div>
-
+	<script src="resources/js/myPlace.js?ver=1"></script>
 </body>
 </html>
