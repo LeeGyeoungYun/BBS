@@ -133,5 +133,20 @@
 	
 14. css : input 상자안에 값을 초기화 시켜주고 싶다면? 빈칸으로 만들고 싶다면?
 	-> ex) <input type="text" class="a"> 일때 js에서 해당 값을 빈칸으로 만들고 싶다한다면 $(".a").val(''); 이렇게 해주면 빈칸으로 만들어진다.	
+
+
+15. css : <span>태그에 margin-top이나 margin-bottom을 거는방법 :
+	<span>태그는 기본적으로 한줄로 작성하는 display:inline이 내제 되어있습니다. 때문에, 왼쪽이나 오른쪽에 마진을 걸 순 있지만 위 아래는 걸 수 없습니다.
+	그렇다면 어떻게 걸까? 답은 display 스타일 형식을 바꿔주면 됩니다. display:inline-block으로 바꿔준다면 div처럼 네방향 다 margin을 걸 수 있습니다.
 	
+
+16. css : position속성중 fixed 랑 absolute 차이점은?
+	absolute => position: relative를 한것을 기준으로 위치를 조정 시키는 것이다. 즉, 위치 조정한곳에 고정시키는 것을 의미
+				만약 부모의 속성이 static이 아닌 경우에는 부모의 시작점을 기준으로 고정시키는 것이다. absolute는 스크롤에따라 변화가 없이 고정된다.
+				
+	fixed => 부모속성에 상관없이 항상 화면에 절대적인 위치를 갖는다. 스크롤시에도 항상 그자리이다.
+	
+
+17. 
+	 	
        	

@@ -56,7 +56,7 @@
 
 		</div>
 		
-		<a href="#">
+		<a href="myPlace_cont">
 			<div class="createNote"><i class="fa-solid fa-pen-to-square"></i></div>
 		</a>
 		

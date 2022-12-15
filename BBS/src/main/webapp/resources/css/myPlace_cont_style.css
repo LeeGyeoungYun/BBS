@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+*{
+	margin:0px;
+	padding:0px;
+	list-style: none;
+	text-decoration: none;
+}
+
+#overlay{
+	visibility: hidden;
+	background: #000;
+	opacity: 0.65;
+	height: 100%;
+	width:100%;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top:0;
+	z-index: 1;
+	transition: all .5s;
+	
+}
+
+.memoContainer{
+	
+	width: 1200px;
+	margin: 20px auto;
+	display:flex;
+}
+
+.memoBox{
+	width: 935px;
+	height: 970px;
+	padding-top:40px;
+	background-image: url("../images/scatchbook.png");
+	background-size: cover;
+}
+
+.writeSpace{
+	margin: 200px 130px 130px 130px;
+	border: 1px solid;
+	width: 750px;
+	height: 610px;
+}
+
+.titleBox{
+	margin:50px 55px;
+}
+
+#memo_title{
+	padding:10px 20px;
+	width: 310px;
+	height: 30px;
+	overflow: hidden;
+}
+
+.titleBox span{
+	padding-left: 150px;
+}
+
+#memo_cont{
+	border:1px solid;
+	width:560px;
+	height: 350px;
+	margin: 20px auto;
+	padding:40px;
+	overflow-y:scroll;
+	-ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+#memo_cont::-webkit-scrollbar{
+	display:none;
+}
+
+
+.doguchang{
+	margin: 165px 0 0 40px;
+	width: 125px;
+	height: 700px;
+	border: 10px solid black;
+	padding: 15px 0;
+}
+
+.dogu{
+	font-size: 60px;
+	padding:15px 35px;
+	text-align: center;
+	display:inline-block;
+}
+
+.dogu:hover{
+	cursor: potiner;
+	color: #626262;
+}
+
+.wall{
+	width:100%;
+	border-top: 10px solid black;
+	margin: 15px 0;
+}
+
+.test{
+	width:1000px;
+	height: 700px;
+	border:3px solid;
+}
+
