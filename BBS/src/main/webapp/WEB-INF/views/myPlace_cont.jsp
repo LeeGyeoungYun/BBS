@@ -10,7 +10,7 @@
 <body>
 	<div id="overlay"></div>
 	<div class="memoContainer">
-		<form method="post" action="update_memo_ok" onsubmit="return a();" >
+		<form class="editForm" method="post" action="update_memo_ok" onsubmit="return a();" >
 		<div class="memoBox"> <!-- 메모장 -->	
 			<div class="writeSpace">
 				<div class="titleBox">
@@ -26,6 +26,12 @@
 					</span>
 				</div>
 				
+				<div class="editBtn">
+					<span class="edit Bold"><i class="fa-solid fa-bold"></i></span>
+					<span class="edit Bold"><i class="fa-solid fa-bold"></i></span>
+					<span class="edit Bold"><i class="fa-solid fa-bold"></i></span>
+					<span class="edit Bold"><i class="fa-solid fa-bold"></i></span>
+				</div>
 				<div id="memo_cont" name="memo_cont" contenteditable="true" >
 					
 				</div>
@@ -38,12 +44,11 @@
 			<div class="wall"></div>
 			<span class="dogu"><i class="fa-solid fa-image" alt="이미지 추가"></i></span>
 			<span class="dogu"><i class="fa-regular fa-square-check" alt="저장"></i></span>
-			<input type="submit" class="cont_submit">
 			<span class="dogu"><i class="fa-solid fa-circle-info" alt="더보기"></i></span>
 		</div>
 		</form>
 	</div>
-	<div class="test"></div>
+	
 	<script src="resources/js/myPlace_cont.js"></script>
 </body>
 </html>

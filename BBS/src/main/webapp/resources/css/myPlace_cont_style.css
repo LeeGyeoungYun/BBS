@@ -30,6 +30,10 @@
 	display:flex;
 }
 
+.editForm{
+	display: flex;
+}
+
 .memoBox{
 	width: 935px;
 	height: 970px;
@@ -60,15 +64,38 @@
 	padding-left: 150px;
 }
 
+.editBtn{
+	width:610px;
+	height: 40px;
+	margin: 10px auto 0px;
+	border: 1px solid;
+	background-color: #d0d0d0;
+	line-height: 43px;
+	padding:0px 15px;
+}
+
+.edit{
+	width: 30px;
+	height: 30px;
+	border: 1px solid;
+	border-radius: 20%;
+	text-align: center;
+	display: inline-block; /*span 태그는 인라인 요소라서 너비 설정이 안되므로 블럭처리하면 너비설정이 가능해진다. 마진또한 마찬가지*/
+	font-size: 20px;
+	line-height: 30px;
+	margin-left: 3px;
+}
+
 #memo_cont{
 	border:1px solid;
 	width:560px;
-	height: 350px;
-	margin: 20px auto;
+	height: 300px;
+	margin: 0px auto;
 	padding:40px;
 	overflow-y:scroll;
 	-ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+    border-top: none;
 }
 
 #memo_cont::-webkit-scrollbar{
@@ -102,9 +129,4 @@
 	margin: 15px 0;
 }
 
-.test{
-	width:1000px;
-	height: 700px;
-	border:3px solid;
-}
 
