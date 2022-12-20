@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
  <typeAliases>
  
  	<typeAlias type="net.daum.vo.User_infoVO" alias="ui" /> <!-- 빈클래스 별명사용 -->
+ 	<typeAlias type="net.daum.vo.MemoVO" alias="memo"/>
  
  </typeAliases>
 </configuration>

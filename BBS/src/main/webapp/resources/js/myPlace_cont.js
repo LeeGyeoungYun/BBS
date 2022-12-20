@@ -15,27 +15,29 @@ img2.addEventListener("click",function(){
 
 let save = document.querySelector(".save");
 save.addEventListener("click",function(){
-	document.querySelector(".gogo").click();
-	console.log("반응옴?ㅋ");
+	saveData();
 });
 
-function a(){
-	console.log("ㅇㅋ 작성됌.");
-	
+function saveData(){
+
 	$.ajax({
-	
 		type:"post",
 		url:"update_memo_ok",
-		data:{content:$("#memo_cont").html(), title:$("#memo_title").val()},
+		data:{title:$("#memo_title").val(), content:$("#memo_cont").html()},
 		dataType:"json",
 		success:function(data){
-			console.log(data);
+			let msg = data.code;
+			console.log(msg);
+			if(msg.includes("성공")){
+				console.log("여기까지 들어옴");
+			}
+			
 		},error : function(){
-			alert("오류");
+			console.log("실패");
 		}
 	
-	});
 	
+	});
 }
 
 

@@ -10,17 +10,22 @@
 <body>
 	<div id="overlay"></div>
 	<div class="memoContainer">
-		<form class="editForm" onsubmit="return a();">
+		<form class="editForm">
 		<div class="memoBox"> <!-- 메모장 -->	
 			<div class="writeSpace">
 				<div class="titleBox">
 					<input type="text" name="memo_title" id="memo_title" placeholder="제목">
 					<span>
 						메모지 색: <select>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
+							<option value="yellow" selected>기본(노랑)</option>
+							<option value="red">빨강</option>
+							<option value="blue">파랑</option>
+							<option value="lightGreen">연두</option>
+							<option value="turquoise">청록</option>
+							<option value="orange">주황</option>
+							<option value="pink">핑크</option>
+							<option value="violet">보라</option>
+							<option value="whiteBlue">하늘</option>
 						</select>
 					
 					</span>
@@ -60,9 +65,9 @@
 			<span class="dogu"><i class="fa-solid fa-trash"></i></span>
 			<div class="wall"></div>
 			<span class="dogu img2"><i class="fa-solid fa-image" alt="이미지 추가"></i></span>
-			<span class="dogu save"><i class="fa-regular fa-square-check" alt="저장"></i></span>
+			<a href="#" class="save"><span class="dogu"><i class="fa-regular fa-square-check" alt="저장"></i></span></a>
 			<span class="dogu"><i class="fa-solid fa-circle-info" alt="더보기"></i></span>
-			<button type="submit" class="gogo"></button>
+		
 		</div>
 		</form>
 	</div>

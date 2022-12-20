@@ -3,7 +3,7 @@ package net.daum.vo;
 import lombok.Data;
 
 @Data
-public class memoVO {
+public class MemoVO {
 	
 	private int mno; //게시물 번호
 	private String user_id;//유저 아이디

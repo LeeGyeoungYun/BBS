@@ -1,5 +1,9 @@
 package net.daum.controller;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.daum.service.User_infoService;
+import net.daum.vo.MemoVO;
 
 @Controller
 public class MyPlaceController {
@@ -29,19 +34,17 @@ public class MyPlaceController {
 	
 	@ResponseBody
 	@PostMapping(value="update_memo_ok")
-	public String update_memo_ok(HttpServletRequest request,String content,String title) {
+	public Map<String,String> update_memo_ok(HttpServletRequest request,String title, String content,MemoVO memo) throws IOException {
 		
-		String data = content.split(",")[1];
+		Map<String,String> map = new HashMap<>();
 		
+		if(title!=null && content!= null) {//제목이랑 내용값이 들어왔다면
+			map.put("code", "성공");
+		}else {
+			map.put("code","실패");
+		}
 		
-		
-        
-        
-		System.out.println(data);
-		System.out.println(content);
-		System.out.println(title);
-		
-		return "1";
+		return map;
 	}
 	
 	
