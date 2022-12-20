@@ -147,6 +147,21 @@
 	fixed => 부모속성에 상관없이 항상 화면에 절대적인 위치를 갖는다. 스크롤시에도 항상 그자리이다.
 	
 
-17. 
+17. js 기능중 document.execCommand()기능사용중 잘 안되었을 때
+	에디터를 구현하는 도중 html에 span태그에 onclick을 이벤트리쓰너를 걸어    document.execCommand('bold') 를 사용하여 구현하려했다.
+	하지만 span태그와 div태그는 잘 작동되지않는 반면, input=button태그와 button태그는 잘 작동되는걸 볼 수 있다. 왜 그러는진 잘 모르겠다.
+	그래서 사용법을 찾아본 결과 button을 이용하여 사용하는걸로 봐선 그렇게 구현해놓은듯 싶다.
+	
+	
+18. input=button과 <button>태그의 차이점 :
+	button태그는 기본적으로 default값이 submit이다. 즉, 폼태그안에 button태그를 만들어 누르면 전송이된다. 만약 전송기능이 아닌 버튼기능으로서
+	작동시키고 싶다면, <button type="button"></button>과 같이 타입을 button으로 명시해줘야한다.
+	button태그에 속성은 총 3가지로 submit, reset, button기능이 있다.
+	input과 다르게 css적으로 버튼안에 이미지를 넣는다는등 꾸미는게 비교적 쉽다. 
+	
+	제일 큰 차이점은 button태그는 스스로 닫지않는 태그인 반면 input태그는 스스로 닫는 태그입니다. 때문에 input태그사용시 뒤에 </input>을 사용하지 않아도 됩니다.
+	
+	
+19. 	 
 	 	
        	

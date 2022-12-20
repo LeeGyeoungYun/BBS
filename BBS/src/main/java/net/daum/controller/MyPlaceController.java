@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.daum.service.User_infoService;
 
@@ -26,16 +27,21 @@ public class MyPlaceController {
 		}		
 	}//myPlace_cont() end
 	
-	
+	@ResponseBody
 	@PostMapping(value="update_memo_ok")
-	public String update_memo_ok(HttpServletRequest request) {
+	public String update_memo_ok(HttpServletRequest request,String content,String title) {
 		
-		String title = request.getParameter("memo_title");
+		String data = content.split(",")[1];
+		
+		
+		
+        
+        
+		System.out.println(data);
+		System.out.println(content);
 		System.out.println(title);
-		String cont = request.getParameter("memo_cont");
-		System.out.println(cont);
 		
-		return "myPlace_cont";
+		return "1";
 	}
 	
 	

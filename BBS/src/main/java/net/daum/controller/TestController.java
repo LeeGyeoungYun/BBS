@@ -31,5 +31,11 @@ public class TestController {
 		
 		return "test2";
 	}
+	
+	@GetMapping(value="test3")
+	public String test3() {
+		return "test3";
+	}
+	
 
 }

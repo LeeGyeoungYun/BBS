@@ -66,7 +66,7 @@
 
 .editBtn{
 	width:610px;
-	height: 40px;
+	height: 45px;
 	margin: 10px auto 0px;
 	border: 1px solid;
 	background-color: #d0d0d0;
@@ -84,7 +84,23 @@
 	font-size: 20px;
 	line-height: 30px;
 	margin-left: 3px;
+	vertical-align: middle;
+	background-color: inherit;
 }
+
+.edit:hover{
+	cursor:pointer;
+	background-color: #848484;
+}
+
+.fontSize{
+	width: 80px;
+	height: 30px;
+	margin-left :10px;
+	vertical-align: middle;
+}
+
+
 
 #memo_cont{
 	border:1px solid;
@@ -101,6 +117,11 @@
 #memo_cont::-webkit-scrollbar{
 	display:none;
 }
+
+#memo_cont img{
+	max-width: 20%;
+}
+
 
 
 .doguchang{
