@@ -13,8 +13,13 @@ create table memo(
 
 alter table memo add constraint FK_MEMO_USER_ID foreign key (user_id) references USER_INFO(user_id) on delete cascade; --외래키 설정
 
+select * from memo;
+
 create sequence memo_seq
 start with 1
 increment by 1
 nocache;
+
+insert into memo (mno,user_id,memo_title,memo_cont,memo_viewcnt,memo_filename,memo_color,memo_update,memo_modifydate) values
+(memo_seq.nextval,'a','1','1',0,null,'red',sysdate,sysdate);
 

@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>메모장</title>
 <link rel="stylesheet" href="resources/css/myPlace_cont_style.css">
+<script src="resources/js/jquery.js"></script>
 </head>
 <body>
 	<div id="overlay"></div>
@@ -16,7 +17,7 @@
 				<div class="titleBox">
 					<input type="text" name="memo_title" id="memo_title" placeholder="제목">
 					<span>
-						메모지 색: <select>
+						메모지 색: <select name="memo_color">
 							<option value="yellow" selected>기본(노랑)</option>
 							<option value="red">빨강</option>
 							<option value="blue">파랑</option>
@@ -65,7 +66,7 @@
 			<span class="dogu"><i class="fa-solid fa-trash"></i></span>
 			<div class="wall"></div>
 			<span class="dogu img2"><i class="fa-solid fa-image" alt="이미지 추가"></i></span>
-			<a href="#" class="save"><span class="dogu"><i class="fa-regular fa-square-check" alt="저장"></i></span></a>
+			<span class="dogu save"><i class="fa-regular fa-square-check" alt="저장"></i></span>
 			<span class="dogu"><i class="fa-solid fa-circle-info" alt="더보기"></i></span>
 		
 		</div>

@@ -7,6 +7,10 @@
  
  <mapper namespace="Memo">
  
- 
+ <!-- 나만의메모등록 -->
+ <insert id="memo_insert" parameterType="memo">
+ 	insert into memo (mno,user_id,memo_title,memo_cont,<!-- memo_filename, -->memo_color,memo_update,memo_modifydate) values
+(memo_seq.nextval,#{user_id},#{memo_title},#{memo_cont},<!-- #{memo_filename}, -->#{memo_color},sysdate,sysdate)
+ </insert>
  
  </mapper>

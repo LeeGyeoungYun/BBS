@@ -15,6 +15,20 @@ img2.addEventListener("click",function(){
 
 let save = document.querySelector(".save");
 save.addEventListener("click",function(){
+	
+	
+	if($("#memo_title").val() ==''){
+		alert("제목이 비어있습니다. 다시 확인해주세요. ");
+		$("#memo_title").focus();
+		return false;
+	}
+	
+	if($("#memo_cont").html()==''){
+		alert("내용이 비어있습니다. 다시 확인해주세요. ");
+		$("#memo_cont").focus();
+		return false;
+	}
+	
 	saveData();
 });
 
@@ -23,17 +37,23 @@ function saveData(){
 	$.ajax({
 		type:"post",
 		url:"update_memo_ok",
-		data:{title:$("#memo_title").val(), content:$("#memo_cont").html()},
+		data:{title:$("#memo_title").val(), content:$("#memo_cont").html(),color:$("select[name=memo_color]").val()},
 		dataType:"json",
 		success:function(data){
 			let msg = data.code;
 			console.log(msg);
 			if(msg.includes("성공")){
 				console.log("여기까지 들어옴");
+				window.location.replace("myPlace"); // window.location.replace("") 이방식은 js에서 리다이렉트로 보내는 방법이다.
+				alert("메모가 작성되었습니다.")
+			}else{
+				console.log("아이디 제목 내용중하나라도 없음 여기로들어옴");
+				window.location.replace("/");
+				alert("메모작성을 실패하였습니다.");
 			}
 			
 		},error : function(){
-			console.log("실패");
+			console.log("오류");
 		}
 	
 	
