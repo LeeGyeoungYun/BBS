@@ -74,6 +74,7 @@ window.onload = function(){
 	const btnAlignCenter = document.querySelector(".alignCenter");
 	const btnAlignRight = document.querySelector(".alignRight");
 	const btnAlignfull = document.querySelector(".alignJustify");
+	const fontSizeSelector = document.querySelector(".fontSize");
 	
 	
 	btnBold.addEventListener("click",function(){ // 글자 굵게 변경
@@ -107,6 +108,16 @@ window.onload = function(){
     btnAlignfull.addEventListener('click', function () { //양쪽정렬
         setStyle('justifyfull');
     });
+    
+    fontSizeSelector.addEventListener('change',function(){
+    	
+    	setFontSize(this.value);
+    });
+    
+    function setFontSize(size){
+    	document.execCommand('fontsize',false,size);
+    	focusEditor();
+    }
 	
 	function setStyle(style) {
         document.execCommand(style);

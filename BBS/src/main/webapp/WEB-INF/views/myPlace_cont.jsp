@@ -45,14 +45,13 @@
 					<input type="file" class="chooseImg" style="display:none;" accept=".jsp , .JPG, .jpeg, .png, .PNG">
 					<select class="fontSize" >
 						<option value="" selected="selected">글자크기</option>
-						<option value="10">10px</option>
-						<option value="12">12px</option>
-						<option value="14">14px</option>
-						<option value="16">16px</option>
-						<option value="18">18px</option>
-						<option value="20">20px</option>
-						<option value="25">25px</option>
-						<option value="30">30px</option>
+						<option value="1">10px</option>
+						<option value="2">13px</option>
+						<option value="3">16px</option>
+						<option value="4">18px</option>
+						<option value="5">24px</option>
+						<option value="6">32px</option>
+						<option value="7">48px</option>
 					</select>
 				</div>
 				<div id="memo_cont" name="memo_cont" contenteditable="true" >
