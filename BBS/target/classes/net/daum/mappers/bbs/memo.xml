@@ -13,4 +13,18 @@
 (memo_seq.nextval,#{user_id},#{memo_title},#{memo_cont},<!-- #{memo_filename}, -->#{memo_color},sysdate,sysdate)
  </insert>
  
+ <!-- 내 메모 목록불러오기 -->
+ <select id="memo_myMemo" parameterType="memo" resultType="memo">
+ 	select * from (select mno,user_id,memo_title,memo_cont,memo_viewcnt,memo_filename,memo_color,memo_update,memo_modifydate
+ 	from memo 
+ 	<where>
+ 	<if test="fieldName==''">user_id=#{user_id}</if><!-- 검색필드가 비어있다면 -->
+ 	<if test="fieldName!=''"><!-- 검색필드가 비어있지않다면 -->
+ 		(memo_title like #{fieldName} OR memo_cont like #{fieldName}) AND user_id=#{user_id}
+ 	</if>
+ 	</where>
+ 	
+ 	order by mno desc)
+ </select>
+ 
  </mapper>

@@ -14,4 +14,6 @@ public class MemoVO {
 	private String memo_color;// 게시물 색깔
 	private String memo_update; //게시물 등록날짜
 	private String memo_modifydate;// 게시물 업데이트날짜
+	
+	private String fieldName; //검색필드
 }

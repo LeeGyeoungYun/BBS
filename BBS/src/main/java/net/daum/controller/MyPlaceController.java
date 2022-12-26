@@ -32,15 +32,22 @@ public class MyPlaceController {
 	private MemoService memoService;
 	
 	@GetMapping(value="myPlace")
-	public ModelAndView myPlace(HttpServletRequest request,User_infoVO ui) {
+	public ModelAndView myPlace(HttpServletRequest request,User_infoVO ui,MemoVO memo) {
 		ModelAndView model;
 		String id = (String)request.getSession().getAttribute("id");
+		String fieldName = request.getParameter("fieldName");//jsp에서 검색란 값을 불러와 변수에 저장
 		if(id!=null) {
 			model = new ModelAndView("myPlace");
-			ui.setUser_id(id);
+			ui.setUser_id(id); // 내프로필불러올때 필요
+			memo.setUser_id(id); //내 메모 불러올때 필요
+			memo.setFieldName("%"+fieldName+"%"); //불러온 변수를 DB로 보내기전 앞 뒤에 %값 넣기
+			
 			List<User_infoVO> ulist = this.user_InfoService.ui_getUserInfo(ui);
+			List<MemoVO> mlist = this.memoService.getMyMemo(memo); //저장한 값을 DB로 보내 정보 요청
+			
 			model.addObject("ulist",ulist);
-						
+			model.addObject("mlist",mlist);//불러온 리스트값을 받아 모델앤뷰에 담아 해당 페이지로 정보를 보냄
+			System.out.println("불러온 내용 : "+mlist);			
 		}else {			
 			model = new ModelAndView("main");
 		}		

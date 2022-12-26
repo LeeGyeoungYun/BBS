@@ -23,3 +23,6 @@ nocache;
 insert into memo (mno,user_id,memo_title,memo_cont,memo_viewcnt,memo_filename,memo_color,memo_update,memo_modifydate) values
 (memo_seq.nextval,'a','1','1',0,null,'red',sysdate,sysdate);
 
+select * from (select mno,user_id,memo_title,memo_cont,memo_viewcnt from memo where memo_title like '%a%' or memo_cont like '%a%' order by mno)
+
+

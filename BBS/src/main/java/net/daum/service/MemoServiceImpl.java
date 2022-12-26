@@ -1,5 +1,7 @@
 package net.daum.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -16,6 +18,10 @@ public class MemoServiceImpl implements MemoService {
 	@Override
 	public void insertMemo(MemoVO memo) {
 		this.memoDao.insertMemo(memo);
+	}
+	
+	public List<MemoVO> getMyMemo(MemoVO memo){
+		return this.memoDao.getMyMemo(memo);
 	}
 
 }
