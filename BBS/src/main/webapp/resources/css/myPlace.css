@@ -99,7 +99,7 @@
 	
 }
 
-.findBox{
+.fieldName{
 	display:none;
 	margin:5px 0  0 35px;
 	width:0px;
@@ -144,6 +144,8 @@
 	width:0px;
 	transition : all .3s ease;
 }
+
+
 
 .closeSearch{
 	font-size: 20px;

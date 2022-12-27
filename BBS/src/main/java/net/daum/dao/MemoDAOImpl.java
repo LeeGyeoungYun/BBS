@@ -23,6 +23,11 @@ public class MemoDAOImpl implements MemoDAO {
 	public List<MemoVO> getMyMemo(MemoVO memo){ //내 메모 불러오기
 		return this.sqlSession.selectList("memo_myMemo",memo);
 	}
+
+	@Override
+	public List<MemoVO> getMySearchMemo(MemoVO memo) {
+		return this.sqlSession.selectList("memo_mySearchMemo",memo);
+	}
 	
 
 }

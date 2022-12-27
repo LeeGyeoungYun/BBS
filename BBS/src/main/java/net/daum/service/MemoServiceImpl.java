@@ -24,4 +24,9 @@ public class MemoServiceImpl implements MemoService {
 		return this.memoDao.getMyMemo(memo);
 	}
 
+	@Override
+	public List<MemoVO> getMySearchMemo(MemoVO memo) {
+		return this.memoDao.getMySearchMemo(memo);
+	}
+
 }

@@ -28,14 +28,16 @@
 		<div class="noteContainer">
 			
 			<div class="noteBtn">
-			<form class="searchForm" action="" method="get">
+			<form class="searchForm" action="myPlace" method="get">
 			<div class="ss">
 				<span class="searchBox">
-					<input type="text" class="findBox" name="findBox">
+					<input type="text" class="fieldName" name="fieldName">
 					<i class="fa-solid fa-magnifying-glass search"></i>
+					<i class="fa-solid fa-magnifying-glass search_active" style="display:none" onclick="searchInfo()"></i>
+					<input type="submit" class="submit" style="display:none">
 				</span>
 				<div class="closeSearch" onclick="closeSearch()">
-					<i class="fa-sharp fa-solid fa-xmark"></i>
+					<i class="fa-sharp fa-solid fa-xmark"></i>			
 				</div>
 			</div>
 			</form>
@@ -44,6 +46,9 @@
 			</div>
 			<div class="imagebox">
 				<!-- <img class="board"src="resources/images/note3.jpg"> -->
+				<c:forEach var="m" items="${mlist}">
+					${m.memo_title}
+				</c:forEach>
 				<div class="post_it"></div>
 				<div class="post_it"></div>
 				<div class="post_it"></div>

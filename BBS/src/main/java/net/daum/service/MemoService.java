@@ -8,5 +8,5 @@ public interface MemoService {
 	
 	 void insertMemo(MemoVO memo);
 	 List<MemoVO> getMyMemo(MemoVO memo);
-
+	 List<MemoVO> getMySearchMemo(MemoVO memo);
 }

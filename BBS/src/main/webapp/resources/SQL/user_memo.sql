@@ -13,7 +13,7 @@ create table memo(
 
 alter table memo add constraint FK_MEMO_USER_ID foreign key (user_id) references USER_INFO(user_id) on delete cascade; --외래키 설정
 
-select * from memo;
+select * from memo order by mno desc;
 
 create sequence memo_seq
 start with 1
@@ -24,5 +24,11 @@ insert into memo (mno,user_id,memo_title,memo_cont,memo_viewcnt,memo_filename,me
 (memo_seq.nextval,'a','1','1',0,null,'red',sysdate,sysdate);
 
 select * from (select mno,user_id,memo_title,memo_cont,memo_viewcnt from memo where memo_title like '%a%' or memo_cont like '%a%' order by mno)
+select * from (select mno,user_id,memo_title,memo_cont,memo_viewcnt,memo_filename,memo_color,memo_update,memo_modifydate
+ 	from memo where user_id = 'a' order by mno desc);
+select * from memo where rowNum =1;
 
+select * from (select mno,user_id,memo_title,memo_cont,memo_viewcnt,memo_filename,memo_color,memo_update,memo_modifydate
+ 	from memo where memo_title like '%null%' and user_id='a' order by mno desc);
+ 	
 
