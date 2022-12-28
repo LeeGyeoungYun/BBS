@@ -37,3 +37,24 @@ function searchInfo(){
 	$(".submit").click();
 	
 }
+
+
+function deleteMemo(){
+
+	$(".modify").css("pointer-events","none"); // <a>태그 비활성화
+	$(".check").css("display","block");
+	$(".trash").css("display","none");
+	$(".deleteCancle").css("display","block");
+}
+
+function cancle_deleteMemo(){
+
+	$(".modify").css("pointer-events","auto"); // <a>태그 활성화
+	$(".check").css("display","none");
+	$(".trash").css("display","block");
+	$(".deleteCancle").css("display","none");
+	
+	$(':checkbox:checked').prop('checked',false);
+	
+}
+

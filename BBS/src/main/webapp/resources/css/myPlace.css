@@ -51,13 +51,44 @@
 	background-size: cover;
 } */
 
+.memoContainer{
+	position: relative;
+}
+
 .post_it{
 	
-	margin: 70px 50px 50px 70px;
-	width: 25%;
-	height: 100px;
-	background-color: green;
+	margin: 30px 16.8px;
+	width: 200px;
+	height: 200px;
+	background-size: cover;
+	padding:50px;
+	//border:2px solid;
 	
+}
+
+.check{
+	position: absolute;
+	top:40px;
+	left:40px;
+	width: 25px;
+	height: 25px;
+	display:none;
+}
+
+.modify{
+	color: #000000;
+}
+
+.titleBox{
+	border: 2px solid;
+    margin: 110px 20px 0px 20px;
+    width: 136px;
+    height: 50px;
+    padding: 10px;
+    background-color: #feebaf;
+	word-break: break-all;
+	overflow: hidden;
+	font-weight: bold;
 }
 
 .createNote{
@@ -125,6 +156,10 @@
 	background-color: #f1b385;
 	width: 60px;
 	height: 60px;
+}
+
+.deleteCancle{
+	display:none;	
 }
 
 .trashBox i, .searchBox i, .openSearchBox i{

@@ -31,4 +31,6 @@ select * from memo where rowNum =1;
 select * from (select mno,user_id,memo_title,memo_cont,memo_viewcnt,memo_filename,memo_color,memo_update,memo_modifydate
  	from memo where memo_title like '%null%' and user_id='a' order by mno desc);
  	
+select count(*) from memo;
 
+delete from memo where memo_color ='red';

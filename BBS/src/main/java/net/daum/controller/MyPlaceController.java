@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -105,6 +106,16 @@ public class MyPlaceController {
 		
 				
 		return map;
+		
+	}// update_memo_ok() end
+	
+	
+	@RequestMapping(value="myMemo")
+	public String myMemo(@RequestParam("mno") int mno,String state,HttpServletRequest request) {
+		
+		
+		
+		return "myMemo_modify";
 	}
 	
 	
