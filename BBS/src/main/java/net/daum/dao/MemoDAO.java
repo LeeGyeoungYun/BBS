@@ -9,4 +9,7 @@ public interface MemoDAO {
 	void insertMemo(MemoVO memo);
 	List<MemoVO> getMyMemo(MemoVO memo);
 	List<MemoVO> getMySearchMemo(MemoVO memo);
+	MemoVO getMemoContent(int mno);
+	void viewCount(int mno);
+	
 }

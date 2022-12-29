@@ -111,11 +111,34 @@ public class MyPlaceController {
 	
 	
 	@RequestMapping(value="myMemo")
-	public String myMemo(@RequestParam("mno") int mno,String state,HttpServletRequest request) {
+	public ModelAndView myMemo(@RequestParam("mno") int mno,String state,HttpServletRequest request,MemoVO memo) {
+				
+		ModelAndView ma = new ModelAndView();
 		
+		if(state.equals("content")) {//내용보기라면?
+			memo = this.memoService.getMemoContent(mno); //내용보기 + 조회수증가
+		}else { //수정폼하고 삭제폼이라면?
+			memo = this.memoService.getMemoContent2(mno); // 내용보기만
+		}
 		
+		List<MemoVO> mlist = this.memoService.getMyMemo(memo);
+		System.out.println(mlist);
+		System.out.println(memo);
+		ma.addObject("mlist",mlist);
+		ma.addObject("m",memo);
 		
-		return "myMemo_modify";
+		if(state.equals("content")) {
+			ma.setViewName("myMemo_content");
+		}else if(state.equals("modify")) {
+			ma.setViewName("myMemo_modify");
+		}else if(state.equals("delete")) {
+			
+			//여기서부턴 db삭제 이뤄줘야함
+			ma.setViewName("myPlace");
+			return null;
+		}
+		
+		return ma;
 	}
 	
 	

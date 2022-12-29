@@ -1,11 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>--번쨰 메모 수정하기 </title>
-<link rel="stylesheet" href="./resources/css/myMemo_modify_style.css"/>
+<title>${m.mno}번쨰 메모 : ${m.memo_title}</title>
+<link rel="stylesheet" href="./resources/css/myMemo_content_style.css"/>
 </head>
 <body>
 	<div id="overlay"></div>
@@ -14,9 +15,9 @@
 		<div class="memoBox"> <!-- 메모장 -->	
 			<div class="writeSpace">
 				<div class="titleBox">
-					<input type="text" name="memo_title" id="memo_title" value="${memo_title}" placeholder="제목">
+					<input type="text" name="memo_title" id="memo_title" value="${m.memo_title}" placeholder="제목" disabled>
 					<span>
-						메모지 색: <select name="memo_color">
+						메모지 색: <select name="memo_color" disabled>
 							<option value="yellow" <c:if test="${m.memo_color=='yellow'}">${'selected'}</c:if>>기본(노랑)</option>
 							<option value="blue" <c:if test="${m.memo_color=='blue'}">${'selected'}</c:if>>파랑</option>
 							<option value="lightGreen" <c:if test="${m.memo_color=='lightGreen'}">${'selected'}</c:if>>연두</option>
@@ -40,9 +41,9 @@
 					<button type="button" class="edit alignRight"><i class="fa-solid fa-align-right"></i></button>
 					<button type="button" class="edit alignJustify"><i class="fa-solid fa-align-justify"></i></button>
 					<button type="button" class="edit img"><i class="fa-solid fa-image" alt="이미지 추가"></i></button>
-					<input type="file" class="chooseImg" style="display:none;" accept=".jsp , .JPG, .jpeg, .png, .PNG">
+					<input type="file" class="chooseImg" style="display:none;" accept=".jsp , .JPG, .jpeg, .png, .PNG" disabled>
 					<select class="fontSize" >
-						<option value="" selected="selected">글자크기</option>
+						<option value="" selected="selected" disabled>글자크기</option>
 						<option value="1">10px</option>
 						<option value="2">13px</option>
 						<option value="3">16px</option>
@@ -52,20 +53,21 @@
 						<option value="7">48px</option>
 					</select>
 				</div>
-				<div id="memo_cont" name="memo_cont" contenteditable="true" >
-					
+				<div id="memo_cont" name="memo_cont" contenteditable="false" >
+					${m.memo_cont}
 				</div>
 			</div>
 		</div>
 		
 		<div class="doguchang"> <!-- 도구창 -->
-			<span class="dogu"><i class="fa-solid fa-pen-to-square" alt="편집"></i></span>
-			<span class="dogu"><i class="fa-solid fa-trash"></i></span>
+			<a href="myMemo?mno=${m.mno}&state=modify">
+				<span class="dogu"><i class="fa-solid fa-pen-to-square" alt="편집"></i></span>
+			</a>
+			<a href="myMemo?mno=${m.mno}&state=delete">
+				<span class="dogu"><i class="fa-solid fa-trash"></i></span>
+			</a>
 			<div class="wall"></div>
-			<span class="dogu img2"><i class="fa-solid fa-image" alt="이미지 추가"></i></span>
-			<span class="dogu save"><i class="fa-regular fa-square-check" alt="저장"></i></span>
-			<span class="dogu"><i class="fa-solid fa-circle-info" alt="더보기"></i></span>
-		
+			<span class="dogu"><i class="fa-solid fa-circle-info" alt="더보기"></i></span>	
 		</div>
 		</form>
 	</div>

@@ -29,5 +29,15 @@ public class MemoDAOImpl implements MemoDAO {
 		return this.sqlSession.selectList("memo_mySearchMemo",memo);
 	}
 	
+	@Override
+	public MemoVO getMemoContent(int mno){
+		return this.sqlSession.selectOne("memo_getContent",mno);
+	}
+	
+	@Override
+	public void viewCount(int mno) {
+		this.sqlSession.update("memo_viewcount",mno);
+	}
+	
 
 }

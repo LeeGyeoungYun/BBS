@@ -19,7 +19,6 @@
 					<span>
 						메모지 색: <select name="memo_color">
 							<option value="yellow" selected>기본(노랑)</option>
-							<option value="red">빨강</option>
 							<option value="blue">파랑</option>
 							<option value="lightGreen">연두</option>
 							<option value="turquoise">청록</option>

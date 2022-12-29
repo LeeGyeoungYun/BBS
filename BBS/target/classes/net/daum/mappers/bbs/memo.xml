@@ -29,4 +29,16 @@
  	order by mno desc)
  </select>
  
+ 
+ <!-- 해당 게시물번호로 게시물 내용불러오기 -->
+ <select id="memo_getContent" parameterType="memo" resultType="memo">
+ 	select * from memo where mno= #{mno}
+ </select>
+ 
+ <!-- 게시물 조회수 증가 -->
+ <update id="memo_viewcount">
+ 	update memo set memo_viewcnt = memo_viewcnt+1 where mno=#{mno}
+ </update>
+ 
+ 
  </mapper>

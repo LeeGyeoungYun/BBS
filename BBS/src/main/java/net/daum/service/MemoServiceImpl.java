@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import net.daum.dao.MemoDAO;
 import net.daum.vo.MemoVO;
@@ -28,5 +29,18 @@ public class MemoServiceImpl implements MemoService {
 	public List<MemoVO> getMySearchMemo(MemoVO memo) {
 		return this.memoDao.getMySearchMemo(memo);
 	}
+	
+	@Transactional //스프링 AOP를 통한 트랜잭션 적용
+	@Override
+	public MemoVO getMemoContent(int mno){ //내용보기 + 조회수증가
+		this.memoDao.viewCount(mno);
+		return this.memoDao.getMemoContent(mno);
+	}
+	
+	@Override
+	public MemoVO getMemoContent2(int mno) { // 내용보기만
+		return this.memoDao.getMemoContent(mno);
+	}
+	
 
 }

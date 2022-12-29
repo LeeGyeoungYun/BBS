@@ -34,3 +34,6 @@ select * from (select mno,user_id,memo_title,memo_cont,memo_viewcnt,memo_filenam
 select count(*) from memo;
 
 delete from memo where memo_color ='red';
+
+select * from memo where mno=13;
+update memo set memo_viewcnt = memo_viewcnt+1 where mno=18;

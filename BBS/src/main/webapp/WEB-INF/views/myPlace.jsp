@@ -52,7 +52,7 @@
 					
 					<div class="memoContainer">
 					<input type="checkbox" class="check">
-					<a class="modify" href="myMemo?mno=${m.mno}&state=modify">
+					<a class="modify" href="myMemo?mno=${m.mno}&state=content">
 					
 					<c:if test="${m.memo_color=='yellow'}"> <!-- 종이색을 노란색으로 선택했을경우 -->
 						
