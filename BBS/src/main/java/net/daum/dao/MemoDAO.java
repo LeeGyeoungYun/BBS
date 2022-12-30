@@ -12,5 +12,6 @@ public interface MemoDAO {
 	MemoVO getMemoContent(int mno);
 	void viewCount(int mno);
 	void modifyMyMemo(MemoVO memo);
+	void deleteMemo(int mno);
 	
 }

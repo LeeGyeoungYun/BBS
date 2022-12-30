@@ -1,5 +1,7 @@
 package net.daum.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -111,11 +113,21 @@ public class MyPlaceController {
 	
 	
 	@RequestMapping(value="myMemo")
-	public ModelAndView myMemo(@RequestParam("mno") int mno,String state,HttpServletRequest request,MemoVO memo,User_infoVO ui) {
-				
+	public ModelAndView myMemo(@RequestParam("mno") int mno,String state,HttpServletRequest request,MemoVO memo,User_infoVO ui,HttpServletResponse response) throws IOException {
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
 		ModelAndView ma = new ModelAndView();
 		String id=(String) request.getSession().getAttribute("id");
 		ui.setUser_id(id);
+			
+		if(id==null) {
+			out.println("<script>");
+			out.println("alert('세션이 만료되었습니다.')");
+			out.println("location='/BBS/'");
+			out.println("</script>");
+		}
 		
 		if(state.equals("content")) {//내용보기라면?
 			memo = this.memoService.getMemoContent(mno); //내용보기 + 조회수증가
@@ -125,10 +137,7 @@ public class MyPlaceController {
 		
 		List<MemoVO> mlist = this.memoService.getMyMemo(memo);
 		List<User_infoVO> ulist = this.user_InfoService.ui_getUserInfo(ui);
-		
-		System.out.println(mlist);
-		System.out.println(memo);
-		
+				
 		ma.addObject("mlist",mlist);
 		ma.addObject("ulist",ulist); //헤더jsp에 딸린 프로필사진 불러오기위해서 필요함
 		ma.addObject("m",memo);
@@ -139,8 +148,23 @@ public class MyPlaceController {
 			ma.setViewName("myMemo_modify");
 		}else if(state.equals("delete")) {
 			
+			String db_id = memo.getUser_id(); //현재 들어와있는 메모의 아이디값을 받아옴
+			
+			if(id.equals(db_id)) { //만약 메모쓴 아이디값하고 지금 세션아이디값하고 일치하다면, 즉 내가쓴 메모라면
+				
+				System.out.println("여기들어옴");
+				this.memoService.deleteMemo(mno);
+				
+				ma.setViewName("myPlace");
+				out.println("<script>");
+				out.println("alert('메모가 삭제되었습니다.')");
+				out.println("location='myPlace'");
+				out.println("</script>");
+			}
+				
+			
 			//여기서부턴 db삭제 이뤄줘야함
-			ma.setViewName("myPlace");
+			
 			return null;
 		}
 		
@@ -149,13 +173,26 @@ public class MyPlaceController {
 	
 	@ResponseBody
 	@PostMapping(value="modify_memo_ok")
-	public Map modify_memo_ok(MemoVO memo, String title, String content, String color) {
+	public Map modify_memo_ok(MemoVO memo, String title, String content, String color,int mno,HttpServletRequest request) {
 		
 		Map<String,String> map = new HashMap<>();
+		String id= (String)request.getSession().getAttribute("id");
+		memo = this.memoService.getMemoContent2(mno); // memo객체에 불러온 해당 게시물번호를 가지고 정보값 불러와 저장
 		
 		
-		
-		
+		if(memo.getUser_id().equals(id) && !title.isEmpty() && !content.isEmpty() && mno >=0) { //만약 아작스 통신으로 값이 제대로 도착했다면?	
+			
+			memo.setMemo_title(title); //바뀐 제목 내용 메모지색을 memo객체에 저장후 db로 보냄
+			memo.setMemo_cont(content);
+			memo.setMemo_color(color);
+			
+			this.memoService.modifyMyMemo(memo);//값변경
+			
+			map.put("code","성공");
+		}else {
+			map.put("code","실패");
+		}
+				
 		return map;
 	}
 	

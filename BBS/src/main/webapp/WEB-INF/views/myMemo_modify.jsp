@@ -39,7 +39,7 @@
 					<button type="button" class="edit alignCenter"><i class="fa-solid fa-align-center"></i></button>
 					<button type="button" class="edit alignRight"><i class="fa-solid fa-align-right"></i></button>
 					<button type="button" class="edit alignJustify"><i class="fa-solid fa-align-justify"></i></button>
-					<button type="button" class="edit img"><i class="fa-solid fa-image" alt="이미지 추가"></i></button>
+					<button type="button" class="edit m_img"><i class="fa-solid fa-image" alt="이미지 추가"></i></button>
 					<input type="file" class="chooseImg" style="display:none;" accept=".jsp , .JPG, .jpeg, .png, .PNG">
 					<select class="fontSize" >
 						<option value="" selected="selected">글자크기</option>
@@ -60,7 +60,7 @@
 		
 		<div class="doguchang"> <!-- 도구창 -->
 			
-			<span class="dogu img2"><i class="fa-solid fa-image" alt="이미지 추가"></i></span>
+			<span class="dogu m_img2"><i class="fa-solid fa-image" alt="이미지 추가"></i></span>
 			<span class="dogu save"><i class="fa-regular fa-square-check" alt="저장"></i></span>
 					
 		</div>

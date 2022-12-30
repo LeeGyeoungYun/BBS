@@ -43,6 +43,11 @@ public class MemoDAOImpl implements MemoDAO {
 	public void modifyMyMemo(MemoVO memo) {
 		this.sqlSession.update("memo_modify",memo);
 	}
+
+	@Override
+	public void deleteMemo(int mno) {
+		this.sqlSession.delete("memo_del",mno);
+	}
 	
 
 }

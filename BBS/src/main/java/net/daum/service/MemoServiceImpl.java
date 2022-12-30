@@ -46,6 +46,11 @@ public class MemoServiceImpl implements MemoService {
 	public void modifyMyMemo(MemoVO memo) { //메모 수정
 		this.memoDao.modifyMyMemo(memo);
 	}
+
+	@Override
+	public void deleteMemo(int mno) { //메모삭제
+		this.memoDao.deleteMemo(mno);	
+	}
 	
 
 }

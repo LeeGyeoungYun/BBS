@@ -3,27 +3,14 @@ window.onbeforeunload = function() { // 뒤로가기 눌렀을때 다시한번 �
   return "Are you sure you wish to leave this delightful page?";
 }
 
-let img = document.querySelector(".img");
-let img2 = document.querySelector(".img2");
+let m_img = document.querySelector(".m_img");
+let m_img2 = document.querySelector(".m_img2");
 
-img.addEventListener("click",function(){
+m_img.addEventListener("click",function(){
 	document.querySelector(".chooseImg").click();
 });
 
-img2.addEventListener("click",function(){
-	document.querySelector(".chooseImg").click();
-});
-
-
-
-let img = document.querySelector(".img");
-let img2 = document.querySelector(".img2");
-
-img.addEventListener("click",function(){
-	document.querySelector(".chooseImg").click();
-});
-
-img2.addEventListener("click",function(){
+m_img2.addEventListener("click",function(){
 	document.querySelector(".chooseImg").click();
 });
 
@@ -49,22 +36,30 @@ save.addEventListener("click",function(){
 
 function saveData(){
 
+	let url = document.location.href.split("=");
+	let index = url[1].indexOf("&");
+	let mno = url[1].substring(0,index);
+	
 	$.ajax({
 		type:"post",
 		url:"modify_memo_ok",
-		data:{title:$("#memo_title").val(), content:$("#memo_cont").html(),color:$("select[name=memo_color]").val()},
+		data:{title:$("#memo_title").val(), content:$("#memo_cont").html(),color:$("select[name=memo_color]").val(),"mno" : mno},
 		dataType:"json",
 		success:function(data){
+			
 			let msg = data.code;
 			console.log(msg);
 			if(msg.includes("성공")){
-				console.log("여기까지 들어옴");
+				console.log("변경성공");
+				
+        		window.onbeforeunload = null; //이것을 넣어줘야지 값이 저장될때는 나가기 경고문이 안뜨게 할 수 있습니다.
+			
 				window.location.replace("myPlace"); // window.location.replace("") 이방식은 js에서 리다이렉트로 보내는 방법이다.
-				alert("메모가 작성되었습니다.")
+				alert("메모가 수정되었습니다.")
 			}else{
-				console.log("아이디 제목 내용중하나라도 없음 여기로들어옴");
+				console.log("아이디 제목 내용중하나라도 없거나 또는 아이디 값이 일치하지않습니다.");
 				window.location.replace("/");
-				alert("메모작성을 실패하였습니다.");
+				alert("아이디가 올바르지 않거나 형식에 어긋나여 메모작성에 실패하였습니다.");
 			}
 			
 		},error : function(){

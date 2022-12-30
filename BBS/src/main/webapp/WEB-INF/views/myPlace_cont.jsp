@@ -60,12 +60,9 @@
 		</div>
 		
 		<div class="doguchang"> <!-- 도구창 -->
-			<span class="dogu"><i class="fa-solid fa-pen-to-square" alt="편집"></i></span>
-			<span class="dogu"><i class="fa-solid fa-trash"></i></span>
-			<div class="wall"></div>
+			
 			<span class="dogu img2"><i class="fa-solid fa-image" alt="이미지 추가"></i></span>
 			<span class="dogu save"><i class="fa-regular fa-square-check" alt="저장"></i></span>
-			<span class="dogu"><i class="fa-solid fa-circle-info" alt="더보기"></i></span>
 		
 		</div>
 		</form>

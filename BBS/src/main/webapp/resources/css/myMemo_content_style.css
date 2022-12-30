@@ -18,7 +18,7 @@
 	position: fixed;
 	right: 0;
 	top:0;
-	z-index: 1;
+	z-index: 3;
 	transition: all .5s;
 	
 }
@@ -153,3 +153,51 @@
 	border-top: 10px solid black;
 	margin: 15px 0;
 }
+
+
+.modal_overlay{
+	background: #000;
+	opacity: 0.65;
+	height: 100%;
+	width:100%;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top:0;
+	z-index: 1;
+}
+
+.modal{
+	width:450px;
+	height: 350px;
+	position: fixed;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	border:5px solid;
+	z-index:2;
+	background-color: #f0f0f0;
+}
+
+.closeBox{
+	width: 100%;
+	height: 50px;
+	margin:10px 0px;
+	text-align: right;
+	line-height: 40px;
+	border-bottom: 1px solid #c9c9c9;
+}
+
+.closeBox span{
+	font-size: 40px;
+	padding-right: 20px;
+}
+
+.infoBox{
+	width: 390px;
+	height: 220px;
+	padding:30px;
+	
+}
+

@@ -12,5 +12,6 @@ public interface MemoService {
 	 MemoVO getMemoContent(int mno);
 	 MemoVO getMemoContent2(int mno);
 	 void modifyMyMemo(MemoVO memo);
+	 void deleteMemo(int mno);
 	
 }

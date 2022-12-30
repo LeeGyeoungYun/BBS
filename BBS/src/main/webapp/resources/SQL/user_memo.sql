@@ -33,7 +33,10 @@ select * from (select mno,user_id,memo_title,memo_cont,memo_viewcnt,memo_filenam
  	
 select count(*) from memo;
 
-delete from memo where memo_color ='red';
-
+delete from memo where mno = 2;
 select * from memo where mno=13;
 update memo set memo_viewcnt = memo_viewcnt+1 where mno=18;
+
+select * from memo order by memo_modifydate desc;
+
+select * from (select user_id, user_nickname from user_info) u inner join (select * from memo) m on u.user_id = m.user_id;

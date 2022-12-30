@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>${m.mno}번쨰 메모 : ${m.memo_title}</title>
 <link rel="stylesheet" href="./resources/css/myMemo_content_style.css"/>
+<sript src="./resources/js/jquery.js"></sript>
 </head>
 <body>
 	<div id="overlay"></div>
@@ -67,10 +68,28 @@
 				<span class="dogu"><i class="fa-solid fa-trash"></i></span>
 			</a>
 			<div class="wall"></div>
-			<span class="dogu"><i class="fa-solid fa-circle-info" alt="더보기"></i></span>	
+			<span class="dogu d_modal" onclick="modalOn()"><i class="fa-solid fa-circle-info" alt="더보기"></i></span>	
 		</div>
 		
 	</div>
 	
+	
+	<!-- 여기는 더보기 모달창 내용입니다. -->
+	<div class="modalChang" style="display:none;">
+		<div class="modal_overlay"></div>
+		<div class="modal">
+			<div class="closeBox">
+				<span class="close"><i class="fa-sharp fa-solid fa-xmark"></i></span>
+			</div>
+			<div class="infoBox">
+				<p>작성자 : ${m.user_id}</p><br>
+				<p>작성한 날짜 : ${m.memo_update}</p><br>
+				<p>수정한 날짜 : ${m.memo_modifydate}</p><br>
+			</div>
+		</div>
+	</div>
+	
+	
+	<script src="./resources/js/myMemo_content.js?ver=1"></script>
 </body>
 </html>
