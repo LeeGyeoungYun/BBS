@@ -111,9 +111,11 @@ public class MyPlaceController {
 	
 	
 	@RequestMapping(value="myMemo")
-	public ModelAndView myMemo(@RequestParam("mno") int mno,String state,HttpServletRequest request,MemoVO memo) {
+	public ModelAndView myMemo(@RequestParam("mno") int mno,String state,HttpServletRequest request,MemoVO memo,User_infoVO ui) {
 				
 		ModelAndView ma = new ModelAndView();
+		String id=(String) request.getSession().getAttribute("id");
+		ui.setUser_id(id);
 		
 		if(state.equals("content")) {//내용보기라면?
 			memo = this.memoService.getMemoContent(mno); //내용보기 + 조회수증가
@@ -122,9 +124,13 @@ public class MyPlaceController {
 		}
 		
 		List<MemoVO> mlist = this.memoService.getMyMemo(memo);
+		List<User_infoVO> ulist = this.user_InfoService.ui_getUserInfo(ui);
+		
 		System.out.println(mlist);
 		System.out.println(memo);
+		
 		ma.addObject("mlist",mlist);
+		ma.addObject("ulist",ulist); //헤더jsp에 딸린 프로필사진 불러오기위해서 필요함
 		ma.addObject("m",memo);
 		
 		if(state.equals("content")) {
@@ -139,6 +145,18 @@ public class MyPlaceController {
 		}
 		
 		return ma;
+	}
+	
+	@ResponseBody
+	@PostMapping(value="modify_memo_ok")
+	public Map modify_memo_ok(MemoVO memo, String title, String content, String color) {
+		
+		Map<String,String> map = new HashMap<>();
+		
+		
+		
+		
+		return map;
 	}
 	
 	

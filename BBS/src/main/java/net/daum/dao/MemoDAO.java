@@ -11,5 +11,6 @@ public interface MemoDAO {
 	List<MemoVO> getMySearchMemo(MemoVO memo);
 	MemoVO getMemoContent(int mno);
 	void viewCount(int mno);
+	void modifyMyMemo(MemoVO memo);
 	
 }

@@ -11,7 +11,7 @@
 <body>
 	<div id="overlay"></div>
 	<div class="memoContainer">
-		<form class="editForm">
+		
 		<div class="memoBox"> <!-- 메모장 -->	
 			<div class="writeSpace">
 				<div class="titleBox">
@@ -69,7 +69,7 @@
 			<div class="wall"></div>
 			<span class="dogu"><i class="fa-solid fa-circle-info" alt="더보기"></i></span>	
 		</div>
-		</form>
+		
 	</div>
 	
 </body>

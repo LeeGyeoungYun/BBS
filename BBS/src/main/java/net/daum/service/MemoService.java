@@ -11,5 +11,6 @@ public interface MemoService {
 	 List<MemoVO> getMySearchMemo(MemoVO memo);
 	 MemoVO getMemoContent(int mno);
 	 MemoVO getMemoContent2(int mno);
+	 void modifyMyMemo(MemoVO memo);
 	
 }

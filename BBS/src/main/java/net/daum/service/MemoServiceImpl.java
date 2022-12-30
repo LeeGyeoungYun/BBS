@@ -42,5 +42,10 @@ public class MemoServiceImpl implements MemoService {
 		return this.memoDao.getMemoContent(mno);
 	}
 	
+	@Override
+	public void modifyMyMemo(MemoVO memo) { //메모 수정
+		this.memoDao.modifyMyMemo(memo);
+	}
+	
 
 }

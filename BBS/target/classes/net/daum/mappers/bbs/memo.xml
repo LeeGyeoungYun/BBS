@@ -40,5 +40,11 @@
  	update memo set memo_viewcnt = memo_viewcnt+1 where mno=#{mno}
  </update>
  
+ <!-- 메모 내용 변경/수정 -->
+ <update id="memo_modify">
+ 	update memo set memo_title = #{memo_title}, memo_cont = #{memo_title}, <!-- memo_filename = #{memofilename} --> memo_color = #{memo_color}
+ 			memo_modifydate = sysdate where mno = #{mno}
+ </update>
+ 
  
  </mapper>

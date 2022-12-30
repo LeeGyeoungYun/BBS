@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>--번쨰 메모 수정하기 </title>
+<title>${m.mno} 번쨰 메모 수정하기 </title>
 <link rel="stylesheet" href="./resources/css/myMemo_modify_style.css"/>
 </head>
 <body>
@@ -14,7 +14,7 @@
 		<div class="memoBox"> <!-- 메모장 -->	
 			<div class="writeSpace">
 				<div class="titleBox">
-					<input type="text" name="memo_title" id="memo_title" value="${memo_title}" placeholder="제목">
+					<input type="text" name="memo_title" id="memo_title" value="${m.memo_title}" placeholder="제목">
 					<span>
 						메모지 색: <select name="memo_color">
 							<option value="yellow" <c:if test="${m.memo_color=='yellow'}">${'selected'}</c:if>>기본(노랑)</option>
@@ -53,21 +53,20 @@
 					</select>
 				</div>
 				<div id="memo_cont" name="memo_cont" contenteditable="true" >
-					
+					${m.memo_cont}
 				</div>
 			</div>
 		</div>
 		
 		<div class="doguchang"> <!-- 도구창 -->
-			<span class="dogu"><i class="fa-solid fa-pen-to-square" alt="편집"></i></span>
-			<span class="dogu"><i class="fa-solid fa-trash"></i></span>
-			<div class="wall"></div>
+			
 			<span class="dogu img2"><i class="fa-solid fa-image" alt="이미지 추가"></i></span>
 			<span class="dogu save"><i class="fa-regular fa-square-check" alt="저장"></i></span>
-			<span class="dogu"><i class="fa-solid fa-circle-info" alt="더보기"></i></span>
-		
+					
 		</div>
 		</form>
+		
+		<script src="resources/js/myMemo_modify.js?ver=1"></script>
 	</div>
 	
 </body>
