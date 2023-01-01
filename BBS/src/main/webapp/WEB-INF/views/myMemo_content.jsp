@@ -83,6 +83,7 @@
 			</div>
 			<div class="infoBox">
 				<p>작성자 : ${m.user_id}</p><br>
+				<p>조회수: ${m.memo_viewcnt}</p><br>
 				<p>작성한 날짜 : ${m.memo_update}</p><br>
 				<p>수정한 날짜 : ${m.memo_modifydate}</p><br>
 			</div>
