@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 매퍼 DTD설정 -->
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Cm">
+
+	<!-- 커뮤니티 메모 목록불러오기 -->
+ <select id="memo_cmMemo" parameterType="memo" resultType="net.daum.vo.MemoVO">
+ 	select * from (select mno,user_id,memo_title,memo_cont,memo_viewcnt,<!-- memo_filename, -->memo_color,memo_public,memo_update,memo_modifydate
+ 	from memo where memo_public = '1' order by memo_modifydate desc )
+ </select>
+ 
+ <!-- 커뮤니티에 남긴 내 메모 목록불러오기 -->
+ <select id="memo_myCmMemo" parameterType="memo" resultType="net.daum.vo.MemoVO">
+ 	select * from (select mno,user_id,memo_title,memo_cont,memo_viewcnt,<!-- memo_filename, -->memo_color,memo_public,memo_update,memo_modifydate
+ 	from memo where user_id = #{user_id} AND memo_public = '1' order by memo_modifydate desc )
+ </select>
+ 
+ <!-- 검색한 메모 목록불러오기 -->
+ <select id="memo_cmSearchMemo" parameterType="memo" resultType="net.daum.vo.MemoVO">
+ 	select * from (select mno,user_id,memo_title,memo_cont,memo_viewcnt,<!-- memo_filename, -->memo_color,memo_update,memo_modifydate
+ 	from memo
+ 	
+	where (memo_title like #{fieldName} OR memo_cont like #{fieldName}) AND memo_public = '1'
+ 	 	
+ 	order by memo_modifydate desc)
+ </select>
+ 
+ 
+
+</mapper>

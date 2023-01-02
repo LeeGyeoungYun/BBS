@@ -16,7 +16,7 @@
  <!-- 내 메모 목록불러오기 -->
  <select id="memo_myMemo" parameterType="memo" resultType="net.daum.vo.MemoVO">
  	select * from (select mno,user_id,memo_title,memo_cont,memo_viewcnt,<!-- memo_filename, -->memo_color,memo_update,memo_modifydate
- 	from memo where user_id = #{user_id} order by memo_modifydate desc)
+ 	from memo where user_id = #{user_id} and memo_public = '0' order by memo_modifydate desc )
  </select>
  
  <!-- 내 검색한 메모 목록불러오기 -->
@@ -24,11 +24,10 @@
  	select * from (select mno,user_id,memo_title,memo_cont,memo_viewcnt,<!-- memo_filename, -->memo_color,memo_update,memo_modifydate
  	from memo
  	
-	where (memo_title like #{fieldName} OR memo_cont like #{fieldName}) AND user_id = #{user_id}
+	where (memo_title like #{fieldName} OR memo_cont like #{fieldName}) AND user_id = #{user_id} AND memo_public = '0'
  	 	
  	order by memo_modifydate desc)
  </select>
- 
  
  <!-- 해당 게시물번호로 게시물 내용불러오기 -->
  <select id="memo_getContent" parameterType="memo" resultType="memo">

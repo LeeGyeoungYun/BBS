@@ -30,8 +30,6 @@ function closeSearch(){
 	$(".closeSearch").css("visibility","hidden");
 	$(".search").css("display","block");
 	$(".search_active").css("display","none");
-	
-	$(".fieldName").val(''); // 서치 바 닫으면 안에 값도 초기화
 };
 
 function searchInfo(){
@@ -41,22 +39,17 @@ function searchInfo(){
 }
 
 
-function deleteMemo(){
+function myMemo(){
 
-	$(".modify").css("pointer-events","none"); // <a>태그 비활성화
-	$(".check").css("display","block");
-	$(".trash").css("display","none");
+	$(".myFile").css("display","none");
 	$(".deleteCancle").css("display","block");
+	
 }
 
-function cancle_deleteMemo(){
+function cancle_myMemo(){
 
-	$(".modify").css("pointer-events","auto"); // <a>태그 활성화
-	$(".check").css("display","none");
-	$(".trash").css("display","block");
+	$(".myFile").css("display","block");
 	$(".deleteCancle").css("display","none");
-	
-	$(':checkbox:checked').prop('checked',false);
 	
 }
 

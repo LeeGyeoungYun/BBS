@@ -7,6 +7,7 @@ create table memo(
 	,memo_viewcnt number(38) default 0 -- 조회수
 	,memo_filename varchar2(300) null --게시물 사진
 	,memo_color varchar2(100) not null --게시물 색깔
+	,memo_public number(2) default 0 -- 0이면 개인 메모 1이면 정보 공유 게시판에 작성한 메모
 	,memo_update date --등록 날짜
 	,memo_modifydate date --메모 변경날짜	
 );
@@ -19,6 +20,10 @@ create sequence memo_seq
 start with 1
 increment by 1
 nocache;
+
+delete from memo;
+drop table memo;
+drop sequence memo_seq
 
 insert into memo (mno,user_id,memo_title,memo_cont,memo_viewcnt,memo_filename,memo_color,memo_update,memo_modifydate) values
 (memo_seq.nextval,'a','1','1',0,null,'red',sysdate,sysdate);

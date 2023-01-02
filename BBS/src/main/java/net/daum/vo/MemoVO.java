@@ -12,6 +12,7 @@ public class MemoVO {
 	private int memo_viewcnt; //게시물 조회수
 	private String memo_filename; //게시물 제목
 	private String memo_color;// 게시물 색깔
+	private int memo_public; //0이면 개인메모 1이면 커뮤니티에 남긴 메모
 	private String memo_update; //게시물 등록날짜
 	private String memo_modifydate;// 게시물 업데이트날짜
 	
