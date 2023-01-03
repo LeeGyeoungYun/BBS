@@ -132,7 +132,7 @@
 
 .fieldName{
 	display:none;
-	margin:5px 0  0 35px;
+	margin:5px 0  0 15px;
 	width:0px;
 	height:38px;
 	padding:4px;
@@ -194,4 +194,11 @@
 	font-size: 22px;
 }
 
-
+select{
+	width: 50px;
+    height: 30px;
+    background-color: inherit;
+    border: none;
+    margin: 15px 0 0 20px;
+    display: none;
+}

@@ -8,12 +8,12 @@
 
 <mapper namespace="Cm">
 
-	<!-- 커뮤니티 메모 목록불러오기 -->
- <select id="memo_cmMemo" parameterType="memo" resultType="net.daum.vo.MemoVO">
- 	select * from (select mno,user_id,memo_title,memo_cont,memo_viewcnt,<!-- memo_filename, -->memo_color,memo_public,memo_update,memo_modifydate
- 	from memo where memo_public = '1' order by memo_modifydate desc )
- </select>
- 
+ <!-- 커뮤니티에 글남기기 -->
+ <insert id="memo_cmInsert" parameterType="memo">
+ 	insert into memo (mno,user_id,memo_title,memo_cont,<!-- memo_filename --> memo_color, memo_public, memo_update, memo_modifydate)
+ 	values (memo_seq.nextval,#{user_id},#{memo_title},#{memo_cont},<!-- #{memo_filename} --> #{memo_color},'1',sysdate,sysdate)
+ </insert>
+
  <!-- 커뮤니티에 남긴 내 메모 목록불러오기 -->
  <select id="memo_myCmMemo" parameterType="memo" resultType="net.daum.vo.MemoVO">
  	select * from (select mno,user_id,memo_title,memo_cont,memo_viewcnt,<!-- memo_filename, -->memo_color,memo_public,memo_update,memo_modifydate
@@ -25,7 +25,21 @@
  	select * from (select mno,user_id,memo_title,memo_cont,memo_viewcnt,<!-- memo_filename, -->memo_color,memo_update,memo_modifydate
  	from memo
  	
-	where (memo_title like #{fieldName} OR memo_cont like #{fieldName}) AND memo_public = '1'
+	<where>
+		
+		<if test="field ==''"></if>
+		<if test="field == 'writer'">
+			user_id like #{fieldName}
+		</if>
+		<if test="field == 'title'">
+			memo_title like #{fieldName}
+		</if>
+		<if test="field == 'content'">
+			memo_cont like #{fieldName}
+		</if>
+		and memo_public ='1'
+		
+	</where>
  	 	
  	order by memo_modifydate desc)
  </select>

@@ -3,13 +3,14 @@ let search = document.querySelector(".searchBox");
 search.addEventListener("click",function(){
 	
 	
-	$(".searchBox").css("width","350px");
+	$(".searchBox").css("width","400px");
+	$("select[name=field]").css("display","block");
 	$(".searchBox").css("text-align","right");
 	$(".search").css("padding-left","25px");
 	$(".fieldName").css("display","block");
 	$(".fieldName").css("width","220px");
 	$(".searchBox").css("display","flex");
-	$(".ss").css("width","425px");
+	$(".ss").css("width","475px");
 	$(".closeSearch").css("visibility","visible");	
 	$(".search").css("display","none");
 	
@@ -21,6 +22,7 @@ search.addEventListener("click",function(){
 function closeSearch(){
 	
 	$(".searchBox").css("width","60px");
+	$("select[name=field]").css("display","none");
 	$(".searchBox").css("text-align","center");
 	$(".search").css("padding-left","0px");
 	$(".fieldName").css("display","none");
@@ -43,6 +45,8 @@ function myMemo(){
 
 	$(".myFile").css("display","none");
 	$(".deleteCancle").css("display","block");
+	$(".im1").css("display","none");
+	$(".im2").css("display","flex");
 	
 }
 
@@ -50,6 +54,8 @@ function cancle_myMemo(){
 
 	$(".myFile").css("display","block");
 	$(".deleteCancle").css("display","none");
+	$(".im1").css("display","flex");
+	$(".im2").css("display","none");
 	
 }
 

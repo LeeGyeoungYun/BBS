@@ -45,3 +45,5 @@ update memo set memo_viewcnt = memo_viewcnt+1 where mno=18;
 select * from memo order by memo_modifydate desc;
 
 select * from (select user_id, user_nickname from user_info) u inner join (select * from memo) m on u.user_id = m.user_id;
+
+select * from memo where memo_public ='1';
