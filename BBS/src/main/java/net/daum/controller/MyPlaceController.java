@@ -57,7 +57,6 @@ public class MyPlaceController {
 			}
 			
 			model.addAttribute("ulist",ulist);
-		
 	
 			return "myPlace";
 		}else {			
@@ -141,6 +140,11 @@ public class MyPlaceController {
 		ma.addObject("mlist",mlist);
 		ma.addObject("ulist",ulist); //헤더jsp에 딸린 프로필사진 불러오기위해서 필요함
 		ma.addObject("m",memo);
+		
+		if(memo.getUser_id().equals(id)) {
+			String answer = "success";
+			ma.addObject("answer",answer);
+		}
 		
 		if(state.equals("content")) {
 			ma.setViewName("myMemo_content");

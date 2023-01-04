@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>${m.mno}번쨰 메모 : ${m.memo_title}</title>
-<link rel="stylesheet" href="./resources/css/myMemo_content_style.css"/>
+<link rel="stylesheet" href="./resources/css/cmMemo_content_style.css"/>
 <script src="./resources/js/jquery.js"></script>
 </head>
 <body>
@@ -64,10 +64,10 @@
 		<div class="doguchang"> <!-- 도구창 -->
 		
 		<c:if test="${answer.equals('success')}">
-			<a href="myMemo?mno=${m.mno}&state=modify">
+			<a href="cmMemo?mno=${m.mno}&state=modify">
 				<span class="dogu"><i class="fa-solid fa-pen-to-square" alt="편집"></i></span>
 			</a>
-			<a href="myMemo?mno=${m.mno}&state=delete">
+			<a href="cmMemo?mno=${m.mno}&state=delete">
 				<span class="dogu"><i class="fa-solid fa-trash"></i></span>
 			</a>
 			<div class="wall"></div>
@@ -95,6 +95,6 @@
 	</div>
 	
 	
-	<script src="./resources/js/myMemo_content.js?ver=1"></script>
+	<script src="./resources/js/cmMemo_content.js?ver=1"></script>
 </body>
 </html>

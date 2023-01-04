@@ -58,7 +58,7 @@
 		</div>
 		
 		<div class="myPlaceBox">
-			<div class="closeBox" onclick="closeBox()">
+			<div class="h_closeBox" onclick="closeBox()">
 				<i class="fa-solid fa-caret-up"></i>
 			</div>
 				<div class="profileBox">
