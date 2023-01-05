@@ -167,7 +167,7 @@ public class CommunityController {
 				ma.setViewName("community");
 				out.println("<script>");
 				out.println("alert('삭제할 권한이 없습니다.')");
-				out.println("</script>");
+				out.println("</script>"); 
 			}
 				
 			
