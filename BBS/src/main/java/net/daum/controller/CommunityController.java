@@ -47,8 +47,6 @@ public class CommunityController {
 		
 		memo.setField(field);
 		memo.setFieldName("%"+fieldName+"%");
-		System.out.println(memo.getField());
-		System.out.println(memo.getFieldName());
 			
 		if(id!=null) {//나의 헤더.jsp에 포함된 프로필사진을 출력하기 위해 필요한 조건문입니다.
 			ui.setUser_id(id);

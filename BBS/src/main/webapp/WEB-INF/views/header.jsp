@@ -98,7 +98,7 @@
 			<div class="menuContainer">
 				<ul>
 					<li><a href="community">정보공유</a></li>
-					<li><a href="#">공지사항</a></li>
+					<li><a href="announcement">공지사항</a></li>
 					<li><a href="#">QNA</a></li>
 				</ul>
 			</div>
