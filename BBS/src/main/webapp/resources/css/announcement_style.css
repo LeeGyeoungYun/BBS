@@ -31,14 +31,13 @@
 .noticeTab{
 	height: 80px;
 	width: 100%;
-	border: 1px solid;
+	
 	display:flex;
 }
 
 .tab{
 	width: 33.3%;
 	height: 100%;
-	border:1px solid;
 	font-size: 30px;
 	text-align: center;
 	line-height: 78px;
@@ -46,7 +45,17 @@
 }
 
 .tab a{
-	color:black;
+	color: #afafaf;
+	display:block;
+}
+
+.tab.active:hover a, .tab.active:active a{
+	color: #000000;
+	 box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.active{
+	
 }
 
 

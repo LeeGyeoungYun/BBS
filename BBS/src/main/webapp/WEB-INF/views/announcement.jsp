@@ -14,7 +14,7 @@
 		
 		<ul class="noticeTab">
 			<li class="tab"><a  href="#all">전체</a></li>
-			<li class="tab"><a  href="#notice">공지사항</a></li>
+			<li class="tab active"><a  href="#notice">공지사항</a></li>
 			<li class="tab"><a  href="#qna">QnA</a></li>
 		</ul>
 	</div>
