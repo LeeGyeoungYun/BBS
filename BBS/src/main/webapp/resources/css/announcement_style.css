@@ -49,13 +49,25 @@
 	display:block;
 }
 
-.tab.active:hover a, .tab.active:active a{
+.tab.active:hover a, .active a{
 	color: #000000;
-	 box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-.active{
+.tabDiv{
+	border:1px solid;
+	width: 700px;
+	height: 540px;
+	margin: 40px auto 0px;
 	
 }
+
+.td{
+	display:none;
+}
+
+.td.active{
+	display:block;
+}
+
 
 
