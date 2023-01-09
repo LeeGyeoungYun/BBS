@@ -19,7 +19,22 @@
 		</ul>
 		
 		<div class="tabDiv">
-			<div class="td td1"> td1
+			<div class="td td1"> 
+				<ul>
+					<li class="noticeBox">
+						<span class="kind">전체</span>
+						<span class="writer">관리자</span>
+						<span class="title">이러쿵저러쿵</span>
+						<span class="date">2023-01-08</span> 
+					</li>
+					<li class="noticeBox"></li>
+					<li class="noticeBox"></li>
+					<li class="noticeBox"></li>
+					<li class="noticeBox"></li>
+					<li class="noticeBox"></li>
+					<li class="noticeBox"></li>
+					
+				</ul>
 			</div>
 			<div class="td td2 active" > td2
 			</div>

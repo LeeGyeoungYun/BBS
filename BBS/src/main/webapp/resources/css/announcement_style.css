@@ -54,7 +54,7 @@
 }
 
 .tabDiv{
-	border:1px solid;
+	//border:1px solid;
 	width: 700px;
 	height: 540px;
 	margin: 40px auto 0px;
@@ -68,6 +68,31 @@
 .td.active{
 	display:block;
 }
+
+.noticeBox:first-child{
+
+	border:1px solid;
+}
+
+.noticeBox{
+	width: 100%;
+	height: 50px;
+	border-left:1px solid;
+	border-right:1px solid;
+	border-bottom:1px solid;
+}
+
+.noticeBox span{
+	line-height: 50px;
+	margin-left:40px;
+}
+
+.noticeBox span:last-child{
+	float: right;
+	margin-right: 40px;
+}
+
+
 
 
 
