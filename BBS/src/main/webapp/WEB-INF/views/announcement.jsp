@@ -21,6 +21,12 @@
 		<div class="tabDiv">
 			<div class="td td1"> 
 				<ul>
+					<li class="noticeBox noticeTitle">
+						<span>그룹명</span>
+						<span>작성자</span>
+						<span class="title">제목</span>
+						<span>작성일</span>
+					</li>
 					<li class="noticeBox">
 						<span class="kind">전체</span>
 						<span class="writer">관리자</span>

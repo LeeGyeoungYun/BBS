@@ -84,15 +84,33 @@
 
 .noticeBox span{
 	line-height: 50px;
-	margin-left:40px;
+	width: 70px;
+	height: 50px;
+	display:inline-block;
+	text-align: center;
+	margin-left:20px;
+	overflow: hidden;
 }
 
 .noticeBox span:last-child{
-	float: right;
-	margin-right: 40px;
+	margin-left:75px;
+	width: 150px;
 }
 
+.title{
+	width: 250px  !important;
+	//overflow: hidden;
+}
 
+.noticeTitle{
+	height: 40px;
+	background-color: #d1d1d1;
+	
+}
+
+.noticeTitle span{	
+	line-height: 40px;
+}
 
 
 
