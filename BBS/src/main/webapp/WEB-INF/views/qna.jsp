@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./resources/css/announcement_style.css">
-<title>공지사항</title>
+<title>QnA</title>
 </head>
 <body class="batang">
 	<div id="overlay"></div>
@@ -14,8 +14,8 @@
 		
 		<ul class="noticeTab">
 			<li class="tab t1"><a  href="#all">전체</a></li>
-			<li class="tab t2 active"><a  href="announcement">공지사항</a></li>
-			<li class="tab t3"><a  href="qna">QnA</a></li>
+			<li class="tab t2"><a  href="announcement">공지사항</a></li>
+			<li class="tab t3 active"><a  href="qna">QnA</a></li>
 		</ul>
 		
 		<div class="tabDiv">
@@ -42,9 +42,9 @@
 					
 				</ul>
 			</div>
-			<div class="td td2 active" > td2
+			<div class="td td2" > td2
 			</div>
-			<div class="td td3" > td3
+			<div class="td td3 active"> td3
 			</div>	
 		</div>
 	</div>

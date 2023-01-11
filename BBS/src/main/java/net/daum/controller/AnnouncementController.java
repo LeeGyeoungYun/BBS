@@ -17,4 +17,10 @@ public class AnnouncementController {
 		
 		return "announcement";
 	}
+	
+	@GetMapping(value="qna")
+	public String qna() {
+		
+		return "qna";
+	}
 }

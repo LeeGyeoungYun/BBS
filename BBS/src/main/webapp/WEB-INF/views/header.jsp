@@ -95,22 +95,49 @@
 				<span class="cancle" onclick="menu_close()"><i class="fa-sharp fa-solid fa-xmark"></i></span>
 			</div>
 			
+			<%if(id==null){ %>
 			<div class="menuContainer">
 				<ul>
 					<li><a href="community">정보공유</a></li>
 					<li><a href="announcement">공지사항</a></li>
-					<li><a href="#">QNA</a></li>
+					<li><a href="qna">QNA</a></li>
 				</ul>
 			</div>
 			<div class="spaceDiv"></div>
-			<% if(id!=null){%>
+			<%}else{ %>
+			
+			<% if(id.equals("admin")) {%>
+			<div class="communityControll">
+				<ul>
+					<li><a href="#">커뮤니티 게시판 관리</a></li>
+					<li><a href="#">공지사항 게시판</a></li>
+					<li><a href="#">QNA 게시판</a></li>
+				</ul>
+			</div>
+			<div class="spaceDiv"></div>
+			<div class="memberControll">
+				<ul>
+					<li><a href="#">회원 관리</a></li>
+					
+				</ul>
+			</div>
+			<%}else{ %>
+			<div class="menuContainer">
+				<ul>
+					<li><a href="community">정보공유</a></li>
+					<li><a href="announcement">공지사항</a></li>
+					<li><a href="qna">QNA</a></li>
+				</ul>
+			</div>
+			<div class="spaceDiv"></div>
+			
 			<div class="mypage">
 				<ul>
 					<li><a href="myPlace">나의 메모장</a></li>
 					<li><a href="myinfo">내정보</a></li>
 				</ul>
 			</div>
-			<%} %>
+			<%}} %>
 		</div>
 		
 	</div>

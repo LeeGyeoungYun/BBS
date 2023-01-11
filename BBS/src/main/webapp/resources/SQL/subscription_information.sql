@@ -10,6 +10,8 @@ CREATE TABLE USER_INFO(
 	user_modifyDate date null
 );
 
+insert into user_info (user_id,user_nickname,user_pwd,user_phoneNum,user_email,user_joinDate,user_modifyDate) values ('admin','관리자','admin','1','1',sysdate,sysdate);
+
 select * from USER_INFO ;
 drop table USER_INFO;
 

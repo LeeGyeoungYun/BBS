@@ -76,7 +76,7 @@
 .cancle:hover{
 	cursor: pointer;
 }
-.menuContainer, .mypage{
+.menuContainer, .mypage, .communityControll, .memberControll{
 	margin:0px auto;
 	position: relative;
 	width: 250px;
@@ -84,11 +84,11 @@
 }
 
 
-.menuContainer ul, .mypage ul{
+.menuContainer ul, .mypage ul, .communityControll ul, .memberControll ul{
 	padding: 45px 0px;
 }
 
-.menuContainer ul li, .mypage ul li{
+.menuContainer ul li, .mypage ul li, .communityControll ul li, .memberControll ul li{
 	font-weight: bold;
 	font-size:20px;
 	height: 40px;
@@ -98,11 +98,11 @@
 
 }
 
-.menuContainer ul li a, .mypage ul li a{
+.menuContainer ul li a, .mypage ul li a, .communityControll ul li a, .memberControll ul li a{
 	color: #17191D;
 }
 
-.menuContainer ul li a:hover, .mypage ul li a:hover{
+.menuContainer ul li a:hover, .mypage ul li a:hover, .communityControll ul li:hover, .memberControll ul li:hover{
 	color: #ff6c6c;
 }
 
