@@ -109,7 +109,7 @@
 			<% if(id.equals("admin")) {%>
 			<div class="communityControll">
 				<ul>
-					<li><a href="#">커뮤니티 게시판 관리</a></li>
+					<li><a href="cmControl">커뮤니티 게시판 관리</a></li>
 					<li><a href="#">공지사항 게시판</a></li>
 					<li><a href="#">QNA 게시판</a></li>
 				</ul>
