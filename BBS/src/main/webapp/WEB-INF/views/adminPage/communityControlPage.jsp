@@ -11,7 +11,9 @@
 	<div id="overlay"></div>
 	<div class="cmControlContainer">
 		
-		<div class="cmControlTitle"> 게시물 관리
+		<div class="cmControlTitle"> 
+		<i class="fa-solid fa-circle"></i>
+		<span class="titleBox">게시물 관리</span>
 		</div>
 		<div class="viewAndAddBox">
 			<span>게시물 수 : </span>

@@ -27,10 +27,16 @@
 	font-size: 30px;
 	width: 100%;
 	height: 50px;
-	padding-left: 15px;
-	
-	
+	padding-left: 15px;	
 }
+
+.cmControlTitle i{
+	font-size:18px;
+}
+.titleBox{
+  line-height: 50px;
+}
+
 
 .viewAndAddBox{
 	margin:70px 15px 0px;
@@ -51,7 +57,7 @@
 }
 
 table {
-	margin-top:15px;
+	margin-top:17px;
     width: 100%;
     border-top: 1px solid #444444;
     border-collapse: collapse;
@@ -69,6 +75,3 @@ th, td {
     padding: 10px;
 }
 
-tr{
-	border-bottom: none;
-}
