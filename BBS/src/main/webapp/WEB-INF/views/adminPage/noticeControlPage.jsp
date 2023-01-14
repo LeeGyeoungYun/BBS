@@ -18,7 +18,7 @@
 		<div class="viewAndAddBox">
 			<span>게시물 수 : </span>
 			<a href="updateNotice">
-				<input type="button" value="게시판 추가">
+				<input type="button" value="공지사항 추가">
 			</a>
 		</div>
 		<table>

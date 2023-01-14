@@ -16,3 +16,47 @@
 	
 }
 
+.updateNoticeContainer{
+	width: 800px;
+    height: 700px;
+    margin: 120px auto 100px;
+    border: 1px solid;
+}
+
+table {
+	margin-top:17px;
+    width: 100%;   
+    border-collapse: collapse;
+}
+
+tr{
+	border-top:1px solid;
+	border-left:1px solid;
+	border-right: 1px solid;
+}
+
+th, td{
+	padding:10px;
+}
+
+th{
+	background-color: #a8f0ff;
+	width: 110px;
+	text-align: center;
+}
+
+td{
+	border-left:1px solid;
+	border-right:1px solid;
+	padding-left: 30px;
+	width:280px;
+}
+
+td:last-child {
+	border-right: none;
+}
+
+.spanbox:last-child{
+	margin-left: 25px;
+}
+
