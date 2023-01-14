@@ -21,5 +21,19 @@ public class AdminPageController {
 		
 		return "adminPage/communityControlPage";
 	}
+	
+	@GetMapping(value="noticeControl")
+	public String noticeControl() {
+		
+		return "adminPage/noticeControlPage";
+	}
+	
+	@GetMapping(value="updateNotice")
+	public String updateNotice() {
+		
+		return "adminPage/updateNotice";
+	}
+	
+	
 
 }

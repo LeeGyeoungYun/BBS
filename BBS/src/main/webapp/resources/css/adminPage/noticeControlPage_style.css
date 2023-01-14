@@ -16,21 +16,21 @@
 	
 }
 
-.cmControlContainer{
+.noticeControlContainer{
 	width: 900px;
 	height: 700px;
 	margin:120px auto 100px;
 	//border: 1px solid;
 }
 
-.cmControlTitle{
+.noticeControlTitle{
 	font-size: 30px;
 	width: 100%;
 	height: 50px;
 	padding-left: 15px;	
 }
 
-.cmControlTitle i{
+.noticeControlTitle i{
 	font-size:18px;
 }
 .titleBox{
@@ -78,4 +78,3 @@ th, td {
   	text-overflow: ellipsis;
   	white-space: nowrap;
 }
-
