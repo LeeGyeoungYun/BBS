@@ -1,8 +1,11 @@
 package net.daum.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import net.daum.service.MemoService;
 import net.daum.service.User_infoService;
@@ -32,6 +35,19 @@ public class AdminPageController {
 	public String updateNotice() {
 		
 		return "adminPage/updateNotice";
+	}
+	
+	@PostMapping(value="updateNotice_ok")
+	public String updateNotice_ok(HttpServletRequest request) {
+		
+		String notice_kind = request.getParameter("notice_kind");
+		String notice_title = request.getParameter("notice_title");
+		String notice_cont = request.getParameter("notice_cont");
+		
+		System.out.println(notice_kind);
+		System.out.println(notice_title);
+		System.out.println(notice_cont);
+		return "redirect:updateNotice";
 	}
 	
 	
