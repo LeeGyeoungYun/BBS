@@ -2,12 +2,14 @@ package net.daum.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -35,7 +37,16 @@ public class AdminPageController {
 	}
 	
 	@GetMapping(value="/noticeControl")
-	public String noticeControl() {
+	public String noticeControl(Model model,HttpServletRequest request,NoticeVO no) {
+		
+		String category = request.getParameter("category");
+		
+		no.setCategory(category);
+		List<NoticeVO> nlist = this.noticeService.getNotice(no);
+		
+		model.addAttribute("nlist",nlist);
+		model.addAttribute("count",nlist.size());
+		//System.out.println(nlist);
 		
 		return "adminPage/noticeControlPage";
 	}
@@ -70,14 +81,7 @@ public class AdminPageController {
 		
 		no.setUser_id(id);
 		no.setNotice_title(notice_title);
-		no.setNotice_cont(notice_cont);
-		
-		System.out.println(no);
-		System.out.println(notice_kind);
-		System.out.println(notice_title);
-		System.out.println(notice_cont);
-		System.out.println(id);
-		
+		no.setNotice_cont(notice_cont);	
 		
 		if (notice_kind.equals("an")) { // 공지사항으로 체크했다면
 

@@ -14,4 +14,6 @@ public class NoticeVO {
 	private String notice_update;
 	private String notice_modifyDate;
 	
+	private String category;
+	
 }

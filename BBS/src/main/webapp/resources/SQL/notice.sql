@@ -18,8 +18,13 @@ nocache;
 
 
 select * from notice;
+select count(*) from notice where notice_kind = 'Notice';
+select count(*) from notice
+
 drop table notice;
 drop sequence notice_seq;
 
 delete from notice where nno=2;
+
+select * from notice  where notice_kind = 'Notice';
 

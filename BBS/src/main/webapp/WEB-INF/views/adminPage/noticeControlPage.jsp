@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../header.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -16,7 +17,7 @@
 		<span class="titleBox">공지사항 관리</span>
 		</div>
 		<div class="viewAndAddBox">
-			<span>게시물 수 : </span>
+			<span>게시물 수 : ${count} </span>
 			<a href="updateNotice">
 				<input type="button" value="공지사항 추가">
 			</a>
@@ -35,56 +36,19 @@
 				</tr>
 			</thead>
 			<tbody>
+				
+				<c:forEach var="n" items="${nlist}">
 				<tr>
-					<td>1</td>
+					<td>${n.nno}</td>
 					<td>관리자</td>
-					<td>title</td>
+					<td>${n.notice_title}</td>
 					<td>공지사항</td>
-					<td>1</td>
-					<td>date</td>
-					<td>date</td>
+					<td>${n.notice_viewcnt}</td>
+					<td>${n.notice_update}</td>
+					<td>${n.notice_modifyDate}</td>
 					<td><button>delete</button></td>
 				</tr>
-				<tr>
-					<td>1</td>
-					<td>관리자</td>
-					<td>title</td>
-					<td>공지사항</td>
-					<td>1</td>
-					<td>date</td>
-					<td>date</td>
-					<td><button>delete</button></td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>관리자</td>
-					<td>title</td>
-					<td>공지사항</td>
-					<td>1</td>
-					<td>date</td>
-					<td>date</td>
-					<td><button>delete</button></td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>관리자</td>
-					<td>title</td>
-					<td>공지사항</td>
-					<td>1</td>
-					<td>date</td>
-					<td>date</td>
-					<td><button>delete</button></td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>관리자</td>
-					<td>titleㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ</td>
-					<td>공지사항</td>
-					<td>1</td>
-					<td>date</td>
-					<td>date</td>
-					<td><button>delete</button></td>
-				</tr>
+				</c:forEach>
 				
 				
 			</tbody>

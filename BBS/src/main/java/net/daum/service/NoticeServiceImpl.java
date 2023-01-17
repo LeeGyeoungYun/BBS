@@ -1,5 +1,7 @@
 package net.daum.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -21,5 +23,10 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void insertQna(NoticeVO no) {
 		this.noticeDao.insertQna(no);		
+	}
+
+	@Override
+	public List<NoticeVO> getNotice(NoticeVO no) {
+		return this.noticeDao.getNotice(no);
 	}
 }

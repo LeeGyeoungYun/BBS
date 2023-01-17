@@ -10,7 +10,7 @@
 <!-- 공지사항 추가 -->
  <insert id="no_insertNotice" parameterType="no">
  	insert into notice (nno,user_id,notice_title,notice_cont,notice_kind,notice_update,notice_modifyDate) 
- 	values (notice_seq.nextval,#{user_id},#{notice_title},#{notice_cont},'공지사항',sysdate,sysdate)
+ 	values (notice_seq.nextval,#{user_id},#{notice_title},#{notice_cont},'Notice',sysdate,sysdate)
  </insert>
  
  <!-- QNA 추가 -->
@@ -18,6 +18,29 @@
  	insert into notice (nno,user_id,notice_title,notice_cont,notice_kind,notice_update,notice_modifyDate) 
  	values (notice_seq.nextval,#{user_id},#{notice_title},#{notice_cont},'QNA',sysdate,sysdate)
  </insert>
+ 
+ 
+ <!-- 공지사항 및 QNA 불러오기 -->
+ <select id="no_getNotice"  resultType="no">
+ 	select nno,user_id,notice_title,notice_cont,notice_viewcnt,notice_kind,
+ 	to_char(notice_update,'YYYY-MM-DD') as notice_update,to_char(notice_modifyDate,'YYYY-MM-DD') as notice_modifyDate  
+ 	
+ 	from notice
+ 	<where>
+ 		<if test="category =='all'"></if>
+ 		<if test="category =='Notice'">
+ 			 notice_kind = 'Notice'
+ 		</if>
+ 		<if test="category =='QNA'">
+ 			 notice_kind = 'QNA'
+ 		</if>
+ 	</where>
+ 	
+ 	order by nno desc
+ </select>
+ 
+ 
+ <!-- 게시물  -->
  
  
  </mapper>
