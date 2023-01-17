@@ -13,9 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import net.daum.service.CommunityService;
 import net.daum.service.MemoService;
 import net.daum.service.NoticeService;
 import net.daum.service.User_infoService;
+import net.daum.vo.MemoVO;
 import net.daum.vo.NoticeVO;
 
 @Controller
@@ -28,10 +30,20 @@ public class AdminPageController {
 	private MemoService memoService;
 	
 	@Autowired
+	private CommunityService communityService;
+	
+	@Autowired
 	private NoticeService noticeService;
 	
 	@GetMapping(value="cmControl")
-	public String cmControl() {
+	public String cmControl(Model model,HttpServletRequest request,MemoVO memo) {
+		
+		List<MemoVO> clist = this.communityService.getCmMemo(memo);
+		model.addAttribute("clist",clist);
+		model.addAttribute("count",clist.size());
+		
+		System.out.println(clist);
+		System.out.println(clist.size());
 		
 		return "adminPage/communityControlPage";
 	}
@@ -39,9 +51,9 @@ public class AdminPageController {
 	@GetMapping(value="/noticeControl")
 	public String noticeControl(Model model,HttpServletRequest request,NoticeVO no) {
 		
-		String category = request.getParameter("category");
+		no.setCategory("Notice");// 공지사항만 리스트 출력하기위해 설정
 		
-		no.setCategory(category);
+		
 		List<NoticeVO> nlist = this.noticeService.getNotice(no);
 		
 		model.addAttribute("nlist",nlist);

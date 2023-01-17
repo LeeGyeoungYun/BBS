@@ -46,7 +46,10 @@
 					<td>${n.notice_viewcnt}</td>
 					<td>${n.notice_update}</td>
 					<td>${n.notice_modifyDate}</td>
-					<td><button>delete</button></td>
+					<td>
+						<button>수정</button>
+						<button>삭제</button>
+					</td>
 				</tr>
 				</c:forEach>
 				

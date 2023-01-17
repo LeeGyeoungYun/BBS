@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../header.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -43,28 +44,21 @@
 					<td>date</td>
 					<td><button>delete</button></td>
 				</tr>
-				<tr>
-					<td>1</td>
+				
+				<c:forEach var="c" items="${clist}">
+					<td>${c.mno}</td>
 					<td>asd</td>
 					<td>title</td>
 					<td>color</td>
 					<td>1</td>
 					<td>date</td>
 					<td>date</td>
-					<td><button>delete</button></td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>asd</td>
-					<td>title</td>
-					<td>color</td>
-					<td>1</td>
-					<td>date</td>
-					<td>date</td>
-					<td><button>delete</button></td>
-				</tr>
-				
-				
+					<td>
+						<button>수정</button>
+						<button>삭제</button>
+					</td>
+				</c:forEach>
+					
 			</tbody>
 		</table>
 	</div>
