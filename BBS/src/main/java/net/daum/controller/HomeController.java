@@ -69,8 +69,16 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/login_ok" ,method=RequestMethod.POST)
-	public String login_ok(User_infoVO ui,RedirectAttributes rttr,HttpSession session,HttpServletRequest request) {
+	public String login_ok(User_infoVO ui,RedirectAttributes rttr,HttpSession session,HttpServletRequest request,String user_id, String user_pwd) {
 		
+		/*
+		 * if(user_id.equals("admin") && user_pwd.equals("admin")) {//관리자용 로그인
+		 * System.out.println("관리자 로그인에 성공하였습니다.");
+		 * request.getSession().setAttribute("id", "admin");
+		 * request.getSession().setAttribute("nick", "관리자"); return "redirect:/"; }
+		 */
+		
+			
 		int i = this.user_infoService.loginCheck(ui);//입력한 값이 유저정보와 같은지 확인하고 같으면 1을 틀리면 0을 반환
 		
 		if(i==1) {//계정이 있다면 			

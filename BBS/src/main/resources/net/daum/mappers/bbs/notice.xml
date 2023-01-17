@@ -7,9 +7,17 @@
  
  <mapper namespace="Notice">
  
-
+<!-- 공지사항 추가 -->
+ <insert id="no_insertNotice" parameterType="no">
+ 	insert into notice (nno,user_id,notice_title,notice_cont,notice_kind,notice_update,notice_modifyDate) 
+ 	values (notice_seq.nextval,#{user_id},#{notice_title},#{notice_cont},'공지사항',sysdate,sysdate)
+ </insert>
  
- 
+ <!-- QNA 추가 -->
+ <insert id="no_insertQna" parameterType="no">
+ 	insert into notice (nno,user_id,notice_title,notice_cont,notice_kind,notice_update,notice_modifyDate) 
+ 	values (notice_seq.nextval,#{user_id},#{notice_title},#{notice_cont},'QNA',sysdate,sysdate)
+ </insert>
  
  
  </mapper>

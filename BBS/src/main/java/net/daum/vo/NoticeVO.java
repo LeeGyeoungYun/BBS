@@ -10,7 +10,7 @@ public class NoticeVO {
 	private String notice_title;
 	private String notice_cont;
 	private int notice_viewcnt;
-	private int notice_kind;
+	private String notice_kind;
 	private String notice_update;
 	private String notice_modifyDate;
 	

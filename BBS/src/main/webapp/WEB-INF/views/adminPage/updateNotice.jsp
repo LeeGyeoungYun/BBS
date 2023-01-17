@@ -36,7 +36,7 @@
 			<tr>
 				<th>내용</th>
 				<td class="contentTd">
-					<textarea name="notice_cont"></textarea>
+					<textarea name="notice_cont" class="notice_cont"></textarea>
 				</td>
 			</tr>
 			
