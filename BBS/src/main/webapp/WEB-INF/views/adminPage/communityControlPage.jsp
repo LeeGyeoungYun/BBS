@@ -17,8 +17,10 @@
 		<span class="titleBox">게시물 관리</span>
 		</div>
 		<div class="viewAndAddBox">
-			<span>게시물 수 : </span>
-			<input type="button" value="게시판 추가">
+			<span>게시물 수 : ${count} </span>
+			<a href="community_cont">
+				<input class="boardBtn" type="button" value="게시판 추가">
+			</a>
 		</div>
 		<table>
 			<thead>
@@ -34,29 +36,21 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>1</td>
-					<td>asd</td>
-					<td>title</td>
-					<td>color</td>
-					<td>1</td>
-					<td>date</td>
-					<td>date</td>
-					<td><button>delete</button></td>
-				</tr>
-				
+		
 				<c:forEach var="c" items="${clist}">
+				<tr>
 					<td>${c.mno}</td>
-					<td>asd</td>
-					<td>title</td>
-					<td>color</td>
-					<td>1</td>
-					<td>date</td>
-					<td>date</td>
+					<td>${c.user_id}</td>
+					<td>${c.memo_title}</td>
+					<td>${c.memo_color}</td>
+					<td>${c.memo_viewcnt}</td>
+					<td>${c.memo_update}</td>
+					<td>${c.memo_modifydate}</td>
 					<td>
-						<button>수정</button>
-						<button>삭제</button>
+						<button class="boardBtn bb1">수정</button>
+						<button class="boardBtn bb2">삭제</button>
 					</td>
+				</tr>
 				</c:forEach>
 					
 			</tbody>

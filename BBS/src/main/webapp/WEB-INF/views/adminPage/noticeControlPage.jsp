@@ -19,7 +19,7 @@
 		<div class="viewAndAddBox">
 			<span>게시물 수 : ${count} </span>
 			<a href="updateNotice">
-				<input type="button" value="공지사항 추가">
+				<input class="boardBtn" type="button" value="공지사항 추가">
 			</a>
 		</div>
 		<table>
@@ -47,8 +47,12 @@
 					<td>${n.notice_update}</td>
 					<td>${n.notice_modifyDate}</td>
 					<td>
-						<button>수정</button>
-						<button>삭제</button>
+						<a href="controlNotice?nno=${n.nno}&state=modify">
+							<button class="boardBtn bb1">수정</button>
+						</a>
+						<a href="controlNotice?nno=${n.nno}&state=delete">
+							<button class="boardBtn bb2">삭제</button>
+						</a>
 					</td>
 				</tr>
 				</c:forEach>

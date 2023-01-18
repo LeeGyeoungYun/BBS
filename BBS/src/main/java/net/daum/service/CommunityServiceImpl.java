@@ -29,5 +29,11 @@ public class CommunityServiceImpl implements CommunityService {
 	public List<MemoVO> getCmMemo(MemoVO memo) {
 		return this.communityDao.getCmMemo(memo);
 	}
+	
+	@Override
+	public List<MemoVO> no_getCmMemo(MemoVO memo){
+		return this.communityDao.no_getCmMemo(memo);
+	};
+	
 
 }

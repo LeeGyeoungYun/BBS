@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import net.daum.service.CommunityService;
 import net.daum.service.MemoService;
@@ -38,12 +39,9 @@ public class AdminPageController {
 	@GetMapping(value="cmControl")
 	public String cmControl(Model model,HttpServletRequest request,MemoVO memo) {
 		
-		List<MemoVO> clist = this.communityService.getCmMemo(memo);
+		List<MemoVO> clist = this.communityService.no_getCmMemo(memo);
 		model.addAttribute("clist",clist);
 		model.addAttribute("count",clist.size());
-		
-		System.out.println(clist);
-		System.out.println(clist.size());
 		
 		return "adminPage/communityControlPage";
 	}
@@ -108,6 +106,16 @@ public class AdminPageController {
 		}
 		 
 
+	}//updateNotice_ok() end
+	
+	@GetMapping(value="/controlNotice")
+	public ModelAndView controlNotice(HttpServletRequest request,int nno, String state) {
+		
+		ModelAndView ma = new ModelAndView();
+		ma.setView("");
+		
+		
+		return ma;
 	}
 	
 	

@@ -79,3 +79,17 @@ th, td {
   	white-space: nowrap;
 }
 
+.boardBtn:hover{
+	cursor: pointer;
+}
+
+.bb1{
+	background-color: #bbffbb;
+	border:none;
+}
+
+.bb2{
+	background-color: #ffa8a8;	
+	border:none;
+}
+

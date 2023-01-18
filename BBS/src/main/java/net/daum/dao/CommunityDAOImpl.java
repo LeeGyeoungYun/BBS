@@ -29,4 +29,9 @@ public class CommunityDAOImpl implements CommunityDAO {
 		return this.sqlSession.selectList("memo_cmSearchMemo",memo);
 	}
 
+	@Override
+	public List<MemoVO> no_getCmMemo(MemoVO memo) {	
+		return this.sqlSession.selectList("no_getCmMemo",memo);
+	}
+
 }
