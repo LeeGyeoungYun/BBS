@@ -47,4 +47,12 @@
  	from notice where nno= #{nno}
  </select>
  
+ <!-- 게시물 수정 -->
+ <update id="no_updateNotice">
+ 	update notice set notice_kind = #{notice_kind}, notice_title = #{notice_title}, notice_cont = #{notice_cont},
+ 	notice_modifyDate = sysdate
+ 	where nno = #{nno}
+ 	
+ </update>
+ 
  </mapper>

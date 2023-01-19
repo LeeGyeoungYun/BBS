@@ -38,7 +38,19 @@ public class AdminPageController {
 	private NoticeService noticeService;
 	
 	@GetMapping(value="cmControl")
-	public String cmControl(Model model,HttpServletRequest request,MemoVO memo) {
+	public String cmControl(Model model,HttpServletRequest request,MemoVO memo,HttpServletResponse response) throws IOException {
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		String id=(String)request.getSession().getAttribute("id");
+		if(id==null||!id.equals("admin")) { //관리자만 접근가능
+			out.println("<script>");
+			out.println("alert('접근권한이 없습니다.')");
+			out.println("location.replace('/BBS/')");
+			out.println("</script>");
+			out.flush();
+		}
 		
 		List<MemoVO> clist = this.communityService.no_getCmMemo(memo);
 		model.addAttribute("clist",clist);
@@ -48,10 +60,22 @@ public class AdminPageController {
 	}
 	
 	@GetMapping(value="/noticeControl")
-	public String noticeControl(Model model,HttpServletRequest request,NoticeVO no) {
+	public String noticeControl(Model model,HttpServletRequest request,NoticeVO no,HttpServletResponse response) throws IOException {
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		String id=(String)request.getSession().getAttribute("id");
+		if(id==null||!id.equals("admin")) {//관리자만 접근가능
+			out.println("<script>");
+			out.println("alert('접근권한이 없습니다.')");
+			out.println("location.replace('/BBS/')");
+			out.println("</script>");
+			out.flush();
+		}
+		
 		
 		no.setCategory("Notice");// 공지사항만 리스트 출력하기위해 설정
-		
 		
 		List<NoticeVO> nlist = this.noticeService.getNotice(no);
 		
@@ -126,11 +150,40 @@ public class AdminPageController {
 		
 		if(state.equals("modify")) {
 			ma.setViewName("/adminPage/modifyNotice");
+		}else if(state.equals("delete")) { //삭제하는거라면?
+			//여기서 DB삭제 이뤄줘야함
 		}
 		
 		
 		
 		return ma;
+	}
+	
+	@PostMapping(value="modifyNotice_ok")
+	public String modifyNotice_ok(HttpServletRequest request,NoticeVO no,int nno) {
+		
+		String notice_kind = request.getParameter("notice_kind");
+		String notice_title = request.getParameter("notice_title");
+		String notice_cont = request.getParameter("notice_cont");
+			
+		no.setNotice_title(notice_title);
+		no.setNotice_cont(notice_cont);
+		no.setNno(nno);
+		
+		if (notice_kind.equals("an")) { // 공지사항으로 체크했다면
+			
+			no.setNotice_kind("Notice");
+			this.noticeService.updateNotice(no);
+			return "redirect:/noticeControl";
+
+		} else { // QnA로 올릴꺼라면?
+			
+			no.setNotice_kind("QNA");
+			this.noticeService.updateNotice(no);
+			return "redirect:/updateNotice";
+
+		}
+		
 	}
 	
 	

@@ -47,20 +47,22 @@
 					<td>${n.notice_update}</td>
 					<td>${n.notice_modifyDate}</td>
 					<td>
-						<a href="notice?nno=${n.nno}&state=modify">
-							<button class="boardBtn bb1">수정</button>
+						<a class="go" href="notice?nno=${n.nno}&state=modify">
+							<button class="boardBtn bb1" onclick="idcheck()">수정</button>
 						</a>
-						<a href="notice?nno=${n.nno}&state=delete">
-							<button class="boardBtn bb2">삭제</button>
+						<a class="go" href="notice?nno=${n.nno}&state=delete">
+							<button class="boardBtn bb2" onclick="idcheck()">삭제</button>
 						</a>
 					</td>
+					
 				</tr>
 				</c:forEach>
 				
 				
 			</tbody>
 		</table>
-	</div>	
+	</div>
 	
+		
 </body>
 </html>

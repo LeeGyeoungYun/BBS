@@ -13,7 +13,7 @@
 	<div class="updateNoticeContainer">
 	<form method="post" action="modifyNotice_ok" onsubmit="return formCheck();">
 	<table>
-		
+		<input type="hidden" name="nno" value="${no.nno}">
 		<tbody>
 			<tr>
 				<th>작성일</th>

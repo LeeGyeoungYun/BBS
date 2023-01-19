@@ -10,5 +10,6 @@ public interface NoticeDAO {
 	void insertQna(NoticeVO no);
 	List<NoticeVO> getNotice(NoticeVO no); //공지사항 및 QNA 리스트 불러오기
 	NoticeVO getSelectNotice(NoticeVO no);
+	void updateNotice(NoticeVO no);
 
 }
