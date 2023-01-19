@@ -119,7 +119,7 @@ public class CommunityController {
 			
 		if(id==null) {
 			out.println("<script>");
-			out.println("alert('세션이 만료되었습니다.')");
+			out.println("alert('로그인 후 이용가능합니다.')");
 			out.println("location='/BBS/'");
 			out.println("</script>");
 		}

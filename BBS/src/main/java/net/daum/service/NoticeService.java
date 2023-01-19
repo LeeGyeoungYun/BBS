@@ -9,5 +9,6 @@ public interface NoticeService {
 	void insertNotice(NoticeVO no);
 	void insertQna(NoticeVO no);
 	List<NoticeVO> getNotice(NoticeVO no);
+	NoticeVO getSelectNotice(NoticeVO no);
 
 }

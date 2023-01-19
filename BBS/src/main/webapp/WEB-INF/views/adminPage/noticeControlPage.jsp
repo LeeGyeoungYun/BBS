@@ -47,10 +47,10 @@
 					<td>${n.notice_update}</td>
 					<td>${n.notice_modifyDate}</td>
 					<td>
-						<a href="controlNotice?nno=${n.nno}&state=modify">
+						<a href="notice?nno=${n.nno}&state=modify">
 							<button class="boardBtn bb1">수정</button>
 						</a>
-						<a href="controlNotice?nno=${n.nno}&state=delete">
+						<a href="notice?nno=${n.nno}&state=delete">
 							<button class="boardBtn bb2">삭제</button>
 						</a>
 					</td>

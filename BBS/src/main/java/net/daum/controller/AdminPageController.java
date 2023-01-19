@@ -20,6 +20,7 @@ import net.daum.service.NoticeService;
 import net.daum.service.User_infoService;
 import net.daum.vo.MemoVO;
 import net.daum.vo.NoticeVO;
+import net.daum.vo.User_infoVO;
 
 @Controller
 public class AdminPageController {
@@ -108,11 +109,25 @@ public class AdminPageController {
 
 	}//updateNotice_ok() end
 	
-	@GetMapping(value="/controlNotice")
-	public ModelAndView controlNotice(HttpServletRequest request,int nno, String state) {
+	@GetMapping(value="/notice")
+	public ModelAndView notice(HttpServletRequest request,int nno, String state,NoticeVO no,User_infoVO ui) {
 		
 		ModelAndView ma = new ModelAndView();
-		ma.setView("");
+		
+		String id = (String) request.getSession().getAttribute("id");
+		ui.setUser_id(id);	
+		no.setNno(nno);
+		
+		no = this.noticeService.getSelectNotice(no);
+		List<User_infoVO> ulist = this.user_infoService.ui_getUserInfo(ui);
+		
+		ma.addObject("no",no);
+		ma.addObject("ulist",ulist);
+		
+		if(state.equals("modify")) {
+			ma.setViewName("/adminPage/modifyNotice");
+		}
+		
 		
 		
 		return ma;

@@ -29,4 +29,9 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<NoticeVO> getNotice(NoticeVO no) {
 		return this.noticeDao.getNotice(no);
 	}
+
+	@Override
+	public NoticeVO getSelectNotice(NoticeVO no) {
+		return this.noticeDao.getSelectNotice(no);
+	}
 }

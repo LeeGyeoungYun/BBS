@@ -28,6 +28,11 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public List<NoticeVO> getNotice(NoticeVO no) {		
 		return this.sqlSession.selectList("no_getNotice",no);
 	}
+
+	@Override
+	public NoticeVO getSelectNotice(NoticeVO no) {	
+		return this.sqlSession.selectOne("no_getSelectNotice",no);
+	}
 	
 	
 

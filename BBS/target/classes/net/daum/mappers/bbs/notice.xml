@@ -40,7 +40,11 @@
  </select>
  
  
- <!-- 게시물  -->
- 
+ <!-- 해당 게시물 불러오기  -->
+ <select id="no_getSelectNotice" resultType="no">
+ 	select nno,user_id,notice_title,notice_cont,notice_viewcnt,notice_kind,
+ 	to_char(notice_update,'YYYY-MM-DD') as notice_update,to_char(notice_modifyDate,'YYYY-MM-DD') as notice_modifyDate  
+ 	from notice where nno= #{nno}
+ </select>
  
  </mapper>
