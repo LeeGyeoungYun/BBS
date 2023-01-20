@@ -111,7 +111,7 @@
 				<ul>
 					<li><a href="cmControl">커뮤니티 게시판 관리</a></li>
 					<li><a href="noticeControl">공지사항 게시판</a></li>
-					<li><a href="#">QNA 게시판</a></li>
+					<li><a href="qnaControl">QNA 게시판</a></li>
 				</ul>
 			</div>
 			<div class="spaceDiv"></div>

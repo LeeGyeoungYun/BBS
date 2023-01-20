@@ -86,8 +86,35 @@ public class AdminPageController {
 		return "adminPage/noticeControlPage";
 	}
 	
+	@GetMapping(value="/qnaControl")
+	public String qnaControl(Model model,HttpServletRequest request,NoticeVO no,HttpServletResponse response) throws IOException {
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		String id=(String)request.getSession().getAttribute("id");
+		if(id==null||!id.equals("admin")) {//관리자만 접근가능
+			out.println("<script>");
+			out.println("alert('접근권한이 없습니다.')");
+			out.println("location.replace('/BBS/')");
+			out.println("</script>");
+			out.flush();
+		}
+		
+		
+		no.setCategory("QNA");// QNA만 리스트 출력하기위해 설정
+		
+		List<NoticeVO> nlist = this.noticeService.getNotice(no);
+		
+		model.addAttribute("nlist",nlist);
+		model.addAttribute("count",nlist.size());
+		//System.out.println(nlist);
+		
+		return "adminPage/qnaControlPage";
+	}
+	
 	@GetMapping(value="/updateNotice")
-	public String updateNotice(HttpServletRequest request,HttpServletResponse response) throws IOException {
+	public String updateNotice(Model model,HttpServletRequest request,HttpServletResponse response,String kind) throws IOException {
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -101,10 +128,11 @@ public class AdminPageController {
 			out.println("</script>");
 			out.flush();
 		}
-		
+		model.addAttribute("kind",kind); //공지사항추가인건지 QNA추가인건지 확인하는 매개변수
 		
 		return "adminPage/updateNotice";
 	}
+	
 	
 	@PostMapping(value="updateNotice_ok")
 	public String updateNotice_ok(HttpServletRequest request,NoticeVO no) {
@@ -126,7 +154,7 @@ public class AdminPageController {
 		} else { // QnA로 올릴꺼라면?
 
 			this.noticeService.insertQna(no);
-			return "redirect:/updateNotice";
+			return "redirect:/qnaControl";
 
 		}
 		 
@@ -168,7 +196,7 @@ public class AdminPageController {
 			this.noticeService.deleteNotice(nno);//db삭제가 이뤄짐
 			
 			if(kind.equals("Notice")) {//공지사항이라면?
-				System.out.println("공지사항으로 들어옴");
+				//System.out.println("공지사항으로 들어옴");
 				ma.setViewName("/adminPage/noticeControlPage");
 				
 				out.println("<script>");
@@ -178,8 +206,14 @@ public class AdminPageController {
 				out.flush();
 				
 			}else {
-				System.out.println("QNA로 들어옴");
-				ma.setViewName("");
+				//System.out.println("QNA로 들어옴");
+				ma.setViewName("/adminPage/qnaControlPage");
+				
+				out.println("<script>");
+				out.println("alert('해당 질의응답이 삭제 되었습니다.')");
+				out.println("location.replace('qnaControl')");
+				out.println("</script>");
+				out.flush();
 			}
 			
 			return null;
@@ -211,7 +245,7 @@ public class AdminPageController {
 			
 			no.setNotice_kind("QNA");
 			this.noticeService.updateNotice(no);
-			return "redirect:/updateNotice";
+			return "redirect:/qnaControl";
 
 		}
 		

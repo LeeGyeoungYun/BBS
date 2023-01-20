@@ -26,5 +26,5 @@ drop sequence notice_seq;
 
 delete from notice where nno=2;
 
-select * from notice  where notice_kind = 'Notice';
+select * from notice  where notice_kind = 'QNA';
 

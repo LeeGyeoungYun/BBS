@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../header.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -24,8 +25,8 @@
 			<tr>
 				<th>공지유형</th>
 					<td>
-						<span class="spanbox"><input type="checkbox" name="notice_kind" value="an" checked="checked" onclick="check(this)"> 공지사항 </span>
-						<span class="spanbox"><input type="checkbox" name="notice_kind" value="qna" onclick="check(this)"> QNA </span>
+						<span class="spanbox"><input type="checkbox" name="notice_kind" value="an" <c:if test="${kind == 'Notice'}">checked="checked"</c:if> onclick="check(this)"> 공지사항 </span>
+						<span class="spanbox"><input type="checkbox" name="notice_kind" value="qna" <c:if test="${kind == 'QNA'}">checked="checked"</c:if> onclick="check(this)"> QNA </span>
 				
 					</td>
 			</tr>

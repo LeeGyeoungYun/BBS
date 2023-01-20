@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 게시판 관리페이지</title>
+<title>QNA게시판 관리페이지</title>
 <link rel="stylesheet" href="./resources/css/adminPage/noticeControlPage_style.css">
 </head>
 <body>
@@ -14,12 +14,12 @@
 		
 		<div class="noticeControlTitle"> 
 		<i class="fa-solid fa-circle"></i>
-		<span class="titleBox">공지사항 관리</span>
+		<span class="titleBox">QNA 관리</span>
 		</div>
 		<div class="viewAndAddBox">
 			<span>게시물 수 : ${count} </span>
-			<a href="updateNotice?kind=Notice">
-				<input class="boardBtn" type="button" value="공지사항 추가">
+			<a href="updateNotice?kind=QNA">
+				<input class="boardBtn" type="button" value="질의응답 추가">
 			</a>
 		</div>
 		<table>
@@ -42,7 +42,7 @@
 					<td>${n.nno}</td>
 					<td>관리자</td>
 					<td>${n.notice_title}</td>
-					<td>공지사항</td>
+					<td>QNA</td>
 					<td>${n.notice_viewcnt}</td>
 					<td>${n.notice_update}</td>
 					<td>${n.notice_modifyDate}</td>
