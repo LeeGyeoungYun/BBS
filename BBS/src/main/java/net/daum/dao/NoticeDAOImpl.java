@@ -38,6 +38,11 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public void updateNotice(NoticeVO no) {
 		this.sqlSession.update("no_updateNotice",no);
 	}
+
+	@Override
+	public void deleteNotice(int nno) {
+		this.sqlSession.delete("no_deleteNotice",nno);
+	}
 	
 	
 

@@ -52,7 +52,11 @@
  	update notice set notice_kind = #{notice_kind}, notice_title = #{notice_title}, notice_cont = #{notice_cont},
  	notice_modifyDate = sysdate
  	where nno = #{nno}
- 	
  </update>
+ 
+ <!-- 게시물 삭제 -->
+ <delete id="no_deleteNotice">
+ 	delete from notice where nno = #{nno}
+ </delete>
  
  </mapper>

@@ -11,5 +11,6 @@ public interface NoticeService {
 	List<NoticeVO> getNotice(NoticeVO no);
 	NoticeVO getSelectNotice(NoticeVO no);
 	void updateNotice(NoticeVO no);
+	void deleteNotice(int nno);
 
 }

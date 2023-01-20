@@ -134,11 +134,23 @@ public class AdminPageController {
 	}//updateNotice_ok() end
 	
 	@GetMapping(value="/notice")
-	public ModelAndView notice(HttpServletRequest request,int nno, String state,NoticeVO no,User_infoVO ui) {
+	public ModelAndView notice(HttpServletResponse response,HttpServletRequest request,int nno, String state,NoticeVO no,User_infoVO ui) throws IOException {
 		
 		ModelAndView ma = new ModelAndView();
 		
 		String id = (String) request.getSession().getAttribute("id");
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		if(id==null||!id.equals("admin")) {//만약 관리자가 아니라면?
+			out.println("<script>");
+			out.println("alert('권한이 없습니다. 다시 로그인해 주세요')");
+			out.println("location.replace('/BBS/login')");
+			out.println("</script>");
+			out.flush();	
+		}
+		
 		ui.setUser_id(id);	
 		no.setNno(nno);
 		
@@ -151,7 +163,26 @@ public class AdminPageController {
 		if(state.equals("modify")) {
 			ma.setViewName("/adminPage/modifyNotice");
 		}else if(state.equals("delete")) { //삭제하는거라면?
-			//여기서 DB삭제 이뤄줘야함
+			
+			String kind = no.getNotice_kind(); //QNA인지 Notice인지 구별하기위해 
+			this.noticeService.deleteNotice(nno);//db삭제가 이뤄짐
+			
+			if(kind.equals("Notice")) {//공지사항이라면?
+				System.out.println("공지사항으로 들어옴");
+				ma.setViewName("/adminPage/noticeControlPage");
+				
+				out.println("<script>");
+				out.println("alert('해당 공지사항이 삭제 되었습니다.')");
+				out.println("location.replace('noticeControl')");
+				out.println("</script>");
+				out.flush();
+				
+			}else {
+				System.out.println("QNA로 들어옴");
+				ma.setViewName("");
+			}
+			
+			return null;
 		}
 		
 		
