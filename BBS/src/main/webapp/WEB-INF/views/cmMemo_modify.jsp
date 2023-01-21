@@ -14,7 +14,7 @@
 		<div class="memoBox"> <!-- 메모장 -->	
 			<div class="writeSpace">
 				<div class="titleBox">
-					<input type="text" name="memo_title" id="memo_title" value="${m.memo_title}" placeholder="제목">
+					<input type="text" name="memo_title" id="memo_title" value="${m.memo_title}" placeholder="제목" autocomplete="off">
 					<span>
 						메모지 색: <select name="memo_color">
 							<option value="yellow" <c:if test="${m.memo_color=='yellow'}">${'selected'}</c:if>>기본(노랑)</option>

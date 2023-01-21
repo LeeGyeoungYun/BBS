@@ -155,10 +155,10 @@ public class CommunityController {
 				System.out.println("여기들어옴");
 				this.memoService.deleteMemo(mno);
 				
-				ma.setViewName("myPlace");
+				ma.setViewName("community");
 				out.println("<script>");
 				out.println("alert('메모가 삭제되었습니다.')");
-				out.println("location='myPlace'");
+				out.println("location.replace('community')");
 				out.println("</script>");
 			}else { //아이디가 일치하지 않는다면?
 				

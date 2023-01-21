@@ -47,8 +47,12 @@
 					<td>${c.memo_update}</td>
 					<td>${c.memo_modifydate}</td>
 					<td>
-						<button class="boardBtn bb1">수정</button>
-						<button class="boardBtn bb2">삭제</button>
+						<a href="cmMemo?mno=${c.mno}&state=modify">
+							<button class="boardBtn bb1">수정</button>
+						</a>
+						<a href="cmMemo?mno=${c.mno}&state=delete">
+							<button class="boardBtn bb2">삭제</button>
+						</a>
 					</td>
 				</tr>
 				</c:forEach>

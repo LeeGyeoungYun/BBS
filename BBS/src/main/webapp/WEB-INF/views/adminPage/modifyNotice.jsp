@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${no.nno}번째 공지사항 수정</title>
+<title>${no.nno}번째 공지사항&QNA 수정</title>
 <link rel="stylesheet" href="./resources/css/adminPage/updateNotice_style.css">
 <script src="./resources/js/jquery.js"></script>
 </head>
@@ -13,7 +13,7 @@
 	<div class="updateNoticeContainer">
 	<form method="post" action="modifyNotice_ok" onsubmit="return formCheck();">
 	<table>
-		<input type="hidden" name="nno" value="${no.nno}">
+		<input type="hidden" name="nno" value="${no.nno}"><!-- 현재 게시물번호를 컨트롤러에 보내기 위한 것 -->
 		<tbody>
 			<tr>
 				<th>작성일</th>
