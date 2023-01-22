@@ -61,6 +61,12 @@
 				
 			</tbody>
 		</table>
+		
+		<div class="pageContainer">
+			<button class="goPage">이전</button>
+			<span class="nowPage"> 1 </span>
+			<button class="goPage">다음</button>
+		</div>
 	</div>
 	
 		

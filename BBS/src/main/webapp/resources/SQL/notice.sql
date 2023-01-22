@@ -28,3 +28,8 @@ delete from notice where nno=2;
 
 select * from notice  where notice_kind = 'QNA';
 
+select * from notice where notice_kind = 'Notice' and 0<=rowNum and rowNum<=9 order by nno desc;
+select * from notice where notice_kind = 'Notice' order by nno desc;
+
+select * from (select row_number() over (order by nno desc) num , n.* from notice n  where notice_kind = 'Notice' order by nno desc) where num between 0 and 9
+

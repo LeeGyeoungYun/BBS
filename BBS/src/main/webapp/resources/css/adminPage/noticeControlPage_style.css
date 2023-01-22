@@ -18,7 +18,7 @@
 
 .noticeControlContainer{
 	width: 900px;
-	height: 700px;
+	height: 800px;
 	margin:120px auto 100px;
 	//border: 1px solid;
 }
@@ -91,4 +91,21 @@ th, td {
 .bb2{
 	background-color: #ffa8a8;	
 	border:none;
+}
+
+.pageContainer{
+	margin:70px 50px 100px;
+	text-align: center;
+}
+
+.goPage{
+	width: 60px;
+	height: 40px;
+	font-size: 16px;
+}
+
+.nowPage{
+	padding:30px;
+	font-size: 18px;
+	font-weight: bold;
 }
