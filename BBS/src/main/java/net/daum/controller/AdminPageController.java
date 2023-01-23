@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.daum.service.CommunityService;
@@ -54,7 +55,8 @@ public class AdminPageController {
 		
 		List<MemoVO> clist = this.communityService.no_getCmMemo(memo);
 		model.addAttribute("clist",clist);
-		model.addAttribute("count",clist.size());
+		model.addAttribute("count",clist.size());//현재페이지에서 출력되고있는 리스트의 수
+		
 		
 		return "adminPage/communityControlPage";
 	}
@@ -74,13 +76,20 @@ public class AdminPageController {
 			out.flush();
 		}
 		
+		int page = 1;
+		no.setStartPage(1);
+		no.setEndPage(10);
 		
 		no.setCategory("Notice");// 공지사항만 리스트 출력하기위해 설정
 		
+		int totalCount = this.noticeService.countNotice(no);
 		List<NoticeVO> nlist = this.noticeService.getNotice(no);
 		
 		model.addAttribute("nlist",nlist);
-		model.addAttribute("count",nlist.size());
+		model.addAttribute("count",nlist.size());//현재 페이지에 출력되고있는 부분 리스트 수
+		model.addAttribute("totalCount",totalCount);
+		model.addAttribute("page",page);
+		
 		//System.out.println(nlist);
 		
 		return "adminPage/noticeControlPage";
@@ -101,6 +110,8 @@ public class AdminPageController {
 			out.flush();
 		}
 		
+		no.setStartPage(1);
+		no.setEndPage(10);
 		
 		no.setCategory("QNA");// QNA만 리스트 출력하기위해 설정
 		
@@ -249,6 +260,14 @@ public class AdminPageController {
 
 		}
 		
+	}
+	
+	@ResponseBody
+	@PostMapping(value="paging")
+	public String paging(int page) {
+		
+		System.out.println(page);
+		return "1";
 	}
 	
 	

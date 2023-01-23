@@ -14,6 +14,10 @@ public class NoticeVO {
 	private String notice_update;
 	private String notice_modifyDate;
 	
-	private String category;
+	private String category;//공지사항과 QNA를 나눌수있는 기준
+	
+	private int startPage;
+	private int endPage;
+	private int page;
 	
 }

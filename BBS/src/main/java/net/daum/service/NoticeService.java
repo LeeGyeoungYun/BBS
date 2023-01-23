@@ -12,5 +12,6 @@ public interface NoticeService {
 	NoticeVO getSelectNotice(NoticeVO no);
 	void updateNotice(NoticeVO no);
 	void deleteNotice(int nno);
+	int countNotice(NoticeVO no);
 
 }

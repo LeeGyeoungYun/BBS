@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="./resources/css/adminPage/noticeControlPage_style.css">
 </head>
 <body>
+	<input type="hidden" name="count" class="count" value="${count}">
+	<input type="hidden" name="page" class="page" value="${page}">
 	<div id="overlay"></div>
 	<div class="noticeControlContainer">
 		
@@ -17,7 +19,7 @@
 		<span class="titleBox">공지사항 관리</span>
 		</div>
 		<div class="viewAndAddBox">
-			<span>게시물 수 : ${count} </span>
+			<span>총 게시물 수 : ${totalCount} </span>
 			<a href="updateNotice?kind=Notice">
 				<input class="boardBtn" type="button" value="공지사항 추가">
 			</a>
@@ -63,12 +65,12 @@
 		</table>
 		
 		<div class="pageContainer">
-			<button class="goPage">이전</button>
-			<span class="nowPage"> 1 </span>
-			<button class="goPage">다음</button>
+			<button class="goPage back">이전</button>
+			<span class="nowPage"> ${page} </span>
+			<button class="goPage next">다음</button>
 		</div>
 	</div>
 	
-		
+	<script src="./resources/js/noticeControlPage.js"></script>
 </body>
 </html>

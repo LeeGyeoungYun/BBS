@@ -22,7 +22,8 @@
  
  <!-- 공지사항 및 QNA 불러오기 -->
  <select id="no_getNotice"  resultType="no">
- 	select nno,user_id,notice_title,notice_cont,notice_viewcnt,notice_kind,
+ 	select * from (
+ 	select row_number() over (order by nno desc) num ,nno,user_id,notice_title,notice_cont,notice_viewcnt,notice_kind,
  	to_char(notice_update,'YYYY-MM-DD') as notice_update,to_char(notice_modifyDate,'YYYY-MM-DD') as notice_modifyDate  
  	
  	from notice
@@ -37,6 +38,24 @@
  	</where>
  	
  	order by nno desc
+ 	)
+ 	
+ 	where num between #{startPage} and #{endPage}
+ 	
+ </select>
+ 
+ <!-- 공지사항 및 QNA 게시물 수 출력 -->
+ <select id="no_countNotice" resultType="int">
+ 	select count(*) from notice 
+ 	<where>
+ 		<if test="category =='all'"></if>
+ 		<if test="category =='Notice'">
+ 			 notice_kind = 'Notice'
+ 		</if>
+ 		<if test="category =='QNA'">
+ 			 notice_kind = 'QNA'
+ 		</if>
+ 	</where>
  </select>
  
  

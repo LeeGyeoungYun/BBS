@@ -44,4 +44,9 @@ public class NoticeServiceImpl implements NoticeService {
 	public void deleteNotice(int nno) {
 		this.noticeDao.deleteNotice(nno);
 	}
+
+	@Override
+	public int countNotice(NoticeVO no) {	
+		return this.noticeDao.countNotice(no);
+	}
 }

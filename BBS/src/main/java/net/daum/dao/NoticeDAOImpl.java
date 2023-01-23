@@ -43,6 +43,11 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public void deleteNotice(int nno) {
 		this.sqlSession.delete("no_deleteNotice",nno);
 	}
+
+	@Override
+	public int countNotice(NoticeVO no) {	
+		return this.sqlSession.selectOne("no_countNotice",no);
+	}
 	
 	
 
