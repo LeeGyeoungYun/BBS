@@ -20,6 +20,7 @@ nocache;
 select * from notice;
 select count(*) from notice where notice_kind = 'Notice';
 select count(*) from notice
+select count(*) from notice where notice_kind = 'QNA';
 
 drop table notice;
 drop sequence notice_seq;
