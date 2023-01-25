@@ -65,9 +65,13 @@
 		</table>
 		
 		<div class="pageContainer">
-			<button class="goPage back">이전</button>
+			<a href="noticeControl?page=${page-1}">
+				<button class="goPage back">이전</button>
+			</a>
 			<span class="nowPage"> ${page} </span>
-			<button class="goPage next">다음</button>
+			<a href="noticeControl?page=${page+1}">
+				<button class="goPage next">다음</button>
+			</a>
 		</div>
 	</div>
 	
