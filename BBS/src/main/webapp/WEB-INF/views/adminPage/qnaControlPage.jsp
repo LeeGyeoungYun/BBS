@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="./resources/css/adminPage/noticeControlPage_style.css">
 </head>
 <body>
+	<input type="hidden" name="count" class="count" value="${count}">
+	<input type="hidden" name="page" class="page" value="${page}">
+	
 	<div id="overlay"></div>
 	<div class="noticeControlContainer">
 		
@@ -61,8 +64,18 @@
 				
 			</tbody>
 		</table>
+		
+		<div class="pageContainer">
+			<a href="noticeControl?page=${page-1}">
+				<button class="goPage back">이전</button>
+			</a>
+			<span class="nowPage"> ${page} </span>
+			<a href="noticeControl?page=${page+1}">
+				<button class="goPage next">다음</button>
+			</a>
+		</div>
 	</div>
 	
-		
+	<script src="./resources/js/noticeControlPage.js"></script>	
 </body>
 </html>
