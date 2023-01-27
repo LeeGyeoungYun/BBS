@@ -93,3 +93,19 @@ th, td {
 	border:none;
 }
 
+.pageContainer{
+	margin:70px 50px 100px;
+	text-align: center;
+}
+
+.goPage{
+	width: 60px;
+	height: 40px;
+	font-size: 16px;
+}
+
+.nowPage{
+	padding:30px;
+	font-size: 18px;
+	font-weight: bold;
+}

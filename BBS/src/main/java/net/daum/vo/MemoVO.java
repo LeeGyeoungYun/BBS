@@ -18,4 +18,8 @@ public class MemoVO {
 	
 	private String fieldName; //검색필드네임
 	private String field; //필드
+	
+	private int startPage;
+	private int endPage;
+	private int page;
 }

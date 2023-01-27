@@ -39,7 +39,7 @@ public class AdminPageController {
 	private NoticeService noticeService;
 	
 	@GetMapping(value="cmControl")
-	public String cmControl(Model model,HttpServletRequest request,MemoVO memo,HttpServletResponse response) throws IOException {
+	public String cmControl(Model model,HttpServletRequest request,MemoVO memo,HttpServletResponse response,Integer page) throws IOException {
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -53,10 +53,30 @@ public class AdminPageController {
 			out.flush();
 		}
 		
+		if(page==null) { //만약 처음 클릭해서 들어간거라면?
+			page =1;
+		}
+		
+		memo.setStartPage((page-1)*10+1);
+		memo.setEndPage(page*10);
+		int limit = memo.getStartPage();
+		int totalCount = this.communityService.countCm();
+		System.out.println(limit);
+		System.out.println(totalCount);
+		
+		if(limit>totalCount || page <= 0) {
+			out.println("<script>");
+			out.println("alert('페이지범위를 초과하였습니다.')");
+			out.println("history.back();");
+			out.println("</script>");
+			out.flush();
+		}
+		
 		List<MemoVO> clist = this.communityService.no_getCmMemo(memo);
 		model.addAttribute("clist",clist);
 		model.addAttribute("count",clist.size());//현재페이지에서 출력되고있는 리스트의 수
-		
+		model.addAttribute("totalCount",totalCount);
+		model.addAttribute("page",page);
 		
 		return "adminPage/communityControlPage";
 	}

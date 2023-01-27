@@ -50,4 +50,4 @@ select * from memo where memo_public ='1';
 
 select * from memo order by mno desc;
 
-
+select count(*) from memo where memo_public ='1';

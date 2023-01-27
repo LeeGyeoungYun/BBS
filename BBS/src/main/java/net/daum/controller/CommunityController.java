@@ -137,7 +137,7 @@ public class CommunityController {
 		ma.addObject("ulist",ulist); //헤더jsp에 딸린 프로필사진 불러오기위해서 필요함
 		ma.addObject("m",memo);
 		
-		if(memo.getUser_id().equals(id)) {
+		if(memo.getUser_id().equals(id)|| id.equals("admin")) {
 			String answer = "success";
 			ma.addObject("answer",answer);
 		}
@@ -184,7 +184,7 @@ public class CommunityController {
 		memo = this.memoService.getMemoContent2(mno); // memo객체에 불러온 해당 게시물번호를 가지고 정보값 불러와 저장
 		
 		
-		if(memo.getUser_id().equals(id) && !title.isEmpty() && !content.isEmpty() && mno >=0) { //만약 아작스 통신으로 값이 제대로 도착했다면?	
+		if((memo.getUser_id().equals(id)|| id.equals("admin")) && !title.isEmpty() && !content.isEmpty() && mno >=0) { //만약 아작스 통신으로 값이 제대로 도착했다면?	
 			
 			memo.setMemo_title(title); //바뀐 제목 내용 메모지색을 memo객체에 저장후 db로 보냄
 			memo.setMemo_cont(content);

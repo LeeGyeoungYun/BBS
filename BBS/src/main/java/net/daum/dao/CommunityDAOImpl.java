@@ -34,4 +34,9 @@ public class CommunityDAOImpl implements CommunityDAO {
 		return this.sqlSession.selectList("no_getCmMemo",memo);
 	}
 
+	@Override
+	public int countCm() {	
+		return this.sqlSession.selectOne("no_countCm");
+	}
+
 }

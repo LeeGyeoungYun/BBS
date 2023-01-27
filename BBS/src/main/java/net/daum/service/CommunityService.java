@@ -10,5 +10,5 @@ public interface CommunityService {
 	List<MemoVO> getCmMyMemo(MemoVO memo);
 	List<MemoVO> getCmMemo(MemoVO memo);
 	List<MemoVO> no_getCmMemo(MemoVO memo);
-
+	int countCm();
 }

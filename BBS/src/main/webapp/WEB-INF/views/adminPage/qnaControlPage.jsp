@@ -66,11 +66,11 @@
 		</table>
 		
 		<div class="pageContainer">
-			<a href="noticeControl?page=${page-1}">
+			<a href="qnaControl?page=${page-1}">
 				<button class="goPage back">이전</button>
 			</a>
 			<span class="nowPage"> ${page} </span>
-			<a href="noticeControl?page=${page+1}">
+			<a href="qnaControl?page=${page+1}">
 				<button class="goPage next">다음</button>
 			</a>
 		</div>

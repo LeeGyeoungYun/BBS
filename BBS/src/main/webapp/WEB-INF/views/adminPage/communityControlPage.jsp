@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="./resources/css/adminPage/communityControlPage_style.css">
 </head>
 <body>
+	<input type="hidden" name="count" class="count" value="${count}">
+	<input type="hidden" name="page" class="page" value="${page}">
 	<div id="overlay"></div>
 	<div class="cmControlContainer">
 		
@@ -17,7 +19,7 @@
 		<span class="titleBox">게시물 관리</span>
 		</div>
 		<div class="viewAndAddBox">
-			<span>게시물 수 : ${count} </span>
+			<span>게시물 수 : ${totalCount} </span>
 			<a href="community_cont">
 				<input class="boardBtn" type="button" value="게시판 추가">
 			</a>
@@ -59,6 +61,18 @@
 					
 			</tbody>
 		</table>
+		
+		<div class="pageContainer">
+			<a href="cmControl?page=${page-1}">
+				<button class="goPage back">이전</button>
+			</a>
+			<span class="nowPage"> ${page} </span>
+			<a href="cmControl?page=${page+1}">
+				<button class="goPage next">다음</button>
+			</a>
+		</div>
 	</div>
+	
+	<script src="./resources/js/communityControlPage.js"></script>
 </body>
 </html>

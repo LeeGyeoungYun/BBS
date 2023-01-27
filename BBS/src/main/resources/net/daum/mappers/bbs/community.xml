@@ -44,16 +44,23 @@
  	order by memo_modifydate desc)
  </select>
  
+
  <!-- 관리자페이지에 호출시킬 모든 커뮤니티게시판 불러오기 -->
  <select id="no_getCmMemo" parameterType="memo" resultType="memo">
- 	select mno,user_id,memo_title,memo_cont,memo_viewcnt,memo_color,
+ 	select * from(
+ 	select row_number() over (order by mno desc) num, mno,user_id,memo_title,memo_cont,memo_viewcnt,memo_color,
  	to_char(memo_update,'YYYY-MM-DD') as memo_update,to_char(memo_modifydate,'YYYY-MM-DD') as memo_modifydate
-    from memo
-    where memo_public ='1'
-    order by mno desc
+ 	from memo
+ 	 where memo_public ='1'
+ 	order by mno desc
+ 	)
+       
+    where num between #{startPage} and #{endPage} 
  </select>
  
-
- 
+<!-- 관리자페이지에 호출시킬 모든 커뮤니티 총 수 구하기 --> 
+<select id="no_countCm" resultType="int">
+	select count(*) from memo where memo_public ='1'
+</select>
 
 </mapper>
