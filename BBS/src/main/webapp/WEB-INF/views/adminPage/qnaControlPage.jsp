@@ -20,7 +20,7 @@
 		<span class="titleBox">QNA 관리</span>
 		</div>
 		<div class="viewAndAddBox">
-			<span>게시물 수 : ${count} </span>
+			<span>게시물 수 : ${totalCount} </span>
 			<a href="updateNotice?kind=QNA">
 				<input class="boardBtn" type="button" value="질의응답 추가">
 			</a>
@@ -51,10 +51,10 @@
 					<td>${n.notice_modifyDate}</td>
 					<td>
 						<a class="go" href="notice?nno=${n.nno}&state=modify">
-							<button class="boardBtn bb1" onclick="idcheck()">수정</button>
+							<button class="boardBtn bb1" >수정</button>
 						</a>
 						<a class="go" href="notice?nno=${n.nno}&state=delete">
-							<button class="boardBtn bb2" onclick="idcheck()">삭제</button>
+							<button class="boardBtn bb2" >삭제</button>
 						</a>
 					</td>
 					

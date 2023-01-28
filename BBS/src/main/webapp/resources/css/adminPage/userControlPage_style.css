@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+#overlay{
+	visibility: hidden;
+	background: #000;
+	opacity: 0.65;
+	height: 100%;
+	width:100%;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top:0;
+	z-index: 1;
+	transition: all .5s;
+	
+}
+
+.noticeControlContainer{
+	width: 900px;
+	height: 800px;
+	margin:120px auto 100px;
+	//border: 1px solid;
+}
+
+.noticeControlTitle{
+	font-size: 30px;
+	width: 100%;
+	height: 50px;
+	padding-left: 15px;	
+}
+
+.noticeControlTitle i{
+	font-size:18px;
+}
+.titleBox{
+  line-height: 50px;
+}
+
+
+.viewAndAddBox{
+	margin:70px 15px 0px;
+	width: 98%;
+	height: 40px;
+	position: relative;
+	line-height: 40px;
+}
+
+.viewAndAddBox span{
+	padding-left:20px;
+}
+
+.viewAndAddBox input{
+	position: absolute;
+	top:9px;
+	right:20px;
+}
+
+table {
+	margin-top:17px;
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+thead{
+	background-color: #aeaeae;
+	color:#fbfbfb;
+	font-size: 18px;
+}
+
+th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+    max-width: 250px;
+    overflow: hidden;
+  	text-overflow: ellipsis;
+  	white-space: nowrap;
+}
+
+.boardBtn:hover{
+	cursor: pointer;
+}
+
+.bb1{
+	background-color: #bbffbb;
+	border:none;
+}
+
+.bb2{
+	background-color: #ffa8a8;	
+	border:none;
+}
+
+.pageContainer{
+	margin:70px 50px 100px;
+	text-align: center;
+}
+
+.goPage{
+	width: 60px;
+	height: 40px;
+	font-size: 16px;
+}
+
+.nowPage{
+	padding:30px;
+	font-size: 18px;
+	font-weight: bold;
+}

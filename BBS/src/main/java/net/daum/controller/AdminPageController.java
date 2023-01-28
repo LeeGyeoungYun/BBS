@@ -173,6 +173,52 @@ public class AdminPageController {
 		return "adminPage/qnaControlPage";
 	}
 	
+	@GetMapping(value="/userControl")
+	public String userControl(Model model,HttpServletRequest request,NoticeVO no,HttpServletResponse response, Integer page) throws IOException {
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		String id=(String)request.getSession().getAttribute("id");
+		if(id==null||!id.equals("admin")) {//관리자만 접근가능
+			out.println("<script>");
+			out.println("alert('접근권한이 없습니다.')");
+			out.println("location.replace('/BBS/')");
+			out.println("</script>");
+			out.flush();
+		}
+		
+		if(page==null) { //만약 처음 클릭해서 들어간거라면?
+			page =1;
+		}
+		
+		no.setStartPage((page-1)*10+1);
+		no.setEndPage(page*10);
+		
+		int limit = no.getStartPage();
+		
+		no.setCategory("QNA");// QNA만 리스트 출력하기위해 설정
+		
+		int totalCount = this.noticeService.countNotice(no);
+		List<NoticeVO> nlist = this.noticeService.getNotice(no);
+		
+		if(limit>totalCount || page <= 0) {
+			out.println("<script>");
+			out.println("alert('페이지범위를 초과하였습니다.')");
+			out.println("history.back();");
+			out.println("</script>");
+			out.flush();
+		}
+		
+		model.addAttribute("nlist",nlist);
+		model.addAttribute("count",nlist.size());//현재 페이지에 출력되고있는 부분 리스트 수
+		model.addAttribute("totalCount",totalCount);
+		model.addAttribute("page",page);
+		
+		return "adminPage/userControlPage";
+	}
+	
+	
 	@GetMapping(value="/updateNotice")
 	public String updateNotice(Model model,HttpServletRequest request,HttpServletResponse response,String kind) throws IOException {
 		
