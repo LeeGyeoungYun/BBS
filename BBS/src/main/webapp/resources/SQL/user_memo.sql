@@ -13,6 +13,7 @@ create table memo(
 );
 
 alter table memo add constraint FK_MEMO_USER_ID foreign key (user_id) references USER_INFO(user_id) on delete cascade; --외래키 설정
+alter table memo drop constraint FK_MEMO_USER_ID
 
 select * from memo order by mno desc;
 
@@ -51,3 +52,6 @@ select * from memo where memo_public ='1';
 select * from memo order by mno desc;
 
 select count(*) from memo where memo_public ='1';
+select user_id,count(*) from memo where memo_public ='1' group by user_id;
+
+

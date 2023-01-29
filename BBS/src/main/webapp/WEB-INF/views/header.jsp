@@ -117,7 +117,7 @@
 			<div class="spaceDiv"></div>
 			<div class="memberControll">
 				<ul>
-					<li><a href="#">회원 관리</a></li>
+					<li><a href="userControl">회원 관리</a></li>
 					
 				</ul>
 			</div>

@@ -20,7 +20,7 @@
 		<span class="titleBox">유저 관리</span>
 		</div>
 		<div class="viewAndAddBox">
-			<span>유저 수 : ${유저수가 들어올 공간} </span>
+			<span>유저 수 : 유저수가들어갈공간 </span>
 		</div>
 		<table>
 			<thead>
