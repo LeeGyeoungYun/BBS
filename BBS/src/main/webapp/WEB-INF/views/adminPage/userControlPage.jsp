@@ -20,7 +20,7 @@
 		<span class="titleBox">유저 관리</span>
 		</div>
 		<div class="viewAndAddBox">
-			<span>유저 수 : 유저수가들어갈공간 </span>
+			<span>유저 수 : ${totalCount} </span>
 		</div>
 		<table>
 			<thead>
@@ -38,15 +38,16 @@
 			</thead>
 			<tbody>
 				
-				<c:forEach var="n" items="${nlist}">
+				<c:forEach var="u" items="${ulist}">
 				<tr>
-					<td>${n.nno}</td>
-					<td>관리자</td>
-					<td>${n.notice_title}</td>
-					<td>QNA</td>
-					<td>${n.notice_viewcnt}</td>
-					<td>${n.notice_update}</td>
-					<td>${n.notice_modifyDate}</td>
+					<th>${u.num}</th>
+					<th>${u.user_id}</th>
+					<th>${u.user_nickname}</th>
+					<th>${u.user_phoneNum}</th>
+					<th>${u.user_email}</th>
+					<th>${u.post}</th>
+					<th>${u.user_joinDate}</th>
+					<th>${u.user_modifyDate}</th>
 					<td>						
 						<button class="boardBtn bb2" onclick="idcheck()">회원탈퇴</button>						
 					</td>
@@ -69,6 +70,6 @@
 		</div>
 	</div>
 	
-	<script src="./resources/js/userControlPage.js"></script>	
+	<script src="resources/js/userControlPage.js"></script>
 </body>
 </html>

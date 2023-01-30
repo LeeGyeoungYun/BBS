@@ -40,3 +40,5 @@ select num,u.user_id,u.user_nickname,u.user_phoneNum,u.user_email,m.post,u.user_
 from ((select row_number() over (order by user_joinDate desc) num, user_id,user_nickname,user_phoneNum,user_email,user_joinDate,user_modifyDate from user_info order by user_joinDate desc) u inner join (select user_id,count(*) post from memo where memo_public ='1' group by user_id)m on
 				u.user_id = m.user_id) where num between 6 and 9
 
+
+select count(*) from user_info

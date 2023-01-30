@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", function(){//문서 즉 현재페이지 완벽히 준비(로딩)되어있다면 다음 함수를 실행
 
  	let nextBtn = document.querySelector(".next");
@@ -19,4 +17,3 @@ document.addEventListener("DOMContentLoaded", function(){//문서 즉 현재페�
 	
 
 });
-

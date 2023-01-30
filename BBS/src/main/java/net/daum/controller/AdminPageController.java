@@ -12,12 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.daum.service.CommunityService;
 import net.daum.service.MemoService;
 import net.daum.service.NoticeService;
+import net.daum.service.UserControlService;
 import net.daum.service.User_infoService;
 import net.daum.vo.MemoVO;
 import net.daum.vo.NoticeVO;
@@ -37,6 +37,9 @@ public class AdminPageController {
 	
 	@Autowired
 	private NoticeService noticeService;
+	
+	@Autowired
+	private UserControlService userControlService;
 	
 	@GetMapping(value="cmControl")
 	public String cmControl(Model model,HttpServletRequest request,MemoVO memo,HttpServletResponse response,Integer page) throws IOException {
@@ -174,7 +177,7 @@ public class AdminPageController {
 	}
 	
 	@GetMapping(value="/userControl")
-	public String userControl(Model model,HttpServletRequest request,NoticeVO no,HttpServletResponse response, Integer page) throws IOException {
+	public String userControl(Model model,HttpServletRequest request,User_infoVO ui,HttpServletResponse response, Integer page) throws IOException {
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -192,15 +195,13 @@ public class AdminPageController {
 			page =1;
 		}
 		
-		no.setStartPage((page-1)*10+1);
-		no.setEndPage(page*10);
+		ui.setStartPage((page-1)*10+1);
+		ui.setEndPage(page*10);
 		
-		int limit = no.getStartPage();
+		int limit = ui.getStartPage();
 		
-		no.setCategory("QNA");// QNA만 리스트 출력하기위해 설정
-		
-		int totalCount = this.noticeService.countNotice(no);
-		List<NoticeVO> nlist = this.noticeService.getNotice(no);
+		int totalCount = this.userControlService.countUser(); // 회원가입된 유저 총 수
+		List<User_infoVO> ulist = this.userControlService.getUserInfo(ui); // 유저리스트 출력
 		
 		if(limit>totalCount || page <= 0) {
 			out.println("<script>");
@@ -210,8 +211,13 @@ public class AdminPageController {
 			out.flush();
 		}
 		
-		model.addAttribute("nlist",nlist);
-		model.addAttribute("count",nlist.size());//현재 페이지에 출력되고있는 부분 리스트 수
+		System.out.println(ulist.size());
+		System.out.println(totalCount);
+		System.out.println(page);
+		
+		
+		model.addAttribute("ulist",ulist);
+		model.addAttribute("count",ulist.size());//현재 페이지에 출력되고있는 부분 리스트 수
 		model.addAttribute("totalCount",totalCount);
 		model.addAttribute("page",page);
 		
@@ -328,7 +334,10 @@ public class AdminPageController {
 		
 		
 		return ma;
-	}
+		
+	}//notice() end
+	
+	
 	
 	@PostMapping(value="modifyNotice_ok")
 	public String modifyNotice_ok(HttpServletRequest request,NoticeVO no,int nno) {
@@ -355,7 +364,8 @@ public class AdminPageController {
 
 		}
 		
-	}
+	}//	modifyNotice_ok() end
+	
 	
 	
 	
