@@ -9,15 +9,16 @@
  
  <!-- 회원정보 목록 불러오기 -->
  <select id="ct_getUserInfo" parameterType="ui" resultType="ui">
- select num,u.user_id,u.user_nickname,u.user_phoneNum,u.user_email,m.post,u.user_joinDate,u.user_modifyDate  
+ select num,u.user_id,u.user_nickname,u.user_phoneNum,u.user_email,nvl(m.post,0) post,u.user_joinDate,u.user_modifyDate  
  from ((select row_number() over (order by user_joinDate desc) num, user_id,user_nickname,user_phoneNum,user_email,user_joinDate,user_modifyDate 
  		from user_info order by user_joinDate desc) u 
- 		inner join 
+ 		left outer join
  		(select user_id,count(*) post 
  		from memo where memo_public ='1' group by user_id)m 
  		on
 		u.user_id = m.user_id) 
  where num between #{startPage} and #{endPage}
+ order by num
  </select>
  
  <!-- 회원 총 수 구하기 -->

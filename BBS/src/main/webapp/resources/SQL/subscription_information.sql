@@ -36,10 +36,10 @@ delete from USER_INFO where user_id = 'qwer122';
 
 
 select * from user_info;
-select num,u.user_id,u.user_nickname,u.user_phoneNum,u.user_email,m.post,u.user_joinDate,u.user_modifyDate  
-from ((select row_number() over (order by user_joinDate desc) num, user_id,user_nickname,user_phoneNum,user_email,user_joinDate,user_modifyDate from user_info order by user_joinDate desc) u inner join (select user_id,count(*) post from memo where memo_public ='1' group by user_id)m on
-				u.user_id = m.user_id) where num between 6 and 9
-
+select num,u.user_id,u.user_nickname,u.user_phoneNum,u.user_email,nvl(m.post,0) post,u.user_joinDate,u.user_modifyDate  
+from ((select row_number() over (order by user_joinDate desc) num, user_id,user_nickname,user_phoneNum,user_email,user_joinDate,user_modifyDate from user_info order by user_joinDate desc) u left outer join (select user_id,count(*) post from memo where memo_public ='1' group by user_id)m on
+				u.user_id = m.user_id) where num between 0 and 10
+order by num desc
 
 select count(*) from user_info
 
@@ -48,4 +48,5 @@ insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_emai
 insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test3','테스트3','test3','010-1111-1111','aa@board.com',sysdate,sysdate)
 insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test4','테스트4','test4','010-1111-1111','aa@board.com',sysdate,sysdate)
 
-select * from user_id
+select * from (select * from user_info ) u inner join (select user_id,count(user_id) from memo group by user_id)m on u.user_id = m.user_id
+select * from memo;
