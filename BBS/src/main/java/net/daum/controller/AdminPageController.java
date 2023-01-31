@@ -201,7 +201,7 @@ public class AdminPageController {
 		int limit = ui.getStartPage();
 		
 		int totalCount = this.userControlService.countUser(); // 회원가입된 유저 총 수
-		List<User_infoVO> ulist = this.userControlService.getUserInfo(ui); // 유저리스트 출력
+		List<User_infoVO> ctlist = this.userControlService.getUserInfo(ui); // 유저리스트 출력
 		
 		if(limit>totalCount || page <= 0) {
 			out.println("<script>");
@@ -210,14 +210,10 @@ public class AdminPageController {
 			out.println("</script>");
 			out.flush();
 		}
+				
 		
-		System.out.println(ulist.size());
-		System.out.println(totalCount);
-		System.out.println(page);
-		
-		
-		model.addAttribute("ulist",ulist);
-		model.addAttribute("count",ulist.size());//현재 페이지에 출력되고있는 부분 리스트 수
+		model.addAttribute("ctlist",ctlist);
+		model.addAttribute("count",ctlist.size());//현재 페이지에 출력되고있는 부분 리스트 수
 		model.addAttribute("totalCount",totalCount);
 		model.addAttribute("page",page);
 		

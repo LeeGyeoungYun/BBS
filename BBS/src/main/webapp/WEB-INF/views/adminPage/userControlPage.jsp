@@ -38,7 +38,7 @@
 			</thead>
 			<tbody>
 				
-				<c:forEach var="u" items="${ulist}">
+				<c:forEach var="u" items="${ctlist}">
 				<tr>
 					<th>${u.num}</th>
 					<th>${u.user_id}</th>

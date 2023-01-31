@@ -42,3 +42,10 @@ from ((select row_number() over (order by user_joinDate desc) num, user_id,user_
 
 
 select count(*) from user_info
+
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test1','테스트1','test1','010-1111-1111','aa@board.com',sysdate,sysdate)
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test2','테스트2','test2','010-1111-1111','aa@board.com',sysdate,sysdate)
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test3','테스트3','test3','010-1111-1111','aa@board.com',sysdate,sysdate)
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test4','테스트4','test4','010-1111-1111','aa@board.com',sysdate,sysdate)
+
+select * from user_id
