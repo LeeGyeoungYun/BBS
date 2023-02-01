@@ -39,7 +39,9 @@
 			<tbody>
 				
 				<c:forEach var="u" items="${ctlist}">
+				
 				<tr>
+				
 					<th>${u.num}</th>
 					<th>${u.user_id}</th>
 					<th>${u.user_nickname}</th>
@@ -48,11 +50,15 @@
 					<th>${u.post}</th>
 					<th>${u.user_joinDate}</th>
 					<th>${u.user_modifyDate}</th>
-					<td>						
-						<button class="boardBtn bb2" onclick="idcheck()">회원탈퇴</button>						
-					</td>
-					
+					<th>
+					<input type="hidden" class="userId" value="${u.user_id}">					
+					<c:if test="${!u.user_id.equals('admin')}">
+						<button data-user-id="${u.user_id}" type="button" class="boardBtn bb2" onclick="aa(this)">회원탈퇴</button>
+					</c:if>					
+					</th>
+				
 				</tr>
+			
 				</c:forEach>
 				
 				

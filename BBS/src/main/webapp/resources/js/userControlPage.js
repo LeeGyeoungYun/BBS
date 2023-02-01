@@ -1,3 +1,7 @@
+
+
+
+
 document.addEventListener("DOMContentLoaded", function(){//문서 즉 현재페이지 완벽히 준비(로딩)되어있다면 다음 함수를 실행
 
  	let nextBtn = document.querySelector(".next");
@@ -14,6 +18,38 @@ document.addEventListener("DOMContentLoaded", function(){//문서 즉 현재페�
 		$(".next").prop("disabled",true);
 	}
 	
-	
-
 });
+
+
+function aa(e){
+	let id = $(e).data("userId"); //누른 버튼의 해당 아이디를 불러옴
+	console.log(id);
+	
+	var q = confirm("정말로 삭제하시겠습니까?");
+	
+	if(q){
+	$.ajax({
+		
+		url:"deleteUser_ok",
+		type:"POST",
+		data:{"id":id},
+		dataType:"JSON",
+		success:function(data){
+			
+			console.log(data.code);
+			if(data.code ==='성공'){		
+				alert("데이터가 성공적으로 삭제 되었습니다.");
+				location.reload();
+			}
+			
+		},error:function(){
+			console.log("오류");
+		}
+	
+	});
+	}
+}
+
+
+
+

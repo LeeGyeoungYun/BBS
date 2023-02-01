@@ -50,3 +50,15 @@ insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_emai
 
 select * from (select * from user_info ) u inner join (select user_id,count(user_id) from memo group by user_id)m on u.user_id = m.user_id
 select * from memo;
+
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test5','테스트5','test5','010-1111-1111','aa@board.com',sysdate,sysdate);
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test6','테스트6','test6','010-1111-1111','aa@board.com',sysdate,sysdate);
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test7','테스트7','test7','010-1111-1111','aa@board.com',sysdate,sysdate);
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test8','테스트8','test8','010-1111-1111','aa@board.com',sysdate,sysdate);
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test9','테스트9','test9','010-1111-1111','aa@board.com',sysdate,sysdate);
+
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test10','테스트10','test10','010-1111-1111','aa@board.com',sysdate,sysdate);
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test11','테스트11','test11','010-1111-1111','aa@board.com',sysdate,sysdate);
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test12','테스트12','test12','010-1111-1111','aa@board.com',sysdate,sysdate);
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test13','테스트13','test13','010-1111-1111','aa@board.com',sysdate,sysdate);
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test14','테스트14','test14','010-1111-1111','aa@board.com',sysdate,sysdate);
