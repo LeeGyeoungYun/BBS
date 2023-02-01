@@ -54,4 +54,4 @@ select * from memo order by mno desc;
 select count(*) from memo where memo_public ='1';
 select user_id,count(*) from memo where memo_public ='1' group by user_id;
 
-select * from memo where user_id = 'test0'
+select * from user_info;

@@ -2,6 +2,7 @@ package net.daum.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -231,6 +232,7 @@ public class AdminPageController {
 		PrintWriter out = response.getWriter();
 		
 		String id = (String)request.getSession().getAttribute("id");
+		LocalDate time = LocalDate.now();
 				
 		if(id==null||!id.equals("admin")) { //세션이 비어있거나 아이디값이 admin이 아니라면?
 			out.println("<script>");
@@ -240,6 +242,7 @@ public class AdminPageController {
 			out.flush();
 		}
 		model.addAttribute("kind",kind); //공지사항추가인건지 QNA추가인건지 확인하는 매개변수
+		model.addAttribute("time",time);
 		
 		return "adminPage/updateNotice";
 	}

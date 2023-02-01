@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../header.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,7 @@
 		<tbody>
 			<tr>
 				<th>작성일</th>
-				<td>2023-01-14</td>
+				<td>${time}</td>
 				<th>작성자</th>
 				<td>관리자</td>
 			</tr>
