@@ -49,6 +49,11 @@ public class NoticeDAOImpl implements NoticeDAO {
 		return this.sqlSession.selectOne("no_countNotice",no);
 	}
 	
+	@Override
+	public void viewcount(int nno) { //조회수 증가
+		this.sqlSession.update("no_viewcount",nno);
+	}
+	
 	
 
 }

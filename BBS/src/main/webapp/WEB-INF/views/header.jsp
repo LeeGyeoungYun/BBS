@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 <%-- <c:set var="path" value="${pageContext.request.contextPath}"/> --%>
- <script src="resources/js/jquery.js"></script>
- <script src="resources/js/header.js"></script>
+ <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+ <script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
  <% 
  	Object obj_id= session.getAttribute("id");
  	String id = (String)obj_id;
@@ -13,7 +13,7 @@
  %>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="resources/css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 

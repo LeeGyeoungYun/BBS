@@ -78,4 +78,9 @@
  	delete from notice where nno = #{nno}
  </delete>
  
+ <!-- 게시물 조회수 증가 -->
+ <update id="no_viewcount">
+ 	update notice set notice_viewcnt = notice_viewcnt+1 where nno=#{nno}
+ </update>
+ 
  </mapper>

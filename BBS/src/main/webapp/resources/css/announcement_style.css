@@ -78,6 +78,10 @@ ul a{
 	border:0px;
 }
 
+.tabDiv ul li:hover{
+	background-color: #dbdbdb;
+}
+
 .noticeBox{
 	width: 100%;
 	height: 50px;

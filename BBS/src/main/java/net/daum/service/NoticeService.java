@@ -13,5 +13,6 @@ public interface NoticeService {
 	void updateNotice(NoticeVO no);
 	void deleteNotice(int nno);
 	int countNotice(NoticeVO no);
+	void viewcount(int nno);
 
 }

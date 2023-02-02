@@ -137,13 +137,56 @@ public class AnnouncementController {
 	}//allNotice() end
 	
 	@GetMapping(value="/allNotice/Notice")
-	public String allNotice_Notice(HttpServletRequest request) {
+	public String allNotice_Notice(Model model,HttpServletRequest request,NoticeVO no) {
 		
 		int index = Integer.parseInt(request.getParameter("nno"));
-		System.out.println(index);
 		
+		no.setNno(index);
 		
-		return "test";
-	}
+		this.noticeService.viewcount(index);//조회수 증가
+		no = this.noticeService.getSelectNotice(no);
+		
+		model.addAttribute("no",no);
+			
+		return "notice_cont";
+	
+	}//allNotice_Notice() end
+	
+	
+	
+	@GetMapping(value="/qna/Notice")
+	public String qna_Notice(Model model,HttpServletRequest request,NoticeVO no) {
+		
+		int index = Integer.parseInt(request.getParameter("nno"));
+		
+		no.setNno(index);
+		
+		this.noticeService.viewcount(index);//조회수 증가
+		no = this.noticeService.getSelectNotice(no);
+		
+		model.addAttribute("no",no);
+			
+		return "notice_cont";
+	
+	}//qna_Notice() end
+	
+	
+	
+	@GetMapping(value="/announcement/Notice")
+	public String announcement_Notice(Model model,HttpServletRequest request,NoticeVO no) {
+		
+		int index = Integer.parseInt(request.getParameter("nno"));
+		
+		no.setNno(index);
+		
+		this.noticeService.viewcount(index);//조회수 증가
+		no = this.noticeService.getSelectNotice(no);
+		
+		model.addAttribute("no",no);
+			
+		return "notice_cont";
+	
+	}//announcement_Notice() end
+	
 	
 }

@@ -31,12 +31,14 @@
 						<span>작성일</span>
 					</li>
 					<c:forEach var="n" items="${nlist}">
+					<a href="announcement/Notice?nno=${n.nno}">
 					<li class="noticeBox">
 						<span class="kind">공지사항</span>
 						<span class="writer">관리자</span>
 						<span class="title">${n.notice_title}</span>
 						<span class="date">${n.notice_update}</span> 
 					</li>
+					</a>
 					</c:forEach>
 					
 					
@@ -53,7 +55,7 @@
 					</a>
 				</div>
 			</div>
-			<div class="td td3" > td3
+			<div class="td td3" >
 			</div>	
 		</div>
 	</div>

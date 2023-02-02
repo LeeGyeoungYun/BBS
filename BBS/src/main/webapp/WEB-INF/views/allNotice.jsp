@@ -58,9 +58,9 @@
 				</div>
 				
 			</div>
-			<div class="td td2" > td2
+			<div class="td td2" >
 			</div>
-			<div class="td td3" > td3
+			<div class="td td3" >
 			</div>	
 		</div>
 	</div>

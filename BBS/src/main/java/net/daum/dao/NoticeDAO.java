@@ -13,4 +13,5 @@ public interface NoticeDAO {
 	void updateNotice(NoticeVO no);
 	void deleteNotice(int nno);
 	int countNotice(NoticeVO no);
+	void viewcount(int nno);
 }

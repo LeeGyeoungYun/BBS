@@ -22,7 +22,7 @@
 		
 		<div class="tabDiv">
 			<div class="td td1"> </div>
-			<div class="td td2" > td2
+			<div class="td td2" > 
 			</div>
 			<div class="td td3 active">
 				<ul>
@@ -33,12 +33,14 @@
 						<span>작성일</span>
 					</li>
 					<c:forEach var="q" items="${qlist}">
+					<a href="qna/Notice?nno=${q.nno}">
 					<li class="noticeBox">
 						<span class="kind">QNA</span>
 						<span class="writer">관리자</span>
 						<span class="title">${q.notice_title}</span>
 						<span class="date">${q.notice_update}</span> 
 					</li>
+					</a>
 					</c:forEach>
 					
 					

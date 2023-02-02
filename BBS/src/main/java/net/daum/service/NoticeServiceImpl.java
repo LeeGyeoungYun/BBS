@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import net.daum.dao.NoticeDAO;
 import net.daum.vo.NoticeVO;
@@ -48,5 +49,11 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public int countNotice(NoticeVO no) {	
 		return this.noticeDao.countNotice(no);
+	}
+	
+	@Transactional
+	@Override
+	public void viewcount(int nno) {
+		this.noticeDao.viewcount(nno);
 	}
 }
