@@ -68,8 +68,7 @@ public class AdminPageController {
 		memo.setEndPage(page*10);
 		int limit = memo.getStartPage();
 		int totalCount = this.communityService.countCm();
-		System.out.println(limit);
-		System.out.println(totalCount);
+		
 		
 		if(limit>totalCount || page <= 0) {
 			out.println("<script>");
@@ -232,7 +231,7 @@ public class AdminPageController {
 		PrintWriter out = response.getWriter();
 		
 		String id = (String)request.getSession().getAttribute("id");
-		LocalDate time = LocalDate.now();
+		LocalDate time = LocalDate.now();//현재 시간을 출력할 수 있는 시간함수
 				
 		if(id==null||!id.equals("admin")) { //세션이 비어있거나 아이디값이 admin이 아니라면?
 			out.println("<script>");
