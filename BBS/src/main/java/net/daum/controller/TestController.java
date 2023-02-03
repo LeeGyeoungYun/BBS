@@ -37,5 +37,12 @@ public class TestController {
 		return "test3";
 	}
 	
+	
+	@GetMapping(value="find")
+	public String find() {
+		
+		return "findId";
+	}
+	
 
 }

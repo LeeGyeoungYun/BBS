@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/login_page_style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <script src="resources/js/jquery.js"></script>
-<script type="text/javascript" src="resources/js/login_page.js"></script>
+
 </head>
 <body>
 	<div class= "loginContainer">
@@ -35,7 +35,7 @@
 			</div>
 			
 			<div class="answer">
-				<a class="forget" href="#">forget password?</a>
+				<button class="answerBtn" type="button">forget password?</button>
 				<a class="register" href="register">회원가입</a>
 			</div>
 			
@@ -44,5 +44,7 @@
 			</div>
 		</form>
 	</div>
+	
+	<script type="text/javascript" src="resources/js/login_page.js"></script>
 </body>
 </html>

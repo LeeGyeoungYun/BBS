@@ -83,6 +83,17 @@
 	display:inline;
 }
 
+.answerBtn{
+	display:block;
+	font-size:16px;
+	background-color: inherit;
+	border: none;
+}
+
+.answerBtn:hover{
+	cursor: pointer;	
+}
+
 .answer a{
 	display:block;
 	

@@ -171,7 +171,12 @@
 	--> 이렇게 하면 window.onbeforeunload = function(){} 이 함수를 실행하면 한번더 되묻는다.
 	만약, 나가기 경고문 즉, 위 경고문을 안뜨게 하고싶은 상황이 생긴다면, 예를들어 게시물을 작성한 경우
 	게시물작성하고 저장하는 함수 부분에 window.onbeforeunload = null 값으로 해주면 함수가 실행하는 와중에 경고문을 스킵할 수 있습니다.
+	
 
-20. 
+20. ${pageContext.request.contextPath} : 내 현재 위치 ( EL(Expression Language) 사용 )
+	위에 표현식을 사용하면 상대경로를 지정할때 좀 더 편하게 지정할 수 있다. ex) ${pageContext.request.contextPath}/resources/css/index_style.css 
+	
+	
+21. 
 	 	
        	
