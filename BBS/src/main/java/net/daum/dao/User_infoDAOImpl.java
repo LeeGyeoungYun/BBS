@@ -82,6 +82,16 @@ public class User_infoDAOImpl implements User_infoDAO {
 		this.sqlSession.delete("ui_withdrawal",id);
 	}
 
+	@Override
+	public String findId(User_infoVO ui) {	
+		return this.sqlSession.selectOne("ui_findId",ui);
+	}
+
+	@Override
+	public String findPwd(User_infoVO ui) {
+		return this.sqlSession.selectOne("ui_findPwd",ui);
+	}
+
 	
 	
 

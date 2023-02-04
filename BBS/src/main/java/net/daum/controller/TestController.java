@@ -37,6 +37,16 @@ public class TestController {
 		return "test3";
 	}
 	
+	@GetMapping(value="test4")
+	public String test4() {
+		return "test4";
+	}
+	
+	@GetMapping(value="testAction")
+	public String testAction() {
+		return "test4";
+	}
+	
 	
 	@GetMapping(value="find")
 	public String find() {

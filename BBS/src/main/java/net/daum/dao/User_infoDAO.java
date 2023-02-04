@@ -19,5 +19,7 @@ public interface User_infoDAO {
 	String ui_getPasswd(String id);// 패스워드 가져오기
 	void ui_deleteProfile(String id); // 프로필사진 삭제
 	void ui_withdrawal(String id); // 회원탈퇴
+	String findId(User_infoVO ui);
+	String findPwd(User_infoVO ui);
 	
 }

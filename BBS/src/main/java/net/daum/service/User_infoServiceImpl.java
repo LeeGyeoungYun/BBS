@@ -83,6 +83,16 @@ public class User_infoServiceImpl implements User_infoService {
 		this.user_infoDao.ui_withdrawal(id);
 	}
 
+	@Override
+	public String findId(User_infoVO ui) {	
+		return this.user_infoDao.findId(ui);
+	}
+
+	@Override
+	public String findPwd(User_infoVO ui) {		
+		return this.user_infoDao.findPwd(ui); 
+	}
+
 
 	
 

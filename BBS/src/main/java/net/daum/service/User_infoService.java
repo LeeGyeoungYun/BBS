@@ -19,5 +19,7 @@ public interface User_infoService {
 	String ui_getPasswd(String id);
 	void ui_deleteProfile(String id);
 	void ui_withdrawal(String id);
+	String findId(User_infoVO ui);
+	String findPwd(User_infoVO ui);
 
 }
