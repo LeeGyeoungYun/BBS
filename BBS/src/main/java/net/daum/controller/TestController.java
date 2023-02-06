@@ -48,11 +48,7 @@ public class TestController {
 	}
 	
 	
-	@GetMapping(value="find")
-	public String find() {
-		
-		return "findId";
-	}
+	
 	
 
 }

@@ -62,6 +62,6 @@ insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_emai
 insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test12','테스트12','test12','010-1111-1111','aa@board.com',sysdate,sysdate);
 insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test13','테스트13','test13','010-1111-1111','aa@board.com',sysdate,sysdate);
 insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test14','테스트14','test14','010-1111-1111','aa@board.com',sysdate,sysdate);
-
+insert into USER_INFO (user_id, user_nickname, user_pwd, user_phoneNum,user_email,user_joinDate,user_modifyDate) values('test15','테스트15','test15','010-2222-2222','test15@board.com',sysdate,sysdate);
 
 select user_pwd from user_info where user_id = 'a' and user_phonenum='1' and user_email='a';

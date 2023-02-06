@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -140,6 +141,45 @@ public class HomeController {
 		return result;
 	}
 	
+	@GetMapping(value="/find/id")
+	public String findId() {
+		
+		return "findId";
+	}
+	
+	@GetMapping(value="/find/pwd")
+	public String findPwd() {
+		
+		return "findPwd";
+	}
+	
+	@ResponseBody
+	@PostMapping(value="/find/emailCheck_ok")
+	public Map emailCheck(String phone,String email,User_infoVO ui) {
+		
+		Map<String,String> map = new HashMap<>();
+		ui.setUser_phonenum(phone);
+		ui.setUser_email(email);
+		
+		String id= this.user_infoService.findId(ui);
+		
+		if(id==null||id.equals("")) {
+			map.put("code","없는 아이디 입니다.");
+		}else {
+			map.put("code","아이디가 있습니다.");
+		}
+		
+		return map;
+		
+	}
+	
+	@ResponseBody
+	@PostMapping(value="/find/emailCode_ok")
+	public String emailCode(String email) {
+		System.out.println(email);
+		
+		return "1";
+	}
 	
 	
 	
