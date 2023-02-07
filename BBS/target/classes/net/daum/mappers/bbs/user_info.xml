@@ -75,12 +75,12 @@
 
 <!-- 유저 아이디 찾기 -->
 <select id="ui_findId" parameterType="ui" resultType="String">
-	select user_id from user_info where user_phonenum=#{user_phonenum} and user_email=#{user_email}
+	select user_id from user_info where user_phoneNum=#{user_phoneNum} and user_email=#{user_email}
 </select>
 
 <!-- 유저 비밀번호 찾기 -->
 <select id="ui_findPwd" parameterType="ui" resultType="String">
-	select user_pwd from user_info where user_id = #{user_id} and user_phonenum=#{user_phonenum} and user_email=#{user_email}
+	select user_pwd from user_info where user_id = #{user_id} and user_phoneNum=#{user_phoneNum} and user_email=#{user_email}
 </select>
 
 </mapper>

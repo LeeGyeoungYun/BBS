@@ -3,6 +3,7 @@ package net.daum.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import net.daum.service.MailService;
 import net.daum.service.User_infoService;
 import net.daum.vo.User_infoVO;
 
@@ -36,6 +38,9 @@ public class HomeController {
 	
 	@Autowired
 	private User_infoService user_infoService;
+	
+	@Autowired
+	private MailService mailService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(HttpServletRequest request, User_infoVO ui) {
@@ -158,7 +163,7 @@ public class HomeController {
 	public Map emailCheck(String phone,String email,User_infoVO ui) {
 		
 		Map<String,String> map = new HashMap<>();
-		ui.setUser_phonenum(phone);
+		ui.setUser_phoneNum(phone);
 		ui.setUser_email(email);
 		
 		String id= this.user_infoService.findId(ui);
@@ -176,8 +181,17 @@ public class HomeController {
 	@ResponseBody
 	@PostMapping(value="/find/emailCode_ok")
 	public String emailCode(String email) {
-		System.out.println(email);
+		Random r = new Random();
+		int index = r.nextInt(899999)+100000; //난수발생 100000 ~ 999999 자리 (6자리) 난수 발생해서 보냄
 		
+		String subject = "BBS 이메일 인증 번호 입니다.";
+		StringBuilder sb = new StringBuilder();
+		sb.append("귀하의 인증 번호는 "+index+" 입니다.");
+		String from = "ruddbsdl17@gmail.com";
+		
+		this.mailService.send(subject,sb.toString(),from,email);
+		
+		 
 		return "1";
 	}
 	

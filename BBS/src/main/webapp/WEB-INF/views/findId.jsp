@@ -23,7 +23,7 @@
 	.submit{ width:100px; height: 40px; background-color: #66cc00; border:none; color:white;}
 	.submit:hover{cursor: pointer;background-color: #52a400;}
 	
-	#hidden{//display:none;}
+	#hidden{display:none;}
 	.identi{width:50px;}
 	.identiBtn{font-size: 10px; margin-left:5px;}
 	.confirm{font-size: 10px; margin-left:15px;}
@@ -91,8 +91,12 @@
 		function emailCode(){
 			
 			let email = $(".email").val();
-				
-			alert("인증번호를 보냈습니다.");
+			if(email==null || email.trim() ==''){
+				console.log("empty");
+				alert("이메일이 올바르지 않거나 적지않았습니다. 다시확인해주세요.");
+				return false;
+			}
+			
 			console.log(email);
 			$.ajax({
 				
@@ -102,6 +106,7 @@
 				dataType:"JSON",
 				success:function(){
 					console.log("성공");
+					alert("인증번호를 보냈습니다.");
 				},error:function(){
 					console.log("에러");
 				}

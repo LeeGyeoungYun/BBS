@@ -1,5 +1,6 @@
 package net.daum.service;
 
+import javax.inject.Inject;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
@@ -9,7 +10,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MailServiceImpl implements MailService {
-
+	
+	@Inject //인젝트를 안하면 널포인트에러가 남 
 	private JavaMailSender javaMailSender;
 	
 	public void setJavaMailSender(JavaMailSender javaMailSender) {
