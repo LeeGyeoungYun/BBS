@@ -44,7 +44,7 @@
 			<span id="hidden">
 				Email 인증 <input type="text" class="identi" autocomplete="none">
 				<input type="button" value="인증번호 보내기" class="identiBtn" onclick="emailCode()">
-				<input type="button" value="확인" class="confirm">
+				<input type="button" value="확인" class="confirm" disabled>
 				<b style="font-size: 5px; color:red;" class="misMatch"> * 인증 미완료</b>
 				<b style="font-size: 5px; color:green; display:none;"class="match"> * 인증 완료</b>
 			</span>
@@ -91,6 +91,8 @@
 		function emailCode(){
 			
 			let email = $(".email").val();
+			let phone = $(".phone").val();
+			
 			if(email==null || email.trim() ==''){
 				console.log("empty");
 				alert("이메일이 올바르지 않거나 적지않았습니다. 다시확인해주세요.");
@@ -102,16 +104,52 @@
 				
 				type:"post",
 				url:"emailCode_ok",
-				data:{"email":email},
+				data:{"email":email, "phone":phone},
 				dataType:"JSON",
-				success:function(){
-					console.log("성공");
-					alert("인증번호를 보냈습니다.");
+				success:function(data){
+					let msg = data.code;//성공 실패 여부 
+					var code = data.index;//성공시 보내지는 인증번호
+					
+					if(msg.includes("성공")){
+						console.log("성공");
+						alert("인증번호를 보냈습니다.");
+						let btn = document.querySelector(".confirm");
+						btn.disabled = false;
+						
+						btn.addEventListener("click",function(){
+							console.log("인증버튼이 눌려짐 코드번호는 다음과 같음"+code);
+							
+							if($(".identi").val()==null || $(".identi").val().trim()==''){
+								alert("인증번호란이 비어있습니다. 다시 확인해주세요.");
+								return false;
+							}
+							
+							if($(".identi").val()!=code){
+								alert("인증번호가 다릅니다. 다시 확인해주세요.");
+								return false;
+							}else{
+								alert("인증이 완료되었습니다.");
+								btn.disabled = true;
+								document.querySelector(".misMatch").style.display = "none"; // 인증 미완료문구 지우고
+								document.querySelector(".match").style.display = "inline-block"; //인증 완료문구 보이게
+								document.querySelector(".identi").readOnly=true; //인증번호 적는란 다시 건들지 못하게 보기전용으로 바꿈
+								
+								
+							}
+							
+							
+							
+							
+						});
+						
+					}
+					
 				},error:function(){
 					console.log("에러");
 				}
 			});
 		}// function checkEmail() end
+		
 		
 		
 			

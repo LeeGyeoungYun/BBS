@@ -180,19 +180,34 @@ public class HomeController {
 	
 	@ResponseBody
 	@PostMapping(value="/find/emailCode_ok")
-	public String emailCode(String email) {
-		Random r = new Random();
-		int index = r.nextInt(899999)+100000; //난수발생 100000 ~ 999999 자리 (6자리) 난수 발생해서 보냄
+	public Map<String,String> emailCode(String email,User_infoVO ui,String phone) { //매개변수로 받은 email은 보낼이를 의미함
+		Map<String,String> map = new HashMap<>();
+		ui.setUser_phoneNum(phone);
+		ui.setUser_email(email);
+		String id = this.user_infoService.findId(ui);
 		
-		String subject = "BBS 이메일 인증 번호 입니다.";
-		StringBuilder sb = new StringBuilder();
-		sb.append("귀하의 인증 번호는 "+index+" 입니다.");
-		String from = "ruddbsdl17@gmail.com";
+		if(id==null||id.equals("")) {//휴대폰 번호나 이메일이 올바르지가 않다면?
+			map.put("code","잘못된 정보입니다.");
+		}else {
+			Random r = new Random();
+			int index = r.nextInt(899999)+100000; //난수발생 100000 ~ 999999 자리 (6자리) 난수 발생해서 보냄
+			
+			String subject = "BBS 이메일 인증 번호 입니다."; //이메일 제목
+			StringBuilder sb = new StringBuilder(); 
+			sb.append("귀하의 인증 번호는 "+index+" 입니다."); //이메일 내용
+			String from = "ruddbsdl17@gmail.com"; //보내는 사람
+			
+			this.mailService.send(subject,sb.toString(),from,email);//ServiceImpl에서 작성한 함수를 이용해 메일보내기
+			map.put("code", "인증번호가 성공적으로 발송되었습니다.");
+			map.put("index",Integer.toString(index));
+			System.out.println(index);
+		}
 		
-		this.mailService.send(subject,sb.toString(),from,email);
+		
+		
 		
 		 
-		return "1";
+		return map;
 	}
 	
 	
