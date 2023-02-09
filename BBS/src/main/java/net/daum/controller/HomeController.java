@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -160,18 +161,41 @@ public class HomeController {
 	
 	@ResponseBody
 	@PostMapping(value="/find/emailCheck_ok")
-	public Map emailCheck(String phone,String email,User_infoVO ui) {
+	public Map emailCheck(String phone,String email,User_infoVO ui,String id) {
 		
 		Map<String,String> map = new HashMap<>();
-		ui.setUser_phoneNum(phone);
-		ui.setUser_email(email);
 		
-		String id= this.user_infoService.findId(ui);
+		//System.out.println("id :"+id);
+		//System.out.println("phone :"+phone);
+		//System.out.println("email :"+email);
 		
-		if(id==null||id.equals("")) {
-			map.put("code","없는 아이디 입니다.");
-		}else {
-			map.put("code","아이디가 있습니다.");
+		
+		if(id==null || id.trim().equals("")) {//아이디찾기일때
+			ui.setUser_phoneNum(phone);
+			ui.setUser_email(email);
+			
+			String db_id= this.user_infoService.findId(ui);
+			//System.out.println(db_id);
+			
+			if(db_id==null||db_id.equals("")) {//휴대폰 번호나 이메일이 올바르지가 않다면?
+				map.put("code","없는 정보입니다.");
+			}else {
+				map.put("code", "해당 계정이 존재합니다.");
+			}
+			
+		}else {//비밀번호 찾기라면?
+			ui.setUser_id(id);
+			ui.setUser_phoneNum(phone);
+			ui.setUser_email(email);
+			String db_pwd= this.user_infoService.findPwd(ui);
+			//System.out.println(db_pwd);
+			
+			if(db_pwd==null||db_pwd.equals("")) {//휴대폰 번호나 이메일이 올바르지가 않다면?
+				map.put("code","없는 정보입니다.");
+			}else {
+				map.put("code", "해당 계정이 존재합니다.");
+			}
+			
 		}
 		
 		return map;
@@ -180,35 +204,89 @@ public class HomeController {
 	
 	@ResponseBody
 	@PostMapping(value="/find/emailCode_ok")
-	public Map<String,String> emailCode(String email,User_infoVO ui,String phone) { //매개변수로 받은 email은 보낼이를 의미함
+	public Map<String,String> emailCode(String id, String email,User_infoVO ui,String phone) { //매개변수로 받은 email은 보낼이를 의미함
 		Map<String,String> map = new HashMap<>();
+		
+		if(id==null||id.trim().equals("")) {// 아이디찾기일때
+			
+			ui.setUser_phoneNum(phone);
+			ui.setUser_email(email);
+			String db_id = this.user_infoService.findId(ui);
+			
+			if(db_id==null||db_id.equals("")) {//휴대폰 번호나 이메일이 올바르지가 않다면?
+				map.put("code","잘못된 정보입니다.");
+			}else {
+				Random r = new Random();
+				int index = r.nextInt(899999)+100000; //난수발생 100000 ~ 999999 자리 (6자리) 난수 발생해서 보냄
+				
+				String subject = "BBS 이메일 인증 번호 입니다."; //이메일 제목
+				StringBuilder sb = new StringBuilder(); 
+				sb.append("귀하의 인증 번호는 "+index+" 입니다."); //이메일 내용
+				String from = "ruddbsdl17@gmail.com"; //보내는 사람
+				
+				this.mailService.send(subject,sb.toString(),from,email);//ServiceImpl에서 작성한 함수를 이용해 메일보내기
+				map.put("code", "인증번호가 성공적으로 발송되었습니다.");
+				map.put("index",Integer.toString(index));
+				System.out.println(index);
+			}
+			
+		}else { //비밀번호 찾기일때
+			
+			ui.setUser_id(id);
+			ui.setUser_phoneNum(phone);
+			ui.setUser_email(email);
+			String db_pwd= this.user_infoService.findPwd(ui);// 패스워드 찾는 함수 만약 아이디,폰번호,이메일중 하나라도 일치하지 않는게 나온다면 null출력
+			
+			if(db_pwd==null||db_pwd.equals("")) {//휴대폰 번호나 이메일이 올바르지가 않다면?
+				map.put("code","잘못된 정보입니다.");
+			}else {
+				Random r = new Random();
+				int index = r.nextInt(899999)+100000; //난수발생 100000 ~ 999999 자리 (6자리) 난수 발생해서 보냄
+				
+				String subject = "BBS 이메일 인증 번호 입니다."; //이메일 제목
+				StringBuilder sb = new StringBuilder(); 
+				sb.append("귀하의 인증 번호는 "+index+" 입니다."); //이메일 내용
+				String from = "ruddbsdl17@gmail.com"; //보내는 사람
+				
+				this.mailService.send(subject,sb.toString(),from,email);//ServiceImpl에서 작성한 함수를 이용해 메일보내기
+				map.put("code", "인증번호가 성공적으로 발송되었습니다.");
+				map.put("index",Integer.toString(index));
+				System.out.println(index);
+			}
+		}
+			
+		 
+		return map;
+	}// /find/email_ok() end -> 이메일인증 패스
+	
+	
+	@PostMapping(value="/find/id_goPost")
+	public String id_goPost(String phone,String email,Model model,User_infoVO ui) {
+		
 		ui.setUser_phoneNum(phone);
 		ui.setUser_email(email);
 		String id = this.user_infoService.findId(ui);
 		
-		if(id==null||id.equals("")) {//휴대폰 번호나 이메일이 올바르지가 않다면?
-			map.put("code","잘못된 정보입니다.");
-		}else {
-			Random r = new Random();
-			int index = r.nextInt(899999)+100000; //난수발생 100000 ~ 999999 자리 (6자리) 난수 발생해서 보냄
-			
-			String subject = "BBS 이메일 인증 번호 입니다."; //이메일 제목
-			StringBuilder sb = new StringBuilder(); 
-			sb.append("귀하의 인증 번호는 "+index+" 입니다."); //이메일 내용
-			String from = "ruddbsdl17@gmail.com"; //보내는 사람
-			
-			this.mailService.send(subject,sb.toString(),from,email);//ServiceImpl에서 작성한 함수를 이용해 메일보내기
-			map.put("code", "인증번호가 성공적으로 발송되었습니다.");
-			map.put("index",Integer.toString(index));
-			System.out.println(index);
-		}
+		model.addAttribute("id",id); //아이디 담아서 보냄
 		
 		
-		
-		
-		 
-		return map;
+		return "findId_ok";
 	}
+	
+	@PostMapping(value="/find/pwd_goPost")
+	public String pwd_goPost(String id, String phone,String email,Model model,User_infoVO ui) {
+		
+		ui.setUser_id(id);
+		ui.setUser_phoneNum(phone);
+		ui.setUser_email(email);
+		String pwd = this.user_infoService.findPwd(ui);
+		
+		model.addAttribute("pwd",pwd); //패스워드를 담아서 보냄
+		
+		
+		return "findPwd_ok";
+	}
+	
 	
 	
 	

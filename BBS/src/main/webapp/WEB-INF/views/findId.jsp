@@ -20,8 +20,9 @@
 	.findIdDiv span{display:inline-block;margin:10px 10px 0px;padding:5px 10px;background-color: #f6f6f7; width:410px; height: 45px; line-height: 45px;}
 	.findIdDiv input{padding:10px;}
 	.btnBox{ width:450px; height: 50px; text-align: center; margin-top:40px;}
-	.submit{ width:100px; height: 40px; background-color: #66cc00; border:none; color:white;}
-	.submit:hover{cursor: pointer;background-color: #52a400;}
+	.submit,.submit2 ,.submit3{ width:100px; height: 40px; background-color: #66cc00; border:none; color:white;}
+	.submit:hover,.submit2:hover ,.submit3:hover{cursor: pointer;background-color: #52a400;}
+	.submit2 , .submit3{display:none;}
 	
 	#hidden{display:none;}
 	.identi{width:50px;}
@@ -34,8 +35,8 @@
 <body>
 	<div class="findContainer">
 		<div class="select">
-			<a href="./id"><span class="findId active" onclick="checkIdBtn()">아이디 찾기</span></a>
-			<a href="./pwd"><span class="findPwd" onclick="checkPwdBtn()">비밀번호 찾기</span></a>
+			<a href="./id"><span class="findId active" >아이디 찾기</span></a>
+			<a href="./pwd"><span class="findPwd">비밀번호 찾기</span></a>
 		</div>
 		
 		<div class="findIdDiv">
@@ -50,6 +51,8 @@
 			</span>
 			<div class="btnBox">
 				<input class="submit" type="button" onclick="checkEmail()" value="다음">
+				<input class="submit2" type="button" onclick="skipcheck()" value="다음">
+				<a href="javascript:findId_goPost($('.phone').val(),$('.email').val())"><input class="submit3" type="button" value="다음"></a>
 			</div>
 		</div>
 		
@@ -57,9 +60,7 @@
 	</div>
 
 	<script>
-		
-		let submit = document.getElementsByClassName("submit");		
-		
+				
 		function checkEmail(){		
 		
 			let email = $(".email").val();
@@ -75,9 +76,15 @@
 					console.log(data.code);
 					let msg = data.code;
 					if(msg.includes("없는")){
-						alert("폰번호와 이메일이 일치하지않거나 없는 계정입니다.");
+						alert("폰번호와 이메일이 일치하지않거나 없는 계정입니다.");		
 					}else{
 						$("#hidden").css("display","block");
+						document.querySelector(".phone").readOnly=true;//폰번호적는란 읽기전용으로 바꾸기
+						document.querySelector(".email").readOnly=true;// 이메일적는란 읽기전용으로 바꾸기
+						
+						document.querySelector(".submit").style.display ="none"; //첫번째 다음으로가기 버튼
+						document.querySelector(".submit2").style.display ="inline-block";// 인증 받기전까지 나타나는 다음가기 버튼
+						document.querySelector(".submit3").style.display ="none"; //완전히 인증까지 받은후 나타나는 다음가기 버튼
 					}
 					
 				},error : function(){
@@ -87,6 +94,18 @@
 			});
 			
 		}// function checkEmail() end
+		
+		function skipcheck(){ //폰번호랑 이메일에 해당하는 계정이 있다면 이메일에 인증번호 인증하기전까지 경고문구 나오는 함수
+			let phone = document.querySelector(".phone");
+			let email = document.querySelector(".email");
+			let identi = document.querySelector(".identi");
+			let identiBtn = document.querySelector(".identiBtn");
+			let confirm = document.querySelector(".confirm");
+		
+ 			if(!(phone.readOnly==true && email.readOnly==true && identi.readOnly==true && identiBtn.disabled==true && confirm.disabled==true)){
+ 				alert("이메일 인증후 진행 가능합니다.")
+ 			}
+		}// skipcheck() end
 				
 		function emailCode(){
 			
@@ -99,7 +118,7 @@
 				return false;
 			}
 			
-			console.log(email);
+			//console.log(email);
 			$.ajax({
 				
 				type:"post",
@@ -110,14 +129,14 @@
 					let msg = data.code;//성공 실패 여부 
 					var code = data.index;//성공시 보내지는 인증번호
 					
-					if(msg.includes("성공")){
+					if(msg.includes("성공")){ //만약 이메일에 인증번호를 보내는데 성공했다면?
 						console.log("성공");
 						alert("인증번호를 보냈습니다.");
 						let btn = document.querySelector(".confirm");
 						btn.disabled = false;
 						
 						btn.addEventListener("click",function(){
-							console.log("인증버튼이 눌려짐 코드번호는 다음과 같음"+code);
+							//console.log("인증버튼이 눌려짐 코드번호는 다음과 같음"+code);
 							
 							if($(".identi").val()==null || $(".identi").val().trim()==''){
 								alert("인증번호란이 비어있습니다. 다시 확인해주세요.");
@@ -133,15 +152,19 @@
 								document.querySelector(".misMatch").style.display = "none"; // 인증 미완료문구 지우고
 								document.querySelector(".match").style.display = "inline-block"; //인증 완료문구 보이게
 								document.querySelector(".identi").readOnly=true; //인증번호 적는란 다시 건들지 못하게 보기전용으로 바꿈
+								document.querySelector(".identiBtn").disabled = true;
+								document.querySelector(".submit").style.display ="none"; //첫번째 다음으로가기 버튼
+								document.querySelector(".submit2").style.display ="none";// 인증 받기전까지 나타나는 다음가기 버튼
+								document.querySelector(".submit3").style.display ="inline-block"; //완전히 인증까지 받은후 나타나는 다음가기 버튼
 								
-								
+					
 							}
-							
-							
-							
+				
 							
 						});
 						
+					}else{// 만약 이메일 보내는데 실패했다면?
+						alert("휴대폰 번호나 이메일이 올바르지가 않습니다. 다시 확인해주세요.");
 					}
 					
 				},error:function(){
@@ -151,7 +174,28 @@
 		}// function checkEmail() end
 		
 		
-		
+		function findId_goPost(phone,email){
+			
+			let f = document.createElement('form');
+			
+			let p =document.createElement('input');	
+			p.setAttribute('type', 'hidden');
+			p.setAttribute('name', 'phone');
+		    p.setAttribute('value', phone);
+		    
+		    let e = document.createElement('input');
+		    e.setAttribute('type', 'hidden');
+		    e.setAttribute('name', 'email');
+		    e.setAttribute('value', email);
+		    
+		    f.appendChild(p); f.appendChild(e); 
+		    f.setAttribute('method','post');
+		    f.setAttribute('action','${pageContext.request.contextPath}/find/id_goPost');
+		    document.body.appendChild(f);
+		    
+		    f.submit();
+		    
+		}
 			
 		
 		
