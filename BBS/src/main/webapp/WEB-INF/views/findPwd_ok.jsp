@@ -89,19 +89,34 @@
 				return false;
 			}
 			
-			$.ajax({
-				
-				url:"${pageContext.request.contextPath}/find/updatePwd_ok",
-				type:"POST",
-				data:{"id":id,"newPassword":newPassword},
-				dataType:"JSON",
-				success:function(){
-					console.log("성공");
+			let question  = confirm("정말 변경하시겠습니까?");
+			
+			if(question){
+					 
+				$.ajax({
 					
-				},error:function(){
-					console.log("에러");
-				}
-			});
+					url:"${pageContext.request.contextPath}/find/updatePwd_ok",
+					type:"POST",
+					data:{"id":id,"newPassword":newPassword},
+					dataType:"JSON",
+					success:function(data){
+						console.log("성공");
+						let msg = data.code;
+						
+						if(msg.includes("성공")){//만약 성공적으로 비밀번호 변경이 완료되었다면?
+							window.close();//현재 창닫기
+							alert("비밀번호가 성공적으로 변경되었습니다.");
+							
+						}else{//비밀번호 변경에 실패했다면?
+							alert("정보가 만료되었거나 오류가 생겨 다시 시도바랍니다.");
+							window.location.replace("${pageContext.request.contextPath}/find/pwd");//처음으로 리다이렉트	
+						}
+						
+					},error:function(){
+						console.log("에러");
+					}
+				}); //ajax end		
+			}
 			
 		}
 	</script>

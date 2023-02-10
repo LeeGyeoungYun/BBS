@@ -289,16 +289,21 @@ public class HomeController {
 	
 	@PostMapping(value="/find/updatePwd_ok")
 	@ResponseBody
-	public Map<String,String> updatePwd_ok(String id, String newPassword){ //비밀번호를 바꾸는 함수
+	public Map<String,String> updatePwd_ok(String id, String newPassword,User_infoVO ui){ //비밀번호를 바꾸는 함수
 		
 		Map<String,String> map = new HashMap<>();
 		
 		//System.out.println("id :"+id);
 		//System.out.println("newPassword :"+newPassword);
 		
+		
 		if((id==null || id.trim().equals(""))||(newPassword==null || newPassword.trim().equals(""))) {// 만약 오류로 아이디나 비밀번호가 비어서 온다면
 			map.put("code","실패");
 		}else {
+			ui.setUser_id(id);
+			ui.setUser_pwd(newPassword);
+			this.user_infoService.ui_updatePwd(ui);//비밀번호 변경
+			
 			map.put("code","성공");
 		}
 		
