@@ -93,7 +93,10 @@ public class User_infoDAOImpl implements User_infoDAO {
 	}
 
 	
-	
+	@Override
+	public void ui_updatePwd(User_infoVO ui) {
+		this.sqlSession.update("ui_updatePwd",ui);
+	}
 
 	
 	

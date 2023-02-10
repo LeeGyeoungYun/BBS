@@ -83,5 +83,10 @@
 	select user_pwd from user_info where user_id = #{user_id} and user_phoneNum=#{user_phoneNum} and user_email=#{user_email}
 </select>
 
+<!-- 유저 패스워드 변경 -->
+<update id="ui_updatePwd" parameterType="ui">
+	update user_info set user_pwd = #{user_pwd} where user_id = #{user_id}
+</update>
+
 </mapper>
  

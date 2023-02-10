@@ -177,6 +177,9 @@
 	위에 표현식을 사용하면 상대경로를 지정할때 좀 더 편하게 지정할 수 있다. ex) ${pageContext.request.contextPath}/resources/css/index_style.css 
 	
 	
-21. 
+21. 비밀번호관련 정규식 모음 사이트   https://beagle-dev.tistory.com/114
+
+
+22.	
 	 	
        	

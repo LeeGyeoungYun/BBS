@@ -92,6 +92,11 @@ public class User_infoServiceImpl implements User_infoService {
 	public String findPwd(User_infoVO ui) {		
 		return this.user_infoDao.findPwd(ui); 
 	}
+	
+	@Override
+	public void ui_updatePwd(User_infoVO ui) {
+		this.user_infoDao.ui_updatePwd(ui);
+	}
 
 
 	

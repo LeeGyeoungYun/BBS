@@ -21,5 +21,6 @@ public interface User_infoService {
 	void ui_withdrawal(String id);
 	String findId(User_infoVO ui);
 	String findPwd(User_infoVO ui);
-
+	void ui_updatePwd(User_infoVO ui);
+	
 }

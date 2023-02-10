@@ -99,5 +99,9 @@
 	다음과 같은 에러도 해결됩니다.
 	
 
-12. 
+12. 아작스 쓸때 가끔 보이는 Uncaught ReferenceError: $ is not defined 에러 대처법 :
+	아작스를 사용하기 위해선 jquery.js를 선언해야만 합니다.
+	
+
+13. 
    

@@ -21,5 +21,6 @@ public interface User_infoDAO {
 	void ui_withdrawal(String id); // 회원탈퇴
 	String findId(User_infoVO ui);
 	String findPwd(User_infoVO ui);
+	void ui_updatePwd(User_infoVO ui);
 	
 }
