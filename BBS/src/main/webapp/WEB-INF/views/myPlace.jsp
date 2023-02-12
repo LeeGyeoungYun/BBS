@@ -42,7 +42,8 @@
 			</div>
 			</form>
 				
-				<span class="trashBox trash" onclick="deleteMemo()"><i class="fa-solid fa-trash"></i></span>
+				<span class="trashBox trash" onclick="deleteConfirm()"><i class="fa-solid fa-trash"></i></span>
+				<span class="deleteBox" onclick="deleteMemo()"><i class="fa-solid fa-trash"></i></span>
 				<span class="trashBox deleteCancle" onclick="cancle_deleteMemo()"><i class="fa-sharp fa-solid fa-xmark"></i></span>
 				
 			</div>
@@ -51,7 +52,7 @@
 				<c:forEach var="m" items="${mlist}">
 					
 					<div class="memoContainer">
-					<input type="checkbox" class="check">
+					<input type="checkbox" data-note-num="${m.mno}" name="check" class="check" onclick="check()">
 					<a class="modify" href="myMemo?mno=${m.mno}&state=content">
 					
 					<c:if test="${m.memo_color=='yellow'}"> <!-- 종이색을 노란색으로 선택했을경우 -->

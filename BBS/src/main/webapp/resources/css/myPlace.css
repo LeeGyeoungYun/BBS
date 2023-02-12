@@ -143,6 +143,20 @@
 	font-size: 17px;
 }
 
+.deleteBox{
+	font-size: 40px;
+	padding : 3px;
+	text-align: center;
+	position: absolute;
+	right: 110px;
+	top:0px;
+	border-radius: 50px;
+	border:3px solid;
+	background-color: #f1b385;
+	width: 60px;
+	height: 60px;
+}
+
 
 .trashBox{
 	font-size: 40px;
@@ -158,11 +172,11 @@
 	height: 60px;
 }
 
-.deleteCancle{
+.deleteCancle,.deleteBox{
 	display:none;	
 }
 
-.trashBox i, .searchBox i, .openSearchBox i{
+.trashBox i, .searchBox i, .openSearchBox i,.deleteBox{
 	line-height: 60px;
 }
 
@@ -170,7 +184,7 @@
 	padding-right: 30px;
 }
 
-.trashBox:hover, .searchBox:hover{
+.trashBox:hover, .searchBox:hover, .deleteBox:hover{
 	cursor: pointer;
 	background-color: #e77a29;
 }
