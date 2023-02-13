@@ -74,12 +74,32 @@ function deleteMemo(){ //선택된 메모 삭제하는 함수
 	let question = confirm("정말 삭제하시겠습니까?");
 	if(question){
 		
-		//아작스 통신 -> 선택된 메모넘버를 컨트롤러에 보냄 split() 메소드이용해서 반복문으로 선택된 메모 db에서 삭제 성공후 아작스에서 
-		//삭제 성공했다는 메세지와 함꼐 cancle_deleteMemo()메소드 실행해서 닫아주기
-		//만약실패했다면 실패했고 다시 해달라는 문구출력 -> 실패한경우 세션아이디가 날라갔을경우 등등
-		alert("삭제되었습니다.");
+		$.ajax({
+			type:"post",
+			url:"deleteSelectMemo",
+			data:{"data":selectArray},
+			dataType:"JSON",
+			success: function(data){
+				let msg = data.code;
+				
+				if(msg.includes("성공")){ //삭제하는데 성공한다면?
+					alert("선택한 메모가 삭제 되었습니다.");
+					cancle_deleteMemo(); //메모삭제 상태를 취소하는 함수
+				}else{ //삭제하는데 실패한다면?
+					alert("오류가 생겨 메모 삭제에 실패했습니다.");
+				}
+				
+				window.location.replace("myPlace");
+				
+			},error:function(){
+				console.log("에러");
+			}
+		
+		});// ajax 통신 끝
+		
+		
 	}
-}
+}//deleteMemo() end
 
 
 function check(){

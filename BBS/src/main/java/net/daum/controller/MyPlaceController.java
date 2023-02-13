@@ -2,6 +2,7 @@ package net.daum.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -199,6 +200,32 @@ public class MyPlaceController {
 				
 		return map;
 	}
+	
+	@PostMapping(value="deleteSelectMemo")
+	@ResponseBody
+	public Map<String,String> deleteSelectMemo(String data,HttpServletRequest request) {//선택한 내메모들 삭제하는 함수
+		Map<String,String> map = new HashMap<>();
+		data=data.substring(0,data.length()-1);// 마지막 컴마를 빼려고 문자열을 자름	
+		String[] sp = data.split(",");// 쉼표를 기준으로 배열을 만들음 -> 배열의 원소 값들은 삭제하고싶은 메모 넘버를 의미함
+		
+		String id = (String)request.getSession().getAttribute("id"); //세션아이디
+		
+		if(id==null|| id.equals("")||sp.length==0) {// 세션값이 없거나 삭제할 메모가 없다면?
+			map.put("code","삭제 실패");
+		}else {// 세션아이디도 있고 삭제할 메모가 1개 이상일경우
+			
+			for(int i=0;i<sp.length;i++) {
+				int mno = Integer.parseInt(sp[i]);
+				this.memoService.deleteMemo(mno);
+			}
+			map.put("code","삭제 성공");
+		}
+		
+		
+		
+		return map;
+		
+	}//deleteSelectMemo() end
 	
 	
 }
