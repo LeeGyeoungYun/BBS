@@ -69,31 +69,28 @@ MyNote는 단순한 메모 웹사이트입니다. 여러 일정 및 내용을 �
 #### :heavy_check_mark: 생성
 ![생성](https://user-images.githubusercontent.com/89557219/220575178-ca514738-87a5-47e2-b44d-69fee2fc8804.png)
 
-
+#### :pencil2: 수정
 ![수정](https://user-images.githubusercontent.com/89557219/220575247-91928fd2-8d07-4336-b006-4f1272907b48.png)
+
+#### :x: 삭제
 ![삭제](https://user-images.githubusercontent.com/89557219/220575346-656ba11d-dc05-4279-bf6d-dcc904451a00.png)
+---
+
+### 게시물 페이징 처리
+![페이징](https://user-images.githubusercontent.com/89557219/220575518-933cf09f-7cf8-4582-afd4-e7a5a2e10d78.png)
+---
+
+### 공지사항 보기
+![공지사항 보기](https://user-images.githubusercontent.com/89557219/220575660-b5698889-e6ec-49ce-968b-f7ebf6cd9148.png)
+---
+
+### 관리자 로그인
+![관리자 로그인](https://user-images.githubusercontent.com/89557219/220575767-6684e43b-2540-48f3-906a-63c9e962b170.png)
+---
+
+### 유저 관리
+![관리자 - 유저 관리](https://user-images.githubusercontent.com/89557219/220575921-59d9b1c3-0fbb-4f3d-996b-8b5abb298d36.png)
+---
 
 
-
-개인 메모생성
-https://user-images.githubusercontent.com/89557219/220575178-ca514738-87a5-47e2-b44d-69fee2fc8804.png
-
-개인 메모 수정
-https://user-images.githubusercontent.com/89557219/220575247-91928fd2-8d07-4336-b006-4f1272907b48.png
-
-개인 메모삭제
-https://user-images.githubusercontent.com/89557219/220575346-656ba11d-dc05-4279-bf6d-dcc904451a00.png
-
-게시물 페이징 처리
-https://user-images.githubusercontent.com/89557219/220575518-933cf09f-7cf8-4582-afd4-e7a5a2e10d78.png
-
-공지사항 보기
-https://user-images.githubusercontent.com/89557219/220575660-b5698889-e6ec-49ce-968b-f7ebf6cd9148.png
-
-
-관리자 로그인
-https://user-images.githubusercontent.com/89557219/220575767-6684e43b-2540-48f3-906a-63c9e962b170.png
-
-관리자 관리
-https://user-images.githubusercontent.com/89557219/220575921-59d9b1c3-0fbb-4f3d-996b-8b5abb298d36.png
 
