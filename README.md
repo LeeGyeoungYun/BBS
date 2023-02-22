@@ -10,8 +10,8 @@ MyNote는 단순한 메모 웹사이트입니다. 여러 일정 및 내용을 �
 - Language : `Java 8` `JavaScript` 
 - IDE : `Visual Studio Code` `Eclipse`
 - Database : `Oracle`
-- 프레임워크 : `Spring Framework` `Mybatis` `JQuery`
-- 서버 : `Tomcat`
+- 프레임워크 : `Spring Framework 5.0.7` `Mybatis 1.3.2` `JQuery`
+- 서버 : `Tomcat 9.0`
 - 형상관리 & 디자인 : `GitHub` `HTML` `CSS`
 <br><br>
 
