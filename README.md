@@ -66,6 +66,9 @@ MyNote는 단순한 메모 웹사이트입니다. 여러 일정 및 내용을 �
 ---
 
 ### 개인 메모장
+- JS를 이용하여 에디터 생성
+
+
 ![메모장](https://user-images.githubusercontent.com/89557219/220575178-ca514738-87a5-47e2-b44d-69fee2fc8804.png)
 ---
 
